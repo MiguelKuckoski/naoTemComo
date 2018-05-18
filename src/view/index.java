@@ -26,6 +26,8 @@ import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class index {
 
@@ -37,15 +39,17 @@ public class index {
 	private JButton btnSair;
 	private JButton btnLogin;
 	private JButton btnCadastrar;
+	private static final index window = new index();;
 
 	/**
 	 * Launch the application.
+	 * @wbp.parser.entryPoint
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					index window = new index();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,6 +60,7 @@ public class index {
 
 	/**
 	 * Create the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public index() {
 		initialize();
@@ -63,6 +68,7 @@ public class index {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @wbp.parser.entryPoint
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -156,7 +162,16 @@ public class index {
 	private JButton getBtnCadastrar() {
 		if (btnCadastrar == null) {
 			btnCadastrar = new JButton("Cadastrar");
+			btnCadastrar.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					window.frame.setVisible(false);
+					Cadastro.frame.setVisible(true);
+				}
+			});
 		}
 		return btnCadastrar;
 	}
+
+
 }
