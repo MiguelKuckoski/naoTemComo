@@ -1,22 +1,24 @@
 package vo;
 
-import extras.Estados;
-
 public class Endereco {
 	private String rua;
 	private int cep;
 	private String bairro;
 	private String cidade;
-	protected static Estados estado;
+	private String estado;
 	private int num;
 	private String complemento;
 	
-	public Endereco(String rua, int num, int cep, String bairro, Estados estado) {
+	public Endereco() {
+
+	}
+	
+	public Endereco(String rua, int num, int cep, String bairro, String estado) {
 		this.rua= rua;
 		this.num = num;
 		this.cep = cep;
 		this.bairro = bairro;
-		Endereco.estado = estado;
+		this.estado = estado;
 	}
 	
 	public String getRua() {
@@ -43,11 +45,11 @@ public class Endereco {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public Estados getEstado() {
+	public String getEstado() {
 		return estado;
 	}
-	public void setEstado(Estados estado) {
-		Endereco.estado = estado;
+	public void setEstado(String string) {
+		this.estado = string;
 	}
 	public int getNum() {
 		return num;

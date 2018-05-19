@@ -29,7 +29,7 @@ import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class index {
+public class Index {
 
 	private JFrame frame;
 	private JLabel lblCpf;
@@ -39,7 +39,8 @@ public class index {
 	private JButton btnSair;
 	private JButton btnLogin;
 	private JButton btnCadastrar;
-	private static final index window = new index();;
+	protected static final Index window = new Index();
+	protected static final Cadastro cadastro = new Cadastro();
 
 	/**
 	 * Launch the application.
@@ -62,7 +63,7 @@ public class index {
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public index() {
+	public Index() {
 		initialize();
 	}
 
@@ -165,13 +166,19 @@ public class index {
 			btnCadastrar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					window.frame.setVisible(false);
-					Cadastro.frame.setVisible(true);
+					setInvisible();
+					cadastro.setVisible();
 				}
 			});
 		}
 		return btnCadastrar;
 	}
-
+	public void setVisible() {
+		window.frame.setVisible(true);
+	}
+	
+	public void setInvisible() {
+		window.frame.setVisible(false);
+	}
 
 }

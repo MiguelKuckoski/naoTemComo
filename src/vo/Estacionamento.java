@@ -7,7 +7,7 @@ public class Estacionamento extends Endereco {
 	private String nome;
 	private String tipoEstacionamento;
 	
-	public Estacionamento(String rua, int num, int cep, String bairro, String placa, String modelo, String ano,
+	public Estacionamento(String rua, int num, int cep, String bairro, String estado, String placa, String modelo, String ano,
 			VeiculoType tipoVeiculo) {
 		super(rua, num, cep, bairro, estado);
 

@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 public class LogadoEstacionado extends JFrame {
 
 	private JPanel contentPane;
+	private static final LogadoEstacionado frame = new LogadoEstacionado();
 
 	/**
 	 * Launch the application.
@@ -18,7 +19,6 @@ public class LogadoEstacionado extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LogadoEstacionado frame = new LogadoEstacionado();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,6 +37,13 @@ public class LogadoEstacionado extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+	}
+	public void setVisible() {
+		frame.setVisible(true);
+	}
+	
+	public void setInvisible() {
+		frame.setVisible(false);
 	}
 
 }

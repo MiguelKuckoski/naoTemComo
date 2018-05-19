@@ -5,13 +5,18 @@ import java.util.List;
 public class Usuario extends Endereco{
 
 	private String nome;
-	private long cpf;
-	private long cnh;
+	private String cpf;
+	private String cnh;
 	private List<Veiculo> veiculos;
 	private String senha;
 	
 	
-	public Usuario(String rua, int num, int cep, String bairro, String nome, long cpf, long cnh, String senha) {
+	public Usuario( ) {
+		super();
+
+	}
+	
+	public Usuario(String rua, int num, int cep, String bairro, String estado, String nome, String cpf, String cnh, String senha) {
 		super(rua, num, cep, bairro, estado);
 		this.nome = nome;
 		this.cpf = cpf;
@@ -30,22 +35,22 @@ public class Usuario extends Endereco{
 	}
 
 
-	public long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
 
-	public void setCpf(long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
 
-	public long getCnh() {
+	public String getCnh() {
 		return cnh;
 	}
 
 
-	public void setCnh(long cnh) {
+	public void setCnh(String cnh) {
 		this.cnh = cnh;
 	}
 
