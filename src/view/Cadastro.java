@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -56,11 +57,12 @@ public class Cadastro extends JFrame implements Iview {
 	private JLabel lblN;
 	private JLabel lblSenha;
 	private JTextField textFieldSenha;
+	private JPopupMenu popUpCadastroVeiculo;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void cadastro() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -504,7 +506,7 @@ public class Cadastro extends JFrame implements Iview {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-
+					CadastroVeiculo.popUpCadastroVeiculo();
 				}
 			});
 		}
@@ -539,5 +541,11 @@ public class Cadastro extends JFrame implements Iview {
 			textFieldSenha.setColumns(10);
 		}
 		return textFieldSenha;
+	}
+	private JPopupMenu getPopUpCadastroVeiculo() {
+		if (popUpCadastroVeiculo == null) {
+			popUpCadastroVeiculo = new JPopupMenu();
+		}
+		return popUpCadastroVeiculo;
 	}
 }

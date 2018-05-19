@@ -1,3 +1,4 @@
+
 package view;
 
 import java.awt.BorderLayout;
@@ -14,7 +15,7 @@ public class LogadoNaoEstacionado extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void logadoNaoEstacionado() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

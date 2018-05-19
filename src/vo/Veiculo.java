@@ -10,6 +10,10 @@ public class Veiculo {
 	private boolean estacionado;
 	private VeiculoType tipoVeiculo;
 
+	public Veiculo() {
+
+	}
+	
 	public Veiculo(String placa, String modelo, int ano, VeiculoType tipoVeiculo) {
 		this.placa = placa;
 		this.modelo = modelo;
