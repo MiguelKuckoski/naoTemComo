@@ -14,11 +14,12 @@ public class Veiculo {
 
 	}
 	
-	public Veiculo(String placa, String modelo, int ano, String tipoVeiculo) {
+	public Veiculo(String placa, String modelo, int ano, String tipoVeiculo, String cor) {
 		this.placa = placa;
 		this.modelo = modelo;
 		this.ano = ano;
 		this.tipoVeiculo = tipoVeiculo;
+		this.cor = cor;
 	}
 
 	public String getPlaca() {
