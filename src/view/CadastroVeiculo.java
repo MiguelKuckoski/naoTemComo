@@ -1,12 +1,16 @@
 package view;
 
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 import extras.Iview;
 import vo.Veiculo;
@@ -71,8 +75,8 @@ public class CadastroVeiculo implements Iview{
 
 	@Override
 	public void assignValues() {
-		// TODO Auto-generated method stub
-		
+		Veiculo veiculo = new Veiculo("ABC-8787", "Sandero", 2013, "Moto");
+		veiculo.setCor("Prata");
 	}
 
 	@Override
@@ -98,13 +102,25 @@ public class CadastroVeiculo implements Iview{
 		if (table == null) {
 			table = new JTable();;
 			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			Veiculo veiculo = new Veiculo();
-			table.setModel(null);
-			table.getColumn(veiculo.getModelo());
-			table.getColumn(veiculo.getAno());
-			table.getColumn(veiculo.getCor());
-			table.getColumn(veiculo.getTipoVeiculo());
-			
+			table.setModel(new DefaultTableModel(new Object[][]{}, new String[]{
+					"Tipo", "Placa", "Modelo", "Ano", "Cor"
+				}
+			) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 9133274547336225665L;
+				boolean[] columnEditables = new boolean[] {
+					false, false, false , false
+				};
+				public boolean isCellEditable(int row, int column) {
+					return columnEditables[column];
+				}
+			});
+			table.getColumnModel().getColumn(0).setResizable(false);
+			table.getColumnModel().getColumn(1).setResizable(false);
+			table.getColumnModel().getColumn(2).setResizable(false);
+			table.getColumnModel().getColumn(3).setResizable(false);		
 		}
 		return table;
 	}

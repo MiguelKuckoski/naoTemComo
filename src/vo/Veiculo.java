@@ -8,13 +8,13 @@ public class Veiculo {
 	private String cor;
 	private int ano;
 	private boolean estacionado;
-	private VeiculoType tipoVeiculo;
+	private String tipoVeiculo;
 
 	public Veiculo() {
 
 	}
 	
-	public Veiculo(String placa, String modelo, int ano, VeiculoType tipoVeiculo) {
+	public Veiculo(String placa, String modelo, int ano, String tipoVeiculo) {
 		this.placa = placa;
 		this.modelo = modelo;
 		this.ano = ano;
@@ -61,11 +61,11 @@ public class Veiculo {
 		this.estacionado = estacionado;
 	}
 
-	public VeiculoType getTipoVeiculo() {
+	public String getTipoVeiculo() {
 		return tipoVeiculo;
 	}
 
-	public void setTipoVeiculo(VeiculoType tipoVeiculo) {
+	public void setTipoVeiculo(String tipoVeiculo) {
 		this.tipoVeiculo = tipoVeiculo;
 	}
 	
