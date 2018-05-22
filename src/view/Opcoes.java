@@ -1,16 +1,14 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import java.awt.Font;
 
 public class Opcoes extends JFrame {
 
@@ -23,12 +21,14 @@ public class Opcoes extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @param frame 
 	 */
-	public static void opcoes() {
+	public static void opcoes(LogadoNaoEstacionado frame) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Opcoes frame = new Opcoes();
+					frame.setVisible(false);
+					Opcoes frame = new Opcoes();					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,7 +81,7 @@ public class Opcoes extends JFrame {
 	private JButton getBtnDadosPessoais() {
 		if (btnDadosPessoais == null) {
 			btnDadosPessoais = new JButton("Dados pessoais");
-			btnDadosPessoais.setBounds(100, 142, 125, 32);
+			btnDadosPessoais.setBounds(91, 141, 134, 32);
 			btnDadosPessoais.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		}
 		return btnDadosPessoais;

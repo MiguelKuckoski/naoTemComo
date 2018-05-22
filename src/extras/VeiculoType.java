@@ -2,7 +2,7 @@ package extras;
 
 public enum VeiculoType {
 		
-		CARRO("1","Carro"),
+		CARRO("1","CARRO"),
 		MOTO("2", "MOTO");
 		
 		

@@ -25,7 +25,6 @@ public class Index {
 	private JButton btnLogin;
 	private JButton btnCadastrar;
 	protected static final Index window = new Index();	
-	protected static final Cadastro cadastro = new Cadastro();
 
 	/**
 	 * Launch the application.
@@ -151,18 +150,11 @@ public class Index {
 			btnCadastrar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					setInvisible();
-					cadastro.setVisible();
+
+					Cadastro.cadastro(frame);
 				}
 			});
 		}
 		return btnCadastrar;
-	}
-	public void setVisible() {
-		window.frame.setVisible(true);
-	}
-	
-	public void setInvisible() {
-		window.frame.setVisible(false);
 	}
 }

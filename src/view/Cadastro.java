@@ -3,8 +3,8 @@ package view;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Arrays;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -23,9 +23,8 @@ import javax.swing.border.EmptyBorder;
 
 import extras.Estados;
 import extras.Iview;
+import extras.VeiculoType;
 import vo.Usuario;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class Cadastro extends JFrame implements Iview {
 
@@ -62,15 +61,18 @@ public class Cadastro extends JFrame implements Iview {
 	private JLabel lblSenha;
 	private JPopupMenu popUpCadastroVeiculo;
 	private JPasswordField textFieldSenha;
+	
 
 	/**
 	 * Launch the application.
+	 * @param frame2 
 	 */
-	public static void cadastro() {
+	public static void cadastro(JFrame frame2) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame.setVisible(false);
+					frame2.setVisible(false);
+					frame.setVisible(true);					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -91,7 +93,7 @@ public class Cadastro extends JFrame implements Iview {
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(getLblDadosPessoais(), GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE)
+				.addComponent(getLblDadosPessoais(), GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
@@ -113,11 +115,11 @@ public class Cadastro extends JFrame implements Iview {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(39)
 					.addComponent(getTable(), GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(645, Short.MAX_VALUE))
+					.addContainerGap(641, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(getLblEndereo(), GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(316, Short.MAX_VALUE))
+					.addContainerGap(312, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -141,17 +143,17 @@ public class Cadastro extends JFrame implements Iview {
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 							.addComponent(getComboBoxEstado(), Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(getTextFieldCidade(), Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))
-					.addContainerGap(149, Short.MAX_VALUE))
+					.addContainerGap(145, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(getBtnCadastrar())
+					.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
 					.addGap(41)
-					.addComponent(getBtnVoltar(), GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(477, Short.MAX_VALUE))
+					.addComponent(getBtnVoltar(), GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(423, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(14)
 					.addComponent(getBtnVeiculos(), GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(540, Short.MAX_VALUE))
+					.addContainerGap(536, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -205,7 +207,7 @@ public class Cadastro extends JFrame implements Iview {
 							.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 								.addComponent(getBtnCadastrar())
-								.addComponent(getBtnVoltar(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(getBtnVoltar())))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(getLblN(), GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)))
@@ -228,8 +230,6 @@ public class Cadastro extends JFrame implements Iview {
 		if (validacao == null) {
 			assignValues();
 			// TODO dao?
-			setInvisible();
-			logadoEstacionado.setVisible();
 		} else {
 			JOptionPane.showMessageDialog(null, "Preencha todos os campos: \n " + validacao, "WARNING",
 					JOptionPane.WARNING_MESSAGE);
@@ -247,7 +247,7 @@ public class Cadastro extends JFrame implements Iview {
 		usuario.setRua(getTextFieldRua().getText());
 		usuario.setNum(Integer.parseInt(getTextFieldNumero().getText()));
 		usuario.setBairro(getTextFieldBairro().getText());
-		usuario.setCep(Integer.parseInt(getTextFieldCep().getText()));
+
 		usuario.setEstado(getComboBoxEstado().getName());
 
 		if (getTextFieldComplemento().getText().length() > 0) {
@@ -307,9 +307,9 @@ public class Cadastro extends JFrame implements Iview {
 		if (getTextFieldBairro().getText().length() == 0) {
 			validacao += "Informe o bairro \n";
 		}
-		if (getComboBoxEstado().getSelectedIndex() < 1) {
-			validacao += "Selecione o estado";
-		}
+//		if (getComboBoxEstado().getSelectedIndex() < 1) {
+//			validacao += "Selecione o estado";
+//		}
 		if (validacao.length() > 0) {
 			return validacao;
 		} else {
@@ -478,8 +478,8 @@ public class Cadastro extends JFrame implements Iview {
 
 	private JComboBox<Estados> getComboBoxEstado() {
 		if (comboBoxEstado == null) {
-			comboBoxEstado = new JComboBox<Estados>();
-//			comboBoxEstado.addAll(Arrays.asList(Estados.values()));
+			comboBoxEstado = new JComboBox<>();
+			comboBoxEstado.setModel(new DefaultComboBoxModel<>(Estados.values()));
 		}
 		return comboBoxEstado;
 	}
@@ -491,6 +491,7 @@ public class Cadastro extends JFrame implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					save();
+					LogadoNaoEstacionado.logadoNaoEstacionado(frame);
 					
 				}
 			});
@@ -504,8 +505,9 @@ public class Cadastro extends JFrame implements Iview {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					setInvisible();
-					index.setVisible();
+					frame.setVisible(false);	
+					String[] args = null;
+					Index.main(args);
 				}
 			});
 		}
@@ -518,19 +520,11 @@ public class Cadastro extends JFrame implements Iview {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					CadastroVeiculo.popUpCadastroVeiculo();
+					CadastroVeiculo.cadastroVeiculo(frame);
 				}
 			});
 		}
 		return btnVeiculos;
-	}
-
-	public void setVisible() {
-		frame.setVisible(true);
-	}
-
-	public void setInvisible() {
-		frame.setVisible(false);
 	}
 
 	private JLabel getLblN() {
