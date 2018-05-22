@@ -6,6 +6,7 @@ import java.awt.Window.Type;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -30,10 +31,10 @@ public class CadastroVeiculo implements Iview {
 
 	private static JFrame frmVeiculos;
 	private JButton btnCadastrar;
-	private JButton buttonRemovever;
+	private JButton btnExcluir;
 	private JTable table;
 	private JScrollPane scrollPane;
-	protected static ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
+	protected static List<Veiculo> veiculos = new ArrayList<Veiculo>();
 	private JLabel lblTipo;
 	private JLabel lblPlaca;
 	private JLabel lblModelo;
@@ -48,7 +49,7 @@ public class CadastroVeiculo implements Iview {
 	private JSeparator separator_1;
 	private JButton buttonConfirmar;
 	private JButton buttonCancelar;
-	CadastroVeiculo window = new CadastroVeiculo();
+	protected static CadastroVeiculo window = new CadastroVeiculo();
 
 	/**
 	 * Launch the application.
@@ -59,7 +60,7 @@ public class CadastroVeiculo implements Iview {
 			public void run() {
 				try {
 					frame.setVisible(false);
-					frmVeiculos.setVisible(true);
+					window.frmVeiculos.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -86,7 +87,7 @@ public class CadastroVeiculo implements Iview {
 		frmVeiculos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmVeiculos.getContentPane().setLayout(null);
 		frmVeiculos.getContentPane().add(getBtnCadastrar());
-		frmVeiculos.getContentPane().add(getButtonRemovever());
+		frmVeiculos.getContentPane().add(getBtnExcluir());
 		frmVeiculos.getContentPane().add(getScrollPane());
 		frmVeiculos.getContentPane().add(getLblTipo());
 		frmVeiculos.getContentPane().add(getLblPlaca());
@@ -103,7 +104,7 @@ public class CadastroVeiculo implements Iview {
 		frmVeiculos.getContentPane().add(getButtonConfirmar());
 		frmVeiculos.getContentPane().add(getButtonCancelar());
 		frmVeiculos.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { frmVeiculos.getContentPane(),
-				getBtnCadastrar(), getButtonRemovever(), getScrollPane(), getTable() }));
+				getBtnCadastrar(), getBtnExcluir(), getScrollPane(), getTable() }));
 	}
 
 	@Override
@@ -116,7 +117,7 @@ public class CadastroVeiculo implements Iview {
 		Object[] rowData = new Object[5];
 		TableModel model = getTable().getModel();
 		((DefaultTableModel) model).setRowCount(0);
-
+		
 		for (int i = 0; i < getVeiculos().size(); i++) {
 			rowData[0] = getVeiculos().get(i).getTipoVeiculo().toString();
 			rowData[1] = getVeiculos().get(i).getPlaca();
@@ -185,10 +186,6 @@ public class CadastroVeiculo implements Iview {
 			validacao += "Informe a cor do veiculo.\n";
 		}
 		
-		if(getComboBoxVeiculoType().getSelectedIndex() == 0) {
-			validacao += "Informe o tipo do veiculo";
-		}
-		
 		if(validacao.trim().length() == 0) {
 			return null;
 		}else {
@@ -206,17 +203,38 @@ public class CadastroVeiculo implements Iview {
 					save();
 				}
 			});
-			btnCadastrar.setBounds(52, 185, 89, 23);
+			btnCadastrar.setBounds(52, 185, 120, 23);
 		}
 		return btnCadastrar;
 	}
 
-	private JButton getButtonRemovever() {
-		if (buttonRemovever == null) {
-			buttonRemovever = new JButton("Excluir");
-			buttonRemovever.setBounds(202, 185, 97, 22);
+	private JButton getBtnExcluir() {
+		if (btnExcluir == null) {
+			btnExcluir = new JButton("Excluir");
+			btnExcluir.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if(getTable().getSelectedRowCount() == 1) {
+						
+						TableModel model = getTable().getModel();
+						
+						String tipo = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 0).toString();
+						String placa = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 1).toString();
+						String modelo = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 2).toString();
+						int ano = (int) ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 3);
+						String cor = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 4).toString();
+						VeiculoType type = VeiculoType.getType(tipo);
+						
+						Veiculo veiculo = new Veiculo(placa, modelo, ano, type, cor);
+						int index = getVeiculos().indexOf(veiculo); //  return -1, veiculo nãp existe
+						getVeiculos().remove(index);
+						displayValues();
+					}
+				}
+			});
+			btnExcluir.setBounds(202, 185, 120, 23);
 		}
-		return buttonRemovever;
+		return btnExcluir;
 	}
 
 	private JTable getTable() {
@@ -236,10 +254,6 @@ public class CadastroVeiculo implements Iview {
 
 			model.setColumnIdentifiers(columnsName);
 			table.setModel(model);
-			// table.getColumnModel().getColumn(0).setResizable(false);
-			// table.getColumnModel().getColumn(1).setResizable(false);
-			// table.getColumnModel().getColumn(2).setResizable(false);
-			// table.getColumnModel().getColumn(3).setResizable(false);
 		}
 		return table;
 	}
@@ -253,11 +267,11 @@ public class CadastroVeiculo implements Iview {
 		return scrollPane;
 	}
 
-	public static ArrayList<Veiculo> getVeiculos() {
+	public static List<Veiculo> getVeiculos() {
 		return veiculos;
 	}
 
-	public void setVeiculos(ArrayList<Veiculo> veiculos) {
+	public void setVeiculos(List<Veiculo> veiculos) {
 		this.veiculos = veiculos;
 	}
 
@@ -369,7 +383,7 @@ public class CadastroVeiculo implements Iview {
 					Cadastro.cadastro(frmVeiculos);	
 				}
 			});
-			buttonConfirmar.setBounds(152, 542, 89, 23);
+			buttonConfirmar.setBounds(152, 542, 120, 23);
 		}
 		return buttonConfirmar;
 	}
@@ -383,7 +397,7 @@ public class CadastroVeiculo implements Iview {
 					Cadastro.cadastro(frmVeiculos);
 				}
 			});
-			buttonCancelar.setBounds(304, 542, 89, 23);
+			buttonCancelar.setBounds(304, 542, 120, 23);
 		}
 		return buttonCancelar;
 	}

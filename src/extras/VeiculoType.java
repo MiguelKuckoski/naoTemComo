@@ -22,5 +22,17 @@ public enum VeiculoType {
 		public String toString() {
 			return name;
 		}
+		
+		public boolean compare(String comparison) {
+			return this.code.equals(comparison) || this.name.equals(comparison);
+		}
+		
+		public static VeiculoType getType(String tipo) {
+			for(VeiculoType s : VeiculoType.values())
+				if(s.compare(tipo))
+					return s;
+			return null;
+		}
+		
 
 }
