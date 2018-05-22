@@ -165,5 +165,4 @@ public class Index {
 	public void setInvisible() {
 		window.frame.setVisible(false);
 	}
-
 }

@@ -33,7 +33,7 @@ public class CadastroVeiculo implements Iview {
 	private JButton buttonRemovever;
 	private JTable table;
 	private JScrollPane scrollPane;
-	private ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
+	protected static ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
 	private JLabel lblTipo;
 	private JLabel lblPlaca;
 	private JLabel lblModelo;
@@ -244,7 +244,7 @@ public class CadastroVeiculo implements Iview {
 		return scrollPane;
 	}
 
-	public ArrayList<Veiculo> getVeiculos() {
+	public static ArrayList<Veiculo> getVeiculos() {
 		return veiculos;
 	}
 

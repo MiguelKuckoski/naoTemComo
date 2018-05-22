@@ -73,10 +73,11 @@ public class Usuario extends Endereco{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-	public void inserirVeiculo(Veiculo veiculo) {
-		veiculos.add(veiculo);
-	}
+	
+//
+//	public void inserirVeiculo(Veiculo veiculo) {
+//		veiculos.add(veiculo);
+//	}
 	
 	public void removerVeiculo(Veiculo veiculo) {
 		veiculos.remove(veiculo);
