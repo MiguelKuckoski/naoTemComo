@@ -82,6 +82,7 @@ public class Cadastro extends JFrame implements Iview {
 	 * Create the frame.
 	 */
 	public Cadastro() {
+		setTitle("Cadastro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
 		contentPane = new JPanel();
