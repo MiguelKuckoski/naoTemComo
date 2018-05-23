@@ -222,17 +222,17 @@ public class CadastroVeiculo implements Iview {
 					if(getTable().getSelectedRowCount() == 1) {
 						
 						TableModel model = getTable().getModel();
-						
-						String tipo = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 0).toString();
 						String placa = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 1).toString();
-						String modelo = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 2).toString();
-						int ano = (int) ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 3);
-						String cor = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 4).toString();
-						VeiculoType type = VeiculoType.getType(tipo);
 						
-						Veiculo veiculo = new Veiculo(placa, modelo, ano, type, cor);
-						int index = getVeiculos().indexOf(veiculo); //  return -1, veiculo nãp existe
-						getVeiculos().remove(index);
+						Veiculo veiculo = null;
+						
+						for (Veiculo veiculo2 : getVeiculos()) {
+							if(veiculo2.getPlaca() == placa) {
+								veiculo = veiculo2;
+								break;
+							}
+						}
+						getVeiculos().remove(veiculo);
 						displayValues();
 					}
 				}

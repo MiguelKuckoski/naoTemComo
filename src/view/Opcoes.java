@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Opcoes extends JFrame {
 
@@ -69,18 +71,24 @@ public class Opcoes extends JFrame {
 	private JButton getBtnVeiculos() {
 		if (btnVeiculos == null) {
 			btnVeiculos = new JButton("Ve\u00EDculos");
-			btnVeiculos.setBounds(100, 90, 125, 32);
-			btnVeiculos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			btnVeiculos.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+			btnVeiculos.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
 				}
 			});
+			btnVeiculos.setBounds(100, 90, 125, 32);
+			btnVeiculos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		}
 		return btnVeiculos;
 	}
 	private JButton getBtnDadosPessoais() {
 		if (btnDadosPessoais == null) {
 			btnDadosPessoais = new JButton("Dados pessoais");
+			btnDadosPessoais.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+				}
+			});
 			btnDadosPessoais.setBounds(91, 141, 134, 32);
 			btnDadosPessoais.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		}
@@ -89,6 +97,11 @@ public class Opcoes extends JFrame {
 	private JButton getBtnEncerrarConta() {
 		if (btnEncerrarConta == null) {
 			btnEncerrarConta = new JButton("Encerrar conta");
+			btnEncerrarConta.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				}
+			});
 			btnEncerrarConta.setBounds(100, 196, 125, 32);
 			btnEncerrarConta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		}
@@ -97,6 +110,12 @@ public class Opcoes extends JFrame {
 	private JButton getBtnVoltar() {
 		if (btnVoltar == null) {
 			btnVoltar = new JButton("VOLTAR");
+			btnVoltar.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					
+				}
+			});
 			btnVoltar.setBounds(100, 260, 125, 45);
 			btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		}
