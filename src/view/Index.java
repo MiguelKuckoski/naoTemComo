@@ -28,7 +28,7 @@ public class Index {
 
 	/**
 	 * Launch the application.
-	 * @wbp.parser.entryPoint
+	 * 
 	 */
 	
 	public static void main(String[] args) {
@@ -49,6 +49,7 @@ public class Index {
 	 */
 	public Index() {
 		initialize();
+		
 	}
 
 	/**
@@ -150,8 +151,15 @@ public class Index {
 			btnCadastrar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-
+					
+					Cadastro cadastro = new Cadastro();
+					cadastro.cleanValues();
+					
+					CadastroVeiculo cadastroVeiculo = new CadastroVeiculo();
+					cadastroVeiculo.cleanValues();		
+					
 					Cadastro.cadastro(frame);
+
 				}
 			});
 		}

@@ -60,7 +60,7 @@ public class CadastroVeiculo implements Iview {
 			public void run() {
 				try {
 					frame.setVisible(false);
-					window.frmVeiculos.setVisible(true);
+					CadastroVeiculo.frmVeiculos.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -109,8 +109,12 @@ public class CadastroVeiculo implements Iview {
 
 	@Override
 	public void cleanValues() {
-		// TODO Auto-generated method stub
-
+		getComboBoxVeiculoType().setSelectedIndex(0);
+		getTextFieldPlaca().setText("");
+		getTextFieldModelo().setText("");
+		getTextFieldCor().setText("");
+		getTextFieldAno().setText("");
+		
 	}
 
 	public void displayValues() {
@@ -201,6 +205,7 @@ public class CadastroVeiculo implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					save();
+					cleanValues();
 				}
 			});
 			btnCadastrar.setBounds(52, 185, 120, 23);
@@ -367,6 +372,7 @@ public class CadastroVeiculo implements Iview {
 		}
 		return separator;
 	}
+	
 	private JSeparator getSeparator_1() {
 		if (separator_1 == null) {
 			separator_1 = new JSeparator();
@@ -374,6 +380,7 @@ public class CadastroVeiculo implements Iview {
 		}
 		return separator_1;
 	}
+	
 	private JButton getButtonConfirmar() {
 		if (buttonConfirmar == null) {
 			buttonConfirmar = new JButton("Confirmar");
@@ -387,6 +394,7 @@ public class CadastroVeiculo implements Iview {
 		}
 		return buttonConfirmar;
 	}
+	
 	private JButton getButtonCancelar() {
 		if (buttonCancelar == null) {
 			buttonCancelar = new JButton("Cancelar");
