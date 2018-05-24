@@ -69,12 +69,4 @@ public class Veiculo {
 	public void setTipoVeiculo(VeiculoType tipoVeiculo) {
 		this.tipoVeiculo = tipoVeiculo;
 	}
-	
-	public void estacionar( ) {
-		this.estacionado = true;
-	}
-	
-	public void desestacionar() {
-		this.estacionado = false;
-	}
 }

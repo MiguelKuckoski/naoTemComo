@@ -1,12 +1,14 @@
 package vo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Controle {
 	private List<Estacionamento> estacionamento;
-	private List<Usuario> usuarios;
+	private static List<Usuario> usuarios;
 	private Date date = new Date();
+	private static Usuario loggedUser;
 	
 	public List<Estacionamento> getEstacionamento() {
 		return estacionamento;
@@ -16,12 +18,15 @@ public class Controle {
 		this.estacionamento.add(estacionamento);
 	}
 
-	public List<Usuario> getUsuarios() {
+	public static List<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(Usuario usuario) {
-		this.usuarios.add(usuario);
+	public static void setUsuarios(Usuario usuario) {
+		if(usuarios == null) {
+			usuarios = new ArrayList<Usuario>();
+		}
+		Controle.usuarios.add(usuario);
 	}
 
 	public Date getDate() {
@@ -46,5 +51,13 @@ public class Controle {
 	
 	public void lerLog() {
 		
+	}
+
+	public static Usuario getLoggedUser() {
+		return loggedUser;
+	}
+
+	public static void setLoggedUser(Usuario loggedUser) {
+		Controle.loggedUser = loggedUser;
 	}
 }

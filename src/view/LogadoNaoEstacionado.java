@@ -24,7 +24,7 @@ public class LogadoNaoEstacionado extends JFrame {
 	 * 
 	 * @param frame
 	 */
-	public static void logadoNaoEstacionado(Cadastro frame2) {
+	public static void logadoNaoEstacionado(JFrame frame2, Index window) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

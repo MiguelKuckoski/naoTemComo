@@ -14,9 +14,11 @@ public class LogadoEstacionado extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @param window 
+	 * @param frame2 
 	 * @param contentPane2 
 	 */
-	public static void logadoEstacionado() {
+	public static void logadoEstacionado(JFrame frame2, Index window) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

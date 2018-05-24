@@ -26,11 +26,10 @@ import javax.swing.text.MaskFormatter;
 
 import extras.Estados;
 import extras.Iview;
-import extras.VeiculoType;
+import vo.Controle;
 import vo.Usuario;
 
 public class Cadastro extends JFrame implements Iview {
-
 	private JPanel contentPane;
 	private JLabel lblDadosPessoais;
 	private JLabel lblNome;
@@ -245,7 +244,13 @@ public class Cadastro extends JFrame implements Iview {
 
 		if (validacao == null) {
 			assignValues();
-			LogadoNaoEstacionado.logadoNaoEstacionado(frame);
+			String[] args = null;
+			frame.setVisible(false);
+			Index.main(args);
+
+			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "WARNING",
+					JOptionPane.WARNING_MESSAGE);
+
 		} else {
 			JOptionPane.showMessageDialog(null, "Preencha todos os campos: \n " + validacao, "WARNING",
 					JOptionPane.WARNING_MESSAGE);
@@ -257,12 +262,14 @@ public class Cadastro extends JFrame implements Iview {
 	public void assignValues() {
 		Usuario usuario = new Usuario();
 		usuario.setNome(getTextFieldNome().getText());
-		usuario.setSenha(getTextFieldSenha().getText());
+		char[] senhaChar = getTextFieldSenha().getPassword();
+		String senha = new String(senhaChar);
+		usuario.setSenha(senha);
 		usuario.setCpf(getTextFieldCpf().getText());
-		usuario.setCnh(getTextFieldCnh().getText());
-		usuario.setRua(getTextFieldRua().getText());
-		usuario.setNum(Integer.parseInt(getTextFieldNumero().getText()));
-		usuario.setBairro(getTextFieldBairro().getText());
+		// usuario.setCnh(getTextFieldCnh().getText());
+		// usuario.setRua(getTextFieldRua().getText());
+		// usuario.setNum(Integer.parseInt(getTextFieldNumero().getText()));
+		// usuario.setBairro(getTextFieldBairro().getText());
 
 		usuario.setEstado(getComboBoxEstado().getName());
 
@@ -275,6 +282,7 @@ public class Cadastro extends JFrame implements Iview {
 
 		usuario.setVeiculos(CadastroVeiculo.getVeiculos());
 
+		Controle.setUsuarios(usuario);
 	}
 
 	@Override
@@ -284,29 +292,29 @@ public class Cadastro extends JFrame implements Iview {
 		if (getTextFieldNome().getText().length() == 0) {
 			validacao += "Informe o nome. \n";
 		}
-		if (getTextFieldCnh().getText().length() == 0) {
-			validacao += "Informe o numero da CNH. \n";
-		}
+//		if (getTextFieldCnh().getText().length() == 0) {
+//			validacao += "Informe o numero da CNH. \n";
+//		}
 		if (getTextFieldCpf().getText().length() == 0) {
 			validacao += "Informe o numero do CPF. \n";
 		} else if (getTextFieldCpf().getText().length() < 11) {
 			validacao += "Cpf incorreto.\n";
 		}
-
-		if (getTextFieldRua().getText().length() == 0) {
-			validacao += "Informe o nome da rua. \n";
-		}
-		
-		if (getTextFieldNumero().getText().length() == 0) {
-			validacao += "Informe o numero da casa. \n";
-		}
-
-		if (getTextFieldCep().getText().length() == 0) {
-			validacao += "Informe o cep. \n";
-		}
-		if (getTextFieldBairro().getText().length() == 0) {
-			validacao += "Informe o bairro \n";
-		}
+//
+//		if (getTextFieldRua().getText().length() == 0) {
+//			validacao += "Informe o nome da rua. \n";
+//		}
+//		
+//		if (getTextFieldNumero().getText().length() == 0) {
+//			validacao += "Informe o numero da casa. \n";
+//		}
+//
+//		if (getTextFieldCep().getText().length() == 0) {
+//			validacao += "Informe o cep. \n";
+//		}
+//		if (getTextFieldBairro().getText().length() == 0) {
+//			validacao += "Informe o bairro \n";
+//		}
 
 		if (validacao.length() > 0) {
 			return validacao;
@@ -353,7 +361,7 @@ public class Cadastro extends JFrame implements Iview {
 				textFieldCpf.setColumns(10);
 			} catch (ParseException e) {
 				e.printStackTrace();
-			}			
+			}
 		}
 		return textFieldCpf;
 	}
@@ -368,7 +376,7 @@ public class Cadastro extends JFrame implements Iview {
 	private JFormattedTextField getTextFieldCnh() {
 		if (textFieldCnh == null) {
 			try {
-				textFieldCnh = new JFormattedTextField(new MaskFormatter("###############"));
+				textFieldCnh = new JFormattedTextField(new MaskFormatter("########"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -453,7 +461,7 @@ public class Cadastro extends JFrame implements Iview {
 	private JFormattedTextField getTextFieldNumero() {
 		if (textFieldNumero == null) {
 			try {
-				textFieldNumero = new JFormattedTextField(new MaskFormatter("###############"));
+				textFieldNumero = new JFormattedTextField(new MaskFormatter("#"));
 				textFieldNumero.setColumns(10);
 			} catch (ParseException e) {
 				e.printStackTrace();

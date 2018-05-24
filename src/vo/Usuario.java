@@ -9,6 +9,7 @@ public class Usuario extends Endereco{
 	private String cnh;
 	private List<Veiculo> veiculos;
 	private String senha;
+	private Veiculo selectedVeiculo;
 	
 	
 	public Usuario( ) {
@@ -81,5 +82,13 @@ public class Usuario extends Endereco{
 	
 	public void removerVeiculo(Veiculo veiculo) {
 		veiculos.remove(veiculo);
+	}
+
+	public Veiculo getSelectedVeiculo() {
+		return selectedVeiculo;
+	}
+
+	public void setSelectedVeiculo(Veiculo selectedVeiculo) {
+		this.selectedVeiculo = selectedVeiculo;
 	}
 }

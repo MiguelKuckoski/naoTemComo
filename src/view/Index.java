@@ -1,9 +1,12 @@
 package view;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -11,10 +14,15 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.text.MaskFormatter;
+
+import vo.Controle;
+import vo.Usuario;
+import vo.Veiculo;
 
 public class Index {
 
@@ -74,7 +82,7 @@ public class Index {
 								.addComponent(getLblCpf(), GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(getCpfField(), GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+								.addComponent(getTextFieldCpf(), GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
 								.addComponent(getPasswordField(), GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(60)
@@ -93,7 +101,7 @@ public class Index {
 					.addGap(30)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(getLblCpf(), GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-						.addComponent(getCpfField(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(getTextFieldCpf(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(getLblPassword(), GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,7 +123,7 @@ public class Index {
 		}
 		return lblCpf;
 	}
-	private JFormattedTextField getCpfField() {
+	private JFormattedTextField getTextFieldCpf() {
 		if (cpfField == null) {
 			try {
 				cpfField = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
@@ -148,6 +156,11 @@ public class Index {
 	private JButton getBtnLogin() {
 		if (btnLogin == null) {
 			btnLogin = new JButton("Login");
+			btnLogin.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					login();
+				}
+			});
 		}
 		return btnLogin;
 	}
@@ -170,5 +183,47 @@ public class Index {
 			});
 		}
 		return btnCadastrar;
+	}
+	
+	public void login() {
+		//Verifica os dados de login com a lista de usuarios cadastrados.
+		String cpf = getTextFieldCpf().getText();
+		char[] senhaChar = getPasswordField().getPassword();
+		String senha = new String(senhaChar);
+		if(Controle.getUsuarios() == null) {
+			JOptionPane.showMessageDialog(null, "Usuario não cadastrado.", "Erro de login!",
+					JOptionPane.WARNING_MESSAGE);
+		}else {
+			List<Usuario> usuarios = Controle.getUsuarios();
+			for (Usuario usuario : usuarios) {
+				if(usuario.getSenha().equals(senha) && usuario.getCpf().equals(cpf)) {
+					Controle.setLoggedUser(usuario);
+					break;
+				}
+			}
+			
+			if(Controle.getLoggedUser() != null) {
+				boolean estacionado = false;
+				for (Veiculo veiculo : Controle.getLoggedUser().getVeiculos()) {
+					if(veiculo.isEstacionado()) {
+						Controle.getLoggedUser().setSelectedVeiculo(veiculo);
+						estacionado = true;
+						break;
+					}
+				}
+				
+				if(estacionado) {
+					LogadoEstacionado.logadoEstacionado(frame, window);
+				}else {
+					LogadoNaoEstacionado.logadoNaoEstacionado(frame, window);
+				}
+				
+				
+			}else {
+				JOptionPane.showMessageDialog(null, "Usuario não cadastrado.", "Erro de login!",
+						JOptionPane.WARNING_MESSAGE);
+			}
+		}
+		
 	}
 }
