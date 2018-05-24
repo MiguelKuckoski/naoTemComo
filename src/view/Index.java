@@ -3,22 +3,24 @@ package view;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+import javax.swing.text.MaskFormatter;
 
 public class Index {
 
 	private JFrame frame;
 	private JLabel lblCpf;
-	private JTextField cpfField;
+	private JFormattedTextField cpfField;
 	private JLabel lblPassword;
 	private JPasswordField passwordField;
 	private JButton btnSair;
@@ -113,9 +115,13 @@ public class Index {
 		}
 		return lblCpf;
 	}
-	private JTextField getCpfField() {
+	private JFormattedTextField getCpfField() {
 		if (cpfField == null) {
-			cpfField = new JTextField();
+			try {
+				cpfField = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			cpfField.setColumns(10);
 		}
 		return cpfField;
