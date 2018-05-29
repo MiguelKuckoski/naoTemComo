@@ -57,23 +57,23 @@ public class Cadastro extends JFrame implements Iview {
 	private JButton btnVoltar;
 	private JButton btnVeiculos;
 	protected final static Cadastro frame = new Cadastro();
-	private static final Index index = new Index();
-	private static final LogadoEstacionado logadoEstacionado = new LogadoEstacionado();
 	private JLabel lblN;
 	private JLabel lblSenha;
 	private JPopupMenu popUpCadastroVeiculo;
 	private JPasswordField textFieldSenha;
+	private static Controle controle;
 
 	/**
 	 * Launch the application.
 	 * 
-	 * @param frame2
+	 * @param controle2
 	 */
-	public static void cadastro(JFrame frame2) {
+	public static void cadastro(Controle controle) {
 		EventQueue.invokeLater(new Runnable() {
+			
 			public void run() {
 				try {
-					frame2.setVisible(false);
+					setControle(controle);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -242,11 +242,14 @@ public class Cadastro extends JFrame implements Iview {
 	public void save() {
 		String validacao = validateValues();
 
+		// verifica se houve algum erro na validação.
 		if (validacao == null) {
-			assignValues();
+			assignValues(); // cria o objeto usuario.
+			cleanValues();
 			String[] args = null;
-			frame.setVisible(false);
-			Index.main(args);
+			
+			frame.setVisible(false); // set tela cadastro invisivel.
+			Index.main(args); // Retorna pro metodo index.
 
 			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "WARNING",
 					JOptionPane.WARNING_MESSAGE);
@@ -260,6 +263,10 @@ public class Cadastro extends JFrame implements Iview {
 
 	@Override
 	public void assignValues() {
+		
+		// Cria o objeto conforme os campos informados pelo usuário na tela.
+		
+		
 		Usuario usuario = new Usuario();
 		usuario.setNome(getTextFieldNome().getText());
 		char[] senhaChar = getTextFieldSenha().getPassword();
@@ -281,8 +288,8 @@ public class Cadastro extends JFrame implements Iview {
 		}
 
 		usuario.setVeiculos(CadastroVeiculo.getVeiculos());
-
-		Controle.setUsuarios(usuario);
+		
+		getControle().addUsuarios(usuario); // aqui seria onde eu passaria o obj usuário pra classe controle, onde contem esse array.
 	}
 
 	@Override
@@ -513,6 +520,7 @@ public class Cadastro extends JFrame implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					save();
+					cleanValues();
 				}
 			});
 		}
@@ -541,7 +549,8 @@ public class Cadastro extends JFrame implements Iview {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					CadastroVeiculo.cadastroVeiculo(frame);
+					frame.setVisible(false);
+					CadastroVeiculo.cadastroVeiculo();
 				}
 			});
 		}
@@ -576,5 +585,14 @@ public class Cadastro extends JFrame implements Iview {
 		}
 
 		return textFieldSenha;
+	}
+
+	public static Controle getControle() {
+		return controle;
+	}
+
+	public static void setControle(Controle controle) {
+		if(Cadastro.controle == null) 
+			Cadastro.controle = controle;
 	}
 }

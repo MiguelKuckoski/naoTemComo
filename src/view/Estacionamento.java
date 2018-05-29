@@ -86,11 +86,16 @@ public class Estacionamento extends JPanel {
 	private JButton getBtn1() {
 		if (btn1 == null) {
 			btn1 = new JButton("1");
+			btn1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
 			btn1.setContentAreaFilled(false);
 		    btn1.setOpaque(true);
 			btn1.setBackground(Color.GREEN);
 			btn1.setForeground(Color.BLACK);
 			btn1.setBounds(179, 45, 59, 42);
+			
 		}
 		return btn1;
 	}

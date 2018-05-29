@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import vo.Controle;
+
 public class LogadoEstacionado extends JFrame {
 
 	private JPanel contentPane;
@@ -18,7 +20,7 @@ public class LogadoEstacionado extends JFrame {
 	 * @param frame2 
 	 * @param contentPane2 
 	 */
-	public static void logadoEstacionado(JFrame frame2, Index window) {
+	public static void logadoEstacionado(Controle controle) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

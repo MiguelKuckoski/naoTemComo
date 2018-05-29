@@ -2,13 +2,18 @@ package view;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import vo.Controle;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -20,17 +25,17 @@ public class Opcoes extends JFrame {
 	private JButton btnDadosPessoais;
 	private JButton btnEncerrarConta;
 	private JButton btnVoltar;
-
+	private static Controle controle;
+	private static Opcoes frame = new Opcoes();	
 	/**
 	 * Launch the application.
-	 * @param frame 
+	 * @param controle 
 	 */
-	public static void opcoes(LogadoNaoEstacionado frame) {
+	public static void opcoes(Controle controle) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame.setVisible(false);
-					Opcoes frame = new Opcoes();					
+					setControle(controle);				
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -100,6 +105,16 @@ public class Opcoes extends JFrame {
 			btnEncerrarConta.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					if(!controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+						controle.removeUsuario(controle.getLoggedUser());
+						String[] args = null;
+						Index.main(args);
+						frame.setVisible(false);
+					}else {
+						JOptionPane.showMessageDialog(null, "Remove seu carro da vaga.", "Erro!",
+								JOptionPane.WARNING_MESSAGE);
+					}
+
 				}
 			});
 			btnEncerrarConta.setBounds(100, 196, 125, 32);
@@ -113,12 +128,25 @@ public class Opcoes extends JFrame {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					
+					if(getControle().getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+						LogadoEstacionado.logadoEstacionado(controle);
+					}else {
+						LogadoNaoEstacionado.logadoNaoEstacionado(controle);
+					}
 				}
 			});
 			btnVoltar.setBounds(100, 260, 125, 45);
 			btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		}
 		return btnVoltar;
+	}
+
+	public static Controle getControle() {
+		return controle;
+	}
+
+	public static void setControle(Controle controle) {
+		if(Opcoes.controle == null)
+		Opcoes.controle = controle;
 	}
 }

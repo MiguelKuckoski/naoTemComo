@@ -28,6 +28,7 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import extras.Iview;
 import extras.VeiculoType;
+import vo.Controle;
 import vo.Veiculo;
 
 public class CadastroVeiculo implements Iview {
@@ -60,11 +61,10 @@ public class CadastroVeiculo implements Iview {
 	 * 
 	 * @param frame
 	 */
-	public static void cadastroVeiculo(Cadastro frame) {
+	public static void cadastroVeiculo() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame.setVisible(false);
 					CadastroVeiculo.frmVeiculos.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -421,7 +421,8 @@ public class CadastroVeiculo implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					getVeiculos().addAll(getVeiculosNovos());
-					Cadastro.cadastro(frmVeiculos);
+					Controle controle = null;
+					Cadastro.cadastro(controle);
 				}
 			});
 			buttonConfirmar.setBounds(152, 542, 120, 23);
@@ -436,7 +437,8 @@ public class CadastroVeiculo implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					getVeiculosNovos().clear();
-					Cadastro.cadastro(frmVeiculos);
+					Controle controle = null;
+					Cadastro.cadastro(controle);
 				}
 			});
 			buttonCancelar.setBounds(304, 542, 120, 23);

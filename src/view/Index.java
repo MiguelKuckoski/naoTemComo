@@ -34,13 +34,14 @@ public class Index {
 	private JButton btnSair;
 	private JButton btnLogin;
 	private JButton btnCadastrar;
-	protected static final Index window = new Index();	
+	protected static final Index window = new Index();
+	private Controle controle;
 
 	/**
 	 * Launch the application.
 	 * 
 	 */
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -55,15 +56,17 @@ public class Index {
 
 	/**
 	 * Create the application.
+	 * 
 	 * @wbp.parser.entryPoint
 	 */
 	public Index() {
 		initialize();
-		
+
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
 	 * @wbp.parser.entryPoint
 	 */
 	private void initialize() {
@@ -71,51 +74,44 @@ public class Index {
 		frame.setBounds(100, 100, 385, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(getLblPassword(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-								.addComponent(getLblCpf(), GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(getTextFieldCpf(), GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-								.addComponent(getPasswordField(), GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(60)
-							.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addGap(54)
-							.addComponent(getBtnLogin(), GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)))
-					.addGap(62))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(90)
-					.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(95, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(30)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(getLblCpf(), GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-						.addComponent(getTextFieldCpf(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(getLblPassword(), GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(getPasswordField()))
-					.addGap(37)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(getBtnLogin(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addGap(157)
-					.addComponent(getBtnCadastrar())
-					.addGap(36))
-		);
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup()
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(getLblPassword(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+										.addComponent(getLblCpf(), GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
+								.addGap(18).addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(getTextFieldCpf(), GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+										.addComponent(getPasswordField(), GroupLayout.DEFAULT_SIZE, 149,
+												Short.MAX_VALUE)))
+						.addGroup(groupLayout.createSequentialGroup().addGap(60)
+								.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+								.addGap(54).addComponent(getBtnLogin(), GroupLayout.PREFERRED_SIZE, 96,
+										GroupLayout.PREFERRED_SIZE)))
+				.addGap(62))
+				.addGroup(groupLayout.createSequentialGroup().addGap(90)
+						.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(95, Short.MAX_VALUE)));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup().addGap(30)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(getLblCpf(), GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+								.addComponent(getTextFieldCpf(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(getLblPassword(), GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE)
+								.addComponent(getPasswordField()))
+						.addGap(37)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(getBtnLogin(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+								.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+						.addGap(157).addComponent(getBtnCadastrar()).addGap(36)));
 		frame.getContentPane().setLayout(groupLayout);
 	}
+
 	private JLabel getLblCpf() {
 		if (lblCpf == null) {
 			lblCpf = new JLabel("CPF");
@@ -123,6 +119,7 @@ public class Index {
 		}
 		return lblCpf;
 	}
+
 	private JFormattedTextField getTextFieldCpf() {
 		if (cpfField == null) {
 			try {
@@ -134,6 +131,7 @@ public class Index {
 		}
 		return cpfField;
 	}
+
 	private JLabel getLblPassword() {
 		if (lblPassword == null) {
 			lblPassword = new JLabel("Senha");
@@ -141,18 +139,21 @@ public class Index {
 		}
 		return lblPassword;
 	}
+
 	private JPasswordField getPasswordField() {
 		if (passwordField == null) {
 			passwordField = new JPasswordField();
 		}
 		return passwordField;
 	}
+
 	private JButton getBtnSair() {
 		if (btnSair == null) {
 			btnSair = new JButton("Sair");
 		}
 		return btnSair;
 	}
+
 	private JButton getBtnLogin() {
 		if (btnLogin == null) {
 			btnLogin = new JButton("Login");
@@ -164,66 +165,66 @@ public class Index {
 		}
 		return btnLogin;
 	}
+
 	private JButton getBtnCadastrar() {
 		if (btnCadastrar == null) {
 			btnCadastrar = new JButton("Cadastrar");
 			btnCadastrar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					
-					Cadastro cadastro = new Cadastro();
-					cadastro.cleanValues();
-					
-					CadastroVeiculo cadastroVeiculo = new CadastroVeiculo();
-					cadastroVeiculo.cleanValues();		
-					
-					Cadastro.cadastro(frame);
+					// Torna a view index invisivel e inicializa a tela de cadastro.
+					frame.setVisible(false);
+					Cadastro.cadastro(getControle());
 
 				}
 			});
 		}
 		return btnCadastrar;
 	}
-	
+
 	public void login() {
-		//Verifica os dados de login com a lista de usuarios cadastrados.
+		// Verifica os dados de login com a lista de usuarios cadastrados.
 		String cpf = getTextFieldCpf().getText();
 		char[] senhaChar = getPasswordField().getPassword();
-		String senha = new String(senhaChar);
-		if(Controle.getUsuarios() == null) {
-			JOptionPane.showMessageDialog(null, "Usuario não cadastrado.", "Erro de login!",
-					JOptionPane.WARNING_MESSAGE);
-		}else {
-			List<Usuario> usuarios = Controle.getUsuarios();
-			for (Usuario usuario : usuarios) {
-				if(usuario.getSenha().equals(senha) && usuario.getCpf().equals(cpf)) {
-					Controle.setLoggedUser(usuario);
-					break;
-				}
-			}
-			
-			if(Controle.getLoggedUser() != null) {
-				boolean estacionado = false;
-				for (Veiculo veiculo : Controle.getLoggedUser().getVeiculos()) {
-					if(veiculo.isEstacionado()) {
-						Controle.getLoggedUser().setSelectedVeiculo(veiculo);
-						estacionado = true;
-						break;
-					}
-				}
-				
-				if(estacionado) {
-					LogadoEstacionado.logadoEstacionado(frame, window);
-				}else {
-					LogadoNaoEstacionado.logadoNaoEstacionado(frame, window);
-				}
-				
-				
-			}else {
-				JOptionPane.showMessageDialog(null, "Usuario não cadastrado.", "Erro de login!",
-						JOptionPane.WARNING_MESSAGE);
+		String senha = new String(senhaChar);		
+		
+		for (Usuario usuario : getControle().getUsuarios()) {
+			//Comparando os campos digitados com os usuários cadastrados.
+			if (usuario.getSenha().equals(senha) && usuario.getCpf().equals(cpf)) {
+				getControle().setLoggedUser(usuario);
+				break;
 			}
 		}
-		
+
+		if (getControle().getLoggedUser() != null) {
+			boolean estacionado = false;
+			for (Veiculo veiculo : getControle().getLoggedUser().getVeiculos()) {
+				if (veiculo.isEstacionado()) {
+					getControle().getLoggedUser().setSelectedVeiculo(veiculo);
+					estacionado = true;
+					break;
+				}
+			}	
+			
+			//Verifica qual sera a proxima tela.
+			if (estacionado) {
+				LogadoEstacionado.logadoEstacionado(getControle());
+			} else {
+				LogadoNaoEstacionado.logadoNaoEstacionado(getControle());
+			}
+			
+			// torna a tela index invisivel.
+			frame.setVisible(false);
+
+		} else {
+			JOptionPane.showMessageDialog(null, "Usuario não cadastrado.", "Erro de login!",
+					JOptionPane.WARNING_MESSAGE);
+		}
+	}
+
+	public Controle getControle() {
+		if(controle == null)
+			controle = new Controle();
+		return controle;
 	}
 }

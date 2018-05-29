@@ -13,22 +13,25 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import vo.Controle;
+
 public class LogadoNaoEstacionado extends JFrame {
 
 	private JPanel contentPane;
 
 	private static final LogadoNaoEstacionado frame = new LogadoNaoEstacionado();
+	private static Controle controle;
 
 	/**
 	 * Launch the application.
 	 * 
 	 * @param frame
 	 */
-	public static void logadoNaoEstacionado(JFrame frame2, Index window) {
+	public static void logadoNaoEstacionado(Controle controle) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame2.setVisible(false);
+					setControle(controle);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,7 +65,8 @@ public class LogadoNaoEstacionado extends JFrame {
 		btnOpcoes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Opcoes.opcoes(frame);
+				Opcoes.opcoes(getControle());
+				frame.setVisible(false);
 
 			}
 		});
@@ -74,5 +78,14 @@ public class LogadoNaoEstacionado extends JFrame {
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSair.setBounds(60, 299, 189, 39);
 		contentPane.add(btnSair);
+	}
+
+	public static Controle getControle() {
+		return controle;
+	}
+
+	public static void setControle(Controle controle) {
+		if(LogadoNaoEstacionado.controle == null)
+		LogadoNaoEstacionado.controle = controle;
 	}
 }

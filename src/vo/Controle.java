@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Controle {
 	private List<Estacionamento> estacionamento;
-	private static List<Usuario> usuarios;
+	private List<Usuario> usuarios;
 	private Date date = new Date();
-	private static Usuario loggedUser;
+	private Usuario loggedUser;
 	
 	public List<Estacionamento> getEstacionamento() {
 		return estacionamento;
@@ -18,16 +18,23 @@ public class Controle {
 		this.estacionamento.add(estacionamento);
 	}
 
-	public static List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public static void setUsuarios(Usuario usuario) {
+	public List<Usuario> getUsuarios() {
 		if(usuarios == null) {
 			usuarios = new ArrayList<Usuario>();
 		}
-		Controle.usuarios.add(usuario);
+		return usuarios;
 	}
+	
+	public void addUsuarios(Usuario usuario) {
+		if(usuarios == null) {
+			usuarios = new ArrayList<Usuario>();
+		}
+		this.usuarios.add(usuario);
+	}	
+	
+	public void removeUsuario(Usuario usuario) {
+		this.usuarios.remove(usuario);
+	}	
 
 	public Date getDate() {
 		return date;
@@ -53,11 +60,11 @@ public class Controle {
 		
 	}
 
-	public static Usuario getLoggedUser() {
+	public Usuario getLoggedUser() {
 		return loggedUser;
 	}
 
-	public static void setLoggedUser(Usuario loggedUser) {
-		Controle.loggedUser = loggedUser;
+	public void setLoggedUser(Usuario loggedUser) {
+		this.loggedUser = loggedUser;
 	}
 }
