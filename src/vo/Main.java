@@ -76,7 +76,8 @@ public class Main {
 		controle.addUsuarios(usuario);
 	}
 	public Opcoes getOpcoes() {
-
+		if(opcoes == null) 
+			opcoes = new Opcoes(controle);
 		return opcoes;
 	}
 

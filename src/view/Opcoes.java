@@ -30,8 +30,10 @@ public class Opcoes extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param controle 
 	 */
-	public Opcoes() {
+	public Opcoes(Controle controle) {
+		this.controle = controle;
 		setTitle("Op\u00E7\u00F5es");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 334, 373);
