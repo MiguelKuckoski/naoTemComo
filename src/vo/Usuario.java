@@ -31,7 +31,17 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
-
+	public void setComplemento(String complemento) {
+		this.endereco.setComplemento(complemento);
+	}
+	
+	public void setCidade(String cidade) {
+		this.endereco.setCidade(cidade);
+	}
+	
+	public void setEstado(String estado) {
+		this.endereco.setEstado(estado);
+	}
 
 	public String getNome() {
 		return nome;

@@ -1,6 +1,8 @@
 package view;
 
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
@@ -31,9 +33,6 @@ import extras.Iview;
 import vo.Controle;
 import vo.Main;
 import vo.Usuario;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class Cadastro extends JFrame implements Iview {
 	private JPanel contentPane;
