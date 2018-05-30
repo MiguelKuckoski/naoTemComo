@@ -130,7 +130,12 @@ public class Opcoes extends JFrame {
 				//		LogadoEstacionado.logadoEstacionado(controle);
 
 					} else {
-						//LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+						LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+						logadoNaoEstacionado.setVisible(true);
+						logadoNaoEstacionado.requestFocus();
+						
+						Opcoes opcoes = main.getOpcoes();
+						opcoes.setVisible(false);
 
 						// LogadoNaoEstacionado.logadoNaoEstacionado(controle);
 					}
