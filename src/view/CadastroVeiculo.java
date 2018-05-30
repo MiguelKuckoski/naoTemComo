@@ -75,8 +75,9 @@ public class CadastroVeiculo implements Iview {
 
 	/**
 	 * Create the application.
+	 * @param controle 
 	 */
-	public CadastroVeiculo() {
+	public CadastroVeiculo(Controle controle) {
 		initialize();
 	}
 
@@ -437,7 +438,6 @@ public class CadastroVeiculo implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					getVeiculosNovos().clear();
-					Controle controle = null;
 					Cadastro.cadastro(controle);
 				}
 			});

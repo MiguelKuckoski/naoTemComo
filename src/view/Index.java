@@ -1,206 +1,200 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.ParseException;
-import java.util.List;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-import javax.swing.text.MaskFormatter;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import vo.Controle;
+import vo.Main;
 import vo.Usuario;
 import vo.Veiculo;
 
-public class Index {
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-	private JFrame frame;
+public class Index extends JFrame {
+
+	private JPanel contentPane;
+	private Controle controle;
 	private JLabel lblCpf;
-	private JFormattedTextField cpfField;
-	private JLabel lblPassword;
+	private JLabel lblSenha;
+	private JTextField textFieldCpf;
 	private JPasswordField passwordField;
 	private JButton btnSair;
 	private JButton btnLogin;
 	private JButton btnCadastrar;
-	protected static final Index window = new Index();
-	private Controle controle;
+	
 
 	/**
 	 * Launch the application.
-	 * 
 	 */
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Index frame = new Index();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
-	 * Create the application.
-	 * 
-	 * @wbp.parser.entryPoint
+	 * Create the frame.
+	 * @param controle 
 	 */
-	public Index() {
-		initialize();
-
+	public Index(Controle controle) {
+		this.controle = controle;
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 418, 353);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(118)
+							.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(75)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+									.addGap(64)
+									.addComponent(getBtnLogin(), GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(getLblCpf())
+										.addComponent(getLblSenha()))
+									.addGap(33)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(getPasswordField())
+										.addComponent(getTextFieldCpf(), 148, 148, Short.MAX_VALUE))))))
+					.addContainerGap(94, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(35)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getLblCpf())
+						.addComponent(getTextFieldCpf(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(29)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getLblSenha())
+						.addComponent(getPasswordField(), GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(40)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getBtnLogin(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+					.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		contentPane.setLayout(gl_contentPane);
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 * 
-	 * @wbp.parser.entryPoint
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 385, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-				.createSequentialGroup()
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup().addContainerGap()
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(getLblPassword(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-										.addComponent(getLblCpf(), GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
-								.addGap(18).addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(getTextFieldCpf(), GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-										.addComponent(getPasswordField(), GroupLayout.DEFAULT_SIZE, 149,
-												Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup().addGap(60)
-								.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-								.addGap(54).addComponent(getBtnLogin(), GroupLayout.PREFERRED_SIZE, 96,
-										GroupLayout.PREFERRED_SIZE)))
-				.addGap(62))
-				.addGroup(groupLayout.createSequentialGroup().addGap(90)
-						.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(95, Short.MAX_VALUE)));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup().addGap(30)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(getLblCpf(), GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-								.addComponent(getTextFieldCpf(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(getLblPassword(), GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addComponent(getPasswordField()))
-						.addGap(37)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(getBtnLogin(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-								.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-						.addGap(157).addComponent(getBtnCadastrar()).addGap(36)));
-		frame.getContentPane().setLayout(groupLayout);
-	}
-
 	private JLabel getLblCpf() {
 		if (lblCpf == null) {
 			lblCpf = new JLabel("CPF");
-			lblCpf.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return lblCpf;
 	}
-
-	private JFormattedTextField getTextFieldCpf() {
-		if (cpfField == null) {
-			try {
-				cpfField = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			cpfField.setColumns(10);
+	private JLabel getLblSenha() {
+		if (lblSenha == null) {
+			lblSenha = new JLabel("Senha");
 		}
-		return cpfField;
+		return lblSenha;
 	}
-
-	private JLabel getLblPassword() {
-		if (lblPassword == null) {
-			lblPassword = new JLabel("Senha");
-			lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+	private JTextField getTextFieldCpf() {
+		if (textFieldCpf == null) {
+			textFieldCpf = new JTextField();
+			textFieldCpf.setColumns(10);
 		}
-		return lblPassword;
+		return textFieldCpf;
 	}
-
 	private JPasswordField getPasswordField() {
 		if (passwordField == null) {
 			passwordField = new JPasswordField();
 		}
 		return passwordField;
 	}
-
 	private JButton getBtnSair() {
 		if (btnSair == null) {
 			btnSair = new JButton("Sair");
+			btnSair.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					System.exit(0);
+				}
+			});
 		}
 		return btnSair;
 	}
-
 	private JButton getBtnLogin() {
 		if (btnLogin == null) {
 			btnLogin = new JButton("Login");
-			btnLogin.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
+			btnLogin.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
 					login();
 				}
 			});
 		}
 		return btnLogin;
 	}
-
 	private JButton getBtnCadastrar() {
 		if (btnCadastrar == null) {
 			btnCadastrar = new JButton("Cadastrar");
 			btnCadastrar.addMouseListener(new MouseAdapter() {
 				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					// Torna a view index invisivel e inicializa a tela de cadastro.
-					frame.setVisible(false);
-					Cadastro.cadastro(getControle());
-
+				public void mouseClicked(MouseEvent e) {
+					Main main = Main.INSTANCIA;
+					Cadastro cadastro = main.getCadastro();
+					cadastro.setVisible(true);
+					cadastro.requestFocus();		
+					Index index = main.getIndex();
+					index.setVisible(false);
+							
 				}
 			});
 		}
 		return btnCadastrar;
 	}
-
 	public void login() {
 		// Verifica os dados de login com a lista de usuarios cadastrados.
 		String cpf = getTextFieldCpf().getText();
 		char[] senhaChar = getPasswordField().getPassword();
 		String senha = new String(senhaChar);		
 		
-		for (Usuario usuario : getControle().getUsuarios()) {
+		for (Usuario usuario : controle.getUsuarios()) {
 			//Comparando os campos digitados com os usuários cadastrados.
 			if (usuario.getSenha().equals(senha) && usuario.getCpf().equals(cpf)) {
-				getControle().setLoggedUser(usuario);
+				controle.setLoggedUser(usuario);
 				break;
 			}
 		}
 
-		if (getControle().getLoggedUser() != null) {
+		if (controle.getLoggedUser() != null) {
 			boolean estacionado = false;
-			for (Veiculo veiculo : getControle().getLoggedUser().getVeiculos()) {
+			for (Veiculo veiculo : controle.getLoggedUser().getVeiculos()) {
 				if (veiculo.isEstacionado()) {
-					getControle().getLoggedUser().setSelectedVeiculo(veiculo);
+					controle.getLoggedUser().setSelectedVeiculo(veiculo);
 					estacionado = true;
 					break;
 				}
@@ -208,23 +202,21 @@ public class Index {
 			
 			//Verifica qual sera a proxima tela.
 			if (estacionado) {
-				LogadoEstacionado.logadoEstacionado(getControle());
+				
 			} else {
-				LogadoNaoEstacionado.logadoNaoEstacionado(getControle());
+				
 			}
 			
 			// torna a tela index invisivel.
-			frame.setVisible(false);
-
+			Main main = Main.INSTANCIA;
+			Index index = main.getIndex();
+			index.setVisible(false);
+			
+			
 		} else {
 			JOptionPane.showMessageDialog(null, "Usuario não cadastrado.", "Erro de login!",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
-	public Controle getControle() {
-		if(controle == null)
-			controle = new Controle();
-		return controle;
-	}
 }

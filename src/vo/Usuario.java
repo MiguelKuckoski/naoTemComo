@@ -1,5 +1,6 @@
 package vo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario extends Endereco{
@@ -57,12 +58,16 @@ public class Usuario extends Endereco{
 
 
 	public List<Veiculo> getVeiculos() {
+		if(veiculos == null)
+			veiculos = new ArrayList<Veiculo>();
 		return veiculos;
 	}
 
 
 	public void setVeiculos(List<Veiculo> veiculos) {
-		this.veiculos = veiculos;
+		if(veiculos == null)
+			veiculos = new ArrayList<Veiculo>();
+		this.veiculos.addAll(veiculos);
 	}
 
 

@@ -27,6 +27,7 @@ import javax.swing.text.MaskFormatter;
 import extras.Estados;
 import extras.Iview;
 import vo.Controle;
+import vo.Main;
 import vo.Usuario;
 
 public class Cadastro extends JFrame implements Iview {
@@ -56,39 +57,26 @@ public class Cadastro extends JFrame implements Iview {
 	private JButton btnCadastrar;
 	private JButton btnVoltar;
 	private JButton btnVeiculos;
-	protected final static Cadastro frame = new Cadastro();
 	private JLabel lblN;
 	private JLabel lblSenha;
 	private JPopupMenu popUpCadastroVeiculo;
 	private JPasswordField textFieldSenha;
-	private static Controle controle;
-
+	private Controle controle;
+	private Main main = Main.INSTANCIA;
 	/**
 	 * Launch the application.
-	 * 
-	 * @param controle2
-	 */
-	public static void cadastro(Controle controle) {
-		EventQueue.invokeLater(new Runnable() {
-			
-			public void run() {
-				try {
-					setControle(controle);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
+	 * @param controle2 
 	 */
-	public Cadastro() {
+	public Cadastro(Controle controle) {
 		setTitle("Cadastro");
+		this.controle = controle;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
+		initialize();
+	}
+
+	public void initialize() {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -222,7 +210,7 @@ public class Cadastro extends JFrame implements Iview {
 				.addContainerGap()));
 		contentPane.setLayout(gl_contentPane);
 	}
-
+	
 	@Override
 	public void cleanValues() {
 		getTextFieldNome().setText("");
@@ -237,7 +225,7 @@ public class Cadastro extends JFrame implements Iview {
 		getTextFieldCidade().setText("");
 		getComboBoxEstado().setSelectedIndex(0);
 	}
-
+	
 	@Override
 	public void save() {
 		String validacao = validateValues();
@@ -246,11 +234,14 @@ public class Cadastro extends JFrame implements Iview {
 		if (validacao == null) {
 			assignValues(); // cria o objeto usuario.
 			cleanValues();
-			String[] args = null;
 			
-			frame.setVisible(false); // set tela cadastro invisivel.
-			Index.main(args); // Retorna pro metodo index.
-
+			Index index = main.getIndex();
+			index.setVisible(true);
+			index.requestFocus();
+			Cadastro cadastro = main.getCadastro();
+			cadastro.setVisible(false);
+			
+			
 			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "WARNING",
 					JOptionPane.WARNING_MESSAGE);
 
@@ -287,9 +278,9 @@ public class Cadastro extends JFrame implements Iview {
 			usuario.setCidade(getTextFieldCidade().getText());
 		}
 
-		usuario.setVeiculos(CadastroVeiculo.getVeiculos());
+	//	usuario.setVeiculos(CadastroVeiculo.getVeiculos());
 		
-		getControle().addUsuarios(usuario); // aqui seria onde eu passaria o obj usuário pra classe controle, onde contem esse array.
+		controle.addUsuarios(usuario); // passa o obj usuário criado pra classe controle.
 	}
 
 	@Override
@@ -520,7 +511,6 @@ public class Cadastro extends JFrame implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					save();
-					cleanValues();
 				}
 			});
 		}
@@ -533,10 +523,7 @@ public class Cadastro extends JFrame implements Iview {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					frame.setVisible(false);
-					cleanValues();
-					String[] args = null;
-					Index.main(args);
+					
 				}
 			});
 		}
@@ -549,8 +536,7 @@ public class Cadastro extends JFrame implements Iview {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					frame.setVisible(false);
-					CadastroVeiculo.cadastroVeiculo();
+//					CadastroVeiculo.cadastroVeiculo();
 				}
 			});
 		}
@@ -571,7 +557,7 @@ public class Cadastro extends JFrame implements Iview {
 		return lblSenha;
 	}
 
-	private JPopupMenu getPopUpCadastroVeiculo() {
+	private JPopupMenu getCadastroVeiculo() {
 		if (popUpCadastroVeiculo == null) {
 			popUpCadastroVeiculo = new JPopupMenu();
 		}
@@ -587,12 +573,4 @@ public class Cadastro extends JFrame implements Iview {
 		return textFieldSenha;
 	}
 
-	public static Controle getControle() {
-		return controle;
-	}
-
-	public static void setControle(Controle controle) {
-		if(Cadastro.controle == null) 
-			Cadastro.controle = controle;
-	}
 }

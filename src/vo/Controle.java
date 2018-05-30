@@ -44,14 +44,6 @@ public class Controle {
 		this.date = date;
 	}
 	
-	public void criarUsuario() {
-		
-	}
-	
-	public void removerUsuario() {
-		
-	}
-	
 	public void escreverLog() {
 		
 	}
