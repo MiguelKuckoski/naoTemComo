@@ -1,10 +1,10 @@
 package view;
 
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,9 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import vo.Controle;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import vo.Main;
 
 public class Opcoes extends JFrame {
 
@@ -26,6 +24,7 @@ public class Opcoes extends JFrame {
 	private JButton btnEncerrarConta;
 	private JButton btnVoltar;
 	private Controle controle;
+	Main main = Main.INSTANCIA;
 	
 
 	/**
@@ -91,7 +90,7 @@ public class Opcoes extends JFrame {
 			btnEncerrarConta.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if(!controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+					if(controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
 						controle.removeUsuario(controle.getLoggedUser());
 						String[] args = null;
 						Index.main(args);
@@ -114,10 +113,20 @@ public class Opcoes extends JFrame {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if(getControle().getLoggedUser().getSelectedVeiculo().isEstacionado()) {
-						LogadoEstacionado.logadoEstacionado(controle);
+					if(controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+						
+						LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
+						logadoEstacionado.setVisible(true);
+						logadoEstacionado.requestFocus();
+						
+						Opcoes opcoes = main.getOpcoes();
+						opcoes.setVisible(false);
+						
 					}else {
-						LogadoNaoEstacionado2.logadoNaoEstacionado(controle);
+						LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+						
+						
+						//LogadoNaoEstacionado.logadoNaoEstacionado(controle);
 					}
 				}
 			});
