@@ -21,9 +21,7 @@ public class LogadoNaoEstacionado extends JFrame {
 	private JButton btnSair;
 	private JButton btnEstacionar;
 	private JButton btnOpcoes;
-	private Main main = Main.INSTANCIA;
-	private LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
-	
+	private Main main = Main.INSTANCIA;	
 	/**
 	 * Launch the application.
 	 */
@@ -75,7 +73,8 @@ public class LogadoNaoEstacionado extends JFrame {
 					Index index = main.getIndex();
 					index.setVisible(true);
 					index.requestFocus();
-					
+
+					LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 					logadoNaoEstacionado.setVisible(false);			
 					controle.setLoggedUser(null);		
 				}
@@ -105,7 +104,7 @@ public class LogadoNaoEstacionado extends JFrame {
 					Opcoes opcoes = main.getOpcoes();
 					opcoes.setVisible(true);
 					opcoes.requestFocus();
-					
+					LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 					logadoNaoEstacionado.setVisible(false);
 				}
 			});

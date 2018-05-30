@@ -95,10 +95,10 @@ public class Opcoes extends JFrame {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if (controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
-						controle.removeUsuario(controle.getLoggedUser());
-						String[] args = null;
-						Index.main(args);
-						frame.setVisible(false);
+//						controle.removeUsuario(controle.getLoggedUser());
+//						String[] args = null;
+//						Index.main(args);
+//						frame.setVisible(false);
 					} else {
 						JOptionPane.showMessageDialog(null, "Remove seu carro da vaga.", "Erro!",
 								JOptionPane.WARNING_MESSAGE);
