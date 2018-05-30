@@ -4,7 +4,7 @@ import view.Cadastro;
 import view.CadastroVeiculo;
 import view.Index;
 import view.LogadoEstacionado;
-import view.LogadoNaoEstacionado2;
+import view.LogadoNaoEstacionado;
 import view.Opcoes;
 
 public class Main {
@@ -13,7 +13,7 @@ public class Main {
 	private Controle controle;
 	private Cadastro cadastro;
 	private CadastroVeiculo cadastroVeiculo;
-	private LogadoNaoEstacionado2 logadoNaoEstacionado;
+	private LogadoNaoEstacionado logadoNaoEstacionado;
 	private LogadoEstacionado logadoEstacionado;
 	private Opcoes opcoes;
 
@@ -56,9 +56,9 @@ public class Main {
 		return index;
 	}
 	
-	public LogadoNaoEstacionado2 getLogadoNaoEstacionado() {
+	public LogadoNaoEstacionado getLogadoNaoEstacionado() {
 		if(logadoNaoEstacionado == null) 
-			logadoNaoEstacionado = new LogadoNaoEstacionado2(controle);
+			logadoNaoEstacionado = new LogadoNaoEstacionado(controle);
 		return logadoNaoEstacionado;
 	}
 

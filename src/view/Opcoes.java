@@ -114,7 +114,7 @@ public class Opcoes extends JFrame {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if(getControle().getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+					if(controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
 						LogadoEstacionado.logadoEstacionado(controle);
 					}else {
 						LogadoNaoEstacionado2.logadoNaoEstacionado(controle);
