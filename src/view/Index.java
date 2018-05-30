@@ -31,7 +31,7 @@ public class Index extends JFrame {
 	private JButton btnSair;
 	private JButton btnLogin;
 	private JButton btnCadastrar;
-	Main main = Main.INSTANCIA;
+	private Main main = Main.INSTANCIA;
 	
 	/**
 	 * Launch the application.
@@ -188,7 +188,7 @@ public class Index extends JFrame {
 				logadoEstacionado.setVisible(true);
 				logadoEstacionado.requestFocus();
 			} else {
-				LogadoNaoEstacionado2 logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+				LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 				logadoNaoEstacionado.setVisible(true);
 				logadoNaoEstacionado.requestFocus();
 			}

@@ -25,11 +25,11 @@ public class Opcoes extends JFrame {
 	private JButton btnVoltar;
 	private Controle controle;
 	Main main = Main.INSTANCIA;
-	
 
 	/**
 	 * Create the frame.
-	 * @param controle 
+	 * 
+	 * @param controle
 	 */
 	public Opcoes(Controle controle) {
 		this.controle = controle;
@@ -46,6 +46,7 @@ public class Opcoes extends JFrame {
 		contentPane.add(getBtnEncerrarConta());
 		contentPane.add(getBtnVoltar());
 	}
+
 	private JButton getBtnRelatorios() {
 		if (btnRelatorios == null) {
 			btnRelatorios = new JButton("Relat\u00F3rios");
@@ -58,6 +59,7 @@ public class Opcoes extends JFrame {
 		}
 		return btnRelatorios;
 	}
+
 	private JButton getBtnVeiculos() {
 		if (btnVeiculos == null) {
 			btnVeiculos = new JButton("Ve\u00EDculos");
@@ -71,6 +73,7 @@ public class Opcoes extends JFrame {
 		}
 		return btnVeiculos;
 	}
+
 	private JButton getBtnDadosPessoais() {
 		if (btnDadosPessoais == null) {
 			btnDadosPessoais = new JButton("Dados pessoais");
@@ -84,18 +87,19 @@ public class Opcoes extends JFrame {
 		}
 		return btnDadosPessoais;
 	}
+
 	private JButton getBtnEncerrarConta() {
 		if (btnEncerrarConta == null) {
 			btnEncerrarConta = new JButton("Encerrar conta");
 			btnEncerrarConta.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if(controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+					if (controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
 						controle.removeUsuario(controle.getLoggedUser());
 						String[] args = null;
 						Index.main(args);
 						frame.setVisible(false);
-					}else {
+					} else {
 						JOptionPane.showMessageDialog(null, "Remove seu carro da vaga.", "Erro!",
 								JOptionPane.WARNING_MESSAGE);
 					}
@@ -107,26 +111,28 @@ public class Opcoes extends JFrame {
 		}
 		return btnEncerrarConta;
 	}
+
 	private JButton getBtnVoltar() {
 		if (btnVoltar == null) {
 			btnVoltar = new JButton("VOLTAR");
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if(controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
-						
+					if (controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+
 						LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
 						logadoEstacionado.setVisible(true);
 						logadoEstacionado.requestFocus();
-						
+
 						Opcoes opcoes = main.getOpcoes();
 						opcoes.setVisible(false);
-						
-					}else {
-						LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
-						
-						
-						//LogadoNaoEstacionado.logadoNaoEstacionado(controle);
+
+				//		LogadoEstacionado.logadoEstacionado(controle);
+
+					} else {
+						//LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+
+						// LogadoNaoEstacionado.logadoNaoEstacionado(controle);
 					}
 				}
 			});
