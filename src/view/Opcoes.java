@@ -25,24 +25,8 @@ public class Opcoes extends JFrame {
 	private JButton btnDadosPessoais;
 	private JButton btnEncerrarConta;
 	private JButton btnVoltar;
-	private static Controle controle;
-	private static Opcoes frame = new Opcoes();	
-	/**
-	 * Launch the application.
-	 * @param controle 
-	 */
-	public static void opcoes(Controle controle) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					setControle(controle);				
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private Controle controle;
+	
 
 	/**
 	 * Create the frame.
@@ -94,7 +78,7 @@ public class Opcoes extends JFrame {
 				public void mouseClicked(MouseEvent arg0) {
 				}
 			});
-			btnDadosPessoais.setBounds(91, 141, 134, 32);
+			btnDadosPessoais.setBounds(100, 141, 125, 32);
 			btnDadosPessoais.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		}
 		return btnDadosPessoais;
@@ -141,12 +125,4 @@ public class Opcoes extends JFrame {
 		return btnVoltar;
 	}
 
-	public static Controle getControle() {
-		return controle;
-	}
-
-	public static void setControle(Controle controle) {
-		if(Opcoes.controle == null)
-		Opcoes.controle = controle;
-	}
 }
