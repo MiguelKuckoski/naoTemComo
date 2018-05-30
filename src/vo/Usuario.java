@@ -3,7 +3,7 @@ package vo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario extends Endereco{
+public class Usuario {
 
 	private String nome;
 	private String cpf;
@@ -11,19 +11,26 @@ public class Usuario extends Endereco{
 	private List<Veiculo> veiculos;
 	private String senha;
 	private Veiculo selectedVeiculo;
-	
+	private Endereco endereco;
 	
 	public Usuario( ) {
 		super();
 	}
 	
 	public Usuario(String rua, int num, int cep, String bairro, String estado, String nome, String cpf, String cnh, String senha) {
-		super(rua, num, cep, bairro, estado);
+		
+		this.endereco.setRua(rua);
+		this.endereco.setNum(num);
+		this.endereco.setCep(cep);
+		this.endereco.setBairro(bairro);
+		this.endereco.setEstado(estado);
+		
 		this.nome = nome;
 		this.cpf = cpf;
 		this.cnh = cnh;
 		this.senha = senha;
 	}
+	
 
 
 	public String getNome() {
