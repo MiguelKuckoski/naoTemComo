@@ -5,6 +5,7 @@ import view.CadastroVeiculo;
 import view.Index;
 import view.LogadoEstacionado;
 import view.LogadoNaoEstacionado;
+import view.Opcoes;
 
 public class Main {
 	public static final Main INSTANCIA = new Main();
@@ -14,6 +15,7 @@ public class Main {
 	private CadastroVeiculo cadastroVeiculo;
 	private LogadoNaoEstacionado logadoNaoEstacionado;
 	private LogadoEstacionado logadoEstacionado;
+	private Opcoes opcoes;
 
 	public static void main(String[] params) {
 		INSTANCIA.executar();
@@ -67,5 +69,9 @@ public class Main {
 		return logadoEstacionado;
 	}
 
+	public Opcoes getOpcoes() {
+
+		return opcoes;
+	}
 
 }
