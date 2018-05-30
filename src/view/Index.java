@@ -188,7 +188,7 @@ public class Index extends JFrame {
 				logadoEstacionado.setVisible(true);
 				logadoEstacionado.requestFocus();
 			} else {
-				LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+				LogadoNaoEstacionado2 logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 				logadoNaoEstacionado.setVisible(true);
 				logadoNaoEstacionado.requestFocus();
 			}

@@ -15,7 +15,6 @@ public class Usuario extends Endereco{
 	
 	public Usuario( ) {
 		super();
-
 	}
 	
 	public Usuario(String rua, int num, int cep, String bairro, String estado, String nome, String cpf, String cnh, String senha) {

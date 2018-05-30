@@ -34,7 +34,7 @@ public class Controle {
 	
 	public void removeUsuario(Usuario usuario) {
 		this.usuarios.remove(usuario);
-	}	
+	}
 
 	public Date getDate() {
 		return date;

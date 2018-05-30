@@ -4,7 +4,7 @@ import view.Cadastro;
 import view.CadastroVeiculo;
 import view.Index;
 import view.LogadoEstacionado;
-import view.LogadoNaoEstacionado;
+import view.LogadoNaoEstacionado2;
 
 public class Main {
 	public static final Main INSTANCIA = new Main();
@@ -12,7 +12,7 @@ public class Main {
 	private Controle controle;
 	private Cadastro cadastro;
 	private CadastroVeiculo cadastroVeiculo;
-	private LogadoNaoEstacionado logadoNaoEstacionado;
+	private LogadoNaoEstacionado2 logadoNaoEstacionado;
 	private LogadoEstacionado logadoEstacionado;
 
 	public static void main(String[] params) {
@@ -22,6 +22,7 @@ public class Main {
 	private Main() {
 		// o controle só é instanciado uma vez, ao iniciar o programa
 		controle = new Controle();
+		populateCadastro();
 	}
 	
 	/**
@@ -52,11 +53,10 @@ public class Main {
 			index = new Index(controle);
 		return index;
 	}
-
 	
-	public LogadoNaoEstacionado getLogadoNaoEstacionado() {
+	public LogadoNaoEstacionado2 getLogadoNaoEstacionado() {
 		if(logadoNaoEstacionado == null) 
-			logadoNaoEstacionado = new LogadoNaoEstacionado(controle);
+			logadoNaoEstacionado = new LogadoNaoEstacionado2(controle);
 		return logadoNaoEstacionado;
 	}
 
@@ -67,5 +67,10 @@ public class Main {
 		return logadoEstacionado;
 	}
 
-
+	public void populateCadastro() {
+		Usuario usuario = new Usuario();
+		usuario.setCpf("000.000.000-00");
+		usuario.setSenha("12345");
+		controle.addUsuarios(usuario);
+	}
 }

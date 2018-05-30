@@ -131,7 +131,7 @@ public class Opcoes extends JFrame {
 					if(getControle().getLoggedUser().getSelectedVeiculo().isEstacionado()) {
 						LogadoEstacionado.logadoEstacionado(controle);
 					}else {
-						LogadoNaoEstacionado.logadoNaoEstacionado(controle);
+						LogadoNaoEstacionado2.logadoNaoEstacionado(controle);
 					}
 				}
 			});

@@ -466,7 +466,7 @@ public class Cadastro extends JFrame implements Iview {
 	private JFormattedTextField getTextFieldNumero() {
 		if (textFieldNumero == null) {
 			try {
-				textFieldNumero = new JFormattedTextField(new MaskFormatter("#"));
+				textFieldNumero = new JFormattedTextField(new MaskFormatter("####"));
 				textFieldNumero.setColumns(10);
 			} catch (ParseException e) {
 				e.printStackTrace();

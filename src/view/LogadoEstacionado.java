@@ -14,14 +14,13 @@ public class LogadoEstacionado extends JFrame {
 	private JPanel contentPane;
 	private Controle controle;
 
- 
 	/**
 	 *Launch the application. 
 	 * Create the frame.
 	 * @param controle 
 	 */
 	
-	public LoOgadoEstacionado(Controle controle) {
+	public LogadoEstacionado(Controle controle) {
 		this.controle = controle;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
