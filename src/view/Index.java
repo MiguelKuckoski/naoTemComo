@@ -1,27 +1,24 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import vo.Controle;
 import vo.Main;
 import vo.Usuario;
 import vo.Veiculo;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class Index extends JFrame {
 
@@ -34,25 +31,10 @@ public class Index extends JFrame {
 	private JButton btnSair;
 	private JButton btnLogin;
 	private JButton btnCadastrar;
+	Main main = Main.INSTANCIA;
 	
-
 	/**
 	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Index frame = new Index();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
 	 * Create the frame.
 	 * @param controle 
 	 */
@@ -164,7 +146,7 @@ public class Index extends JFrame {
 			btnCadastrar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					Main main = Main.INSTANCIA;
+					
 					Cadastro cadastro = main.getCadastro();
 					cadastro.setVisible(true);
 					cadastro.requestFocus();		
@@ -202,13 +184,16 @@ public class Index extends JFrame {
 			
 			//Verifica qual sera a proxima tela.
 			if (estacionado) {
-				
+				LogadoEstacionado logadoEstacionado= main.getLogadoEstacionado();
+				logadoEstacionado.setVisible(true);
+				logadoEstacionado.requestFocus();
 			} else {
-				
+				LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+				logadoNaoEstacionado.setVisible(true);
+				logadoNaoEstacionado.requestFocus();
 			}
 			
 			// torna a tela index invisivel.
-			Main main = Main.INSTANCIA;
 			Index index = main.getIndex();
 			index.setVisible(false);
 			

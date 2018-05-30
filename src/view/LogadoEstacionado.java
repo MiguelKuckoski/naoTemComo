@@ -12,30 +12,17 @@ import vo.Controle;
 public class LogadoEstacionado extends JFrame {
 
 	private JPanel contentPane;
-	private static final LogadoEstacionado frame = new LogadoEstacionado();
+	private Controle controle;
 
+ 
 	/**
-	 * Launch the application.
-	 * @param window 
-	 * @param frame2 
-	 * @param contentPane2 
-	 */
-	public static void logadoEstacionado(Controle controle) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
+	 *Launch the application. 
 	 * Create the frame.
+	 * @param controle 
 	 */
-	public LogadoEstacionado() {
+	
+	public LoOgadoEstacionado(Controle controle) {
+		this.controle = controle;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -43,12 +30,4 @@ public class LogadoEstacionado extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
-	public void setVisible() {
-		frame.setVisible(true);
-	}
-	
-	public void setInvisible() {
-		frame.setVisible(false);
-	}
-
 }
