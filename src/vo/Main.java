@@ -3,6 +3,7 @@ package vo;
 import view.Cadastro;
 import view.CadastroVeiculo;
 import view.Index;
+import view.LogadoEstacionado;
 import view.LogadoNaoEstacionado;
 
 public class Main {
@@ -12,7 +13,7 @@ public class Main {
 	private Cadastro cadastro;
 	private CadastroVeiculo cadastroVeiculo;
 	private LogadoNaoEstacionado logadoNaoEstacionado;
-	
+	private LogadoEstacionado logadoEstacionado;
 
 	public static void main(String[] params) {
 		INSTANCIA.executar();
@@ -54,7 +55,16 @@ public class Main {
 
 	
 	public LogadoNaoEstacionado getLogadoNaoEstacionado() {
+		if(logadoNaoEstacionado == null) 
+			logadoNaoEstacionado = new LogadoNaoEstacionado(controle);
 		return logadoNaoEstacionado;
+	}
+
+	public LogadoEstacionado getLogadoEstacionado() {
+		if(logadoEstacionado == null) {
+			logadoEstacionado = new LogadoEstacionado(controle);
+		}
+		return logadoEstacionado;
 	}
 
 
