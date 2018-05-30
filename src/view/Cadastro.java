@@ -24,11 +24,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
+import br.com.parg.viacep.ViaCEP;
+import br.com.parg.viacep.ViaCEPException;
 import extras.Estados;
 import extras.Iview;
 import vo.Controle;
 import vo.Main;
 import vo.Usuario;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Cadastro extends JFrame implements Iview {
 	private JPanel contentPane;
@@ -63,10 +68,12 @@ public class Cadastro extends JFrame implements Iview {
 	private JPasswordField textFieldSenha;
 	private Controle controle;
 	private Main main = Main.INSTANCIA;
+	private JButton btnBuscar;
+
 	/**
-	 * Launch the application.
-	 * Create the frame.
-	 * @param controle2 
+	 * Launch the application. Create the frame.
+	 * 
+	 * @param controle2
 	 */
 	public Cadastro(Controle controle) {
 		setTitle("Cadastro");
@@ -113,43 +120,50 @@ public class Cadastro extends JFrame implements Iview {
 								.createSequentialGroup().addContainerGap()
 								.addComponent(
 										getLblEndereo(), GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(312, Short.MAX_VALUE))
+								.addContainerGap(308, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-								.addGroup(gl_contentPane
-										.createParallelGroup(Alignment.LEADING).addComponent(getLblComplemento())
-										.addComponent(getLblRua()).addComponent(getLblCep())
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addComponent(getLblBairro()).addComponent(getLblCidade())
-										.addComponent(getLblEstado()))
+										.addComponent(getLblEstado()).addComponent(getLblCep())
+										.addComponent(getLblComplemento()).addComponent(getLblRua()))
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(getTextFieldCep(), GroupLayout.PREFERRED_SIZE, 216,
-												GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addComponent(getTextFieldRua(), GroupLayout.PREFERRED_SIZE, 215,
-														GroupLayout.PREFERRED_SIZE)
-												.addGap(59)
-												.addComponent(getLblN(), GroupLayout.PREFERRED_SIZE, 43,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(getTextFieldNumero(), GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addComponent(getTextFieldComplemento(), GroupLayout.PREFERRED_SIZE, 214,
-												GroupLayout.PREFERRED_SIZE)
 										.addComponent(getTextFieldBairro(), GroupLayout.PREFERRED_SIZE, 215,
 												GroupLayout.PREFERRED_SIZE)
 										.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 												.addComponent(getComboBoxEstado(), Alignment.LEADING, 0,
 														GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(getTextFieldCidade(), Alignment.LEADING,
-														GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))
-								.addContainerGap(145, Short.MAX_VALUE))
+												.addComponent(
+														getTextFieldCidade(), Alignment.LEADING,
+														GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+										.addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane
+												.createParallelGroup(Alignment.LEADING)
+												.addComponent(getTextFieldCep(), GroupLayout.PREFERRED_SIZE, 216,
+														GroupLayout.PREFERRED_SIZE)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+														.addComponent(
+																getTextFieldComplemento(), GroupLayout.PREFERRED_SIZE,
+																214, GroupLayout.PREFERRED_SIZE)
+														.addComponent(getTextFieldRua(), GroupLayout.PREFERRED_SIZE,
+																215, GroupLayout.PREFERRED_SIZE)))
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addGroup(gl_contentPane.createSequentialGroup().addGap(63)
+																.addComponent(getLblN(), GroupLayout.PREFERRED_SIZE, 43,
+																		GroupLayout.PREFERRED_SIZE)
+																.addGap(4).addComponent(getTextFieldNumero(),
+																		GroupLayout.PREFERRED_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.PREFERRED_SIZE))
+														.addGroup(gl_contentPane.createSequentialGroup().addGap(18)
+																.addComponent(getBtnBuscar())))))
+								.addContainerGap(154, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
 								.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 110,
 										GroupLayout.PREFERRED_SIZE)
 								.addGap(41)
 								.addComponent(getBtnVoltar(), GroupLayout.PREFERRED_SIZE, 101,
 										GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(423, Short.MAX_VALUE))
+								.addContainerGap(419, Short.MAX_VALUE))
 						.addGroup(gl_contentPane
 								.createSequentialGroup().addGap(14).addComponent(getBtnVeiculos(),
 										GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
@@ -171,46 +185,41 @@ public class Cadastro extends JFrame implements Iview {
 								GroupLayout.PREFERRED_SIZE)
 						.addComponent(getLblCnh(), GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 				.addGap(44).addComponent(getLblEndereo(), GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-						.createSequentialGroup().addGap(11)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblRua())
-								.addComponent(getTextFieldRua(), GroupLayout.PREFERRED_SIZE, 24,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(getTextFieldNumero(), GroupLayout.PREFERRED_SIZE, 22,
-										GroupLayout.PREFERRED_SIZE))
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(getLblComplemento()).addComponent(getTextFieldComplemento(),
-										GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblCep())
-								.addComponent(getTextFieldCep(), GroupLayout.PREFERRED_SIZE, 25,
-										GroupLayout.PREFERRED_SIZE))
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblBairro())
-								.addComponent(getTextFieldBairro(), GroupLayout.PREFERRED_SIZE,
-										GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(getTable(), GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblCidade())
-								.addComponent(getTextFieldCidade(), GroupLayout.PREFERRED_SIZE, 24,
-										GroupLayout.PREFERRED_SIZE))
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblEstado())
-								.addComponent(getComboBoxEstado(), GroupLayout.PREFERRED_SIZE, 23,
-										GroupLayout.PREFERRED_SIZE))
-						.addGap(18)
-						.addComponent(getBtnVeiculos(), GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getBtnCadastrar())
-								.addComponent(getBtnVoltar())))
-						.addGroup(gl_contentPane.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(getLblN(), GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)))
+				.addGap(11)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getTextFieldCep(), GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getLblCep()).addComponent(getBtnBuscar()))
+				.addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getLblN(), GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getTextFieldNumero(), GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getTextFieldRua(), GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getLblRua()))
+				.addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getTextFieldComplemento(), GroupLayout.PREFERRED_SIZE, 26,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(getLblComplemento()))
+				.addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblBairro())
+						.addComponent(getTextFieldBairro(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addComponent(getTable(), GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblCidade())
+						.addComponent(getTextFieldCidade(), GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+				.addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblEstado())
+						.addComponent(getComboBoxEstado(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+				.addGap(18).addComponent(getBtnVeiculos(), GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getBtnCadastrar())
+						.addComponent(getBtnVoltar()))
 				.addContainerGap()));
 		contentPane.setLayout(gl_contentPane);
 	}
-	
+
 	@Override
 	public void cleanValues() {
 		getTextFieldNome().setText("");
@@ -225,7 +234,7 @@ public class Cadastro extends JFrame implements Iview {
 		getTextFieldCidade().setText("");
 		getComboBoxEstado().setSelectedIndex(0);
 	}
-	
+
 	@Override
 	public void save() {
 		String validacao = validateValues();
@@ -234,14 +243,13 @@ public class Cadastro extends JFrame implements Iview {
 		if (validacao == null) {
 			assignValues(); // cria o objeto usuario.
 			cleanValues();
-			
+
 			Index index = main.getIndex();
 			index.setVisible(true);
 			index.requestFocus();
 			Cadastro cadastro = main.getCadastro();
 			cadastro.setVisible(false);
-			
-			
+
 			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "WARNING",
 					JOptionPane.WARNING_MESSAGE);
 
@@ -254,10 +262,9 @@ public class Cadastro extends JFrame implements Iview {
 
 	@Override
 	public void assignValues() {
-		
+
 		// Cria o objeto conforme os campos informados pelo usuário na tela.
-		
-		
+
 		Usuario usuario = new Usuario();
 		usuario.setNome(getTextFieldNome().getText());
 		char[] senhaChar = getTextFieldSenha().getPassword();
@@ -278,8 +285,8 @@ public class Cadastro extends JFrame implements Iview {
 			usuario.setCidade(getTextFieldCidade().getText());
 		}
 
-	//	usuario.setVeiculos(CadastroVeiculo.getVeiculos());
-		
+		// usuario.setVeiculos(CadastroVeiculo.getVeiculos());
+
 		controle.addUsuarios(usuario); // passa o obj usuário criado pra classe controle.
 	}
 
@@ -290,29 +297,29 @@ public class Cadastro extends JFrame implements Iview {
 		if (getTextFieldNome().getText().length() == 0) {
 			validacao += "Informe o nome. \n";
 		}
-//		if (getTextFieldCnh().getText().length() == 0) {
-//			validacao += "Informe o numero da CNH. \n";
-//		}
+		// if (getTextFieldCnh().getText().length() == 0) {
+		// validacao += "Informe o numero da CNH. \n";
+		// }
 		if (getTextFieldCpf().getText().length() == 0) {
 			validacao += "Informe o numero do CPF. \n";
 		} else if (getTextFieldCpf().getText().length() < 11) {
 			validacao += "Cpf incorreto.\n";
 		}
-//
-//		if (getTextFieldRua().getText().length() == 0) {
-//			validacao += "Informe o nome da rua. \n";
-//		}
-//		
-//		if (getTextFieldNumero().getText().length() == 0) {
-//			validacao += "Informe o numero da casa. \n";
-//		}
-//
-//		if (getTextFieldCep().getText().length() == 0) {
-//			validacao += "Informe o cep. \n";
-//		}
-//		if (getTextFieldBairro().getText().length() == 0) {
-//			validacao += "Informe o bairro \n";
-//		}
+		//
+		// if (getTextFieldRua().getText().length() == 0) {
+		// validacao += "Informe o nome da rua. \n";
+		// }
+		//
+		// if (getTextFieldNumero().getText().length() == 0) {
+		// validacao += "Informe o numero da casa. \n";
+		// }
+		//
+		// if (getTextFieldCep().getText().length() == 0) {
+		// validacao += "Informe o cep. \n";
+		// }
+		// if (getTextFieldBairro().getText().length() == 0) {
+		// validacao += "Informe o bairro \n";
+		// }
 
 		if (validacao.length() > 0) {
 			return validacao;
@@ -523,7 +530,7 @@ public class Cadastro extends JFrame implements Iview {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					
+
 				}
 			});
 		}
@@ -536,7 +543,7 @@ public class Cadastro extends JFrame implements Iview {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-//					CadastroVeiculo.cadastroVeiculo();
+					// CadastroVeiculo.cadastroVeiculo();
 				}
 			});
 		}
@@ -572,5 +579,29 @@ public class Cadastro extends JFrame implements Iview {
 
 		return textFieldSenha;
 	}
-
+	
+	//btn para buscar endereco a partir do CEP
+	private JButton getBtnBuscar() {
+		if (btnBuscar == null) {
+			btnBuscar = new JButton("Buscar Cep");
+			btnBuscar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//busca automática do CEP preenchendo os campos no cadastro
+					ViaCEP viaCep = new ViaCEP();
+					try {
+						viaCep.buscar(textFieldCep.getText());
+						textFieldRua.setText(viaCep.getLogradouro());
+						textFieldBairro.setText(viaCep.getBairro());
+						textFieldCidade.setText(viaCep.getLocalidade());
+						//txtUF.setText(viaCep.getUf());
+					} catch (ViaCEPException erro) {
+						System.out.println("error : " + erro);
+						// e.printStackTrace();
+					}
+				}
+			});
+			btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		}
+		return btnBuscar;
+	}
 }
