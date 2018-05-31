@@ -274,6 +274,9 @@ public class Cadastro extends JFrame implements Iview {
 		usuario.setRua(getTextFieldRua().getText());
 		usuario.setNum(Integer.parseInt(getTextFieldNumero().getText()));
 		usuario.setBairro(getTextFieldBairro().getText());
+		String cep = getTextFieldCep().getText();
+		cep = cep.replaceAll("[^0-9]", "");
+		usuario.setCep(Integer.parseInt(cep));
 
 		usuario.setEstado(getComboBoxEstado().getName());
 

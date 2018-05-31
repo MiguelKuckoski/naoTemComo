@@ -33,6 +33,9 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public void setCep(int cep) {
+		this.endereco.setCep(cep);
+	}
 	public void setRua(String rua) {
 		this.endereco.setRua(rua);
 	}
