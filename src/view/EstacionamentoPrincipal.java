@@ -3,6 +3,9 @@ package view;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+
+import vo.Estacionamento;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
@@ -12,19 +15,19 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.SystemColor;
 import javax.swing.JTextPane;
 
-public class EstacionamentoPrincipal extends JPanel {
+public class EstacionamentoPrincipal extends Estacionamento {
 
 	/**
 	 * Create the panel. 
 	 */
 	public EstacionamentoPrincipal() {
+		super();
+		
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(new Color(204, 255, 204));
-		
 		JPanel panel = new JPanel();
-		
 		Border bordapretaumpixel = new LineBorder(Color.BLACK, 1);
-		
+		setBounds(100, 100, 690, 377);
 		JButton button = new JButton("");
 		button.setContentAreaFilled(false);
 		button.setOpaque(true);

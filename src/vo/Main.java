@@ -3,6 +3,7 @@ package vo;
 import view.Cadastro;
 import view.CadastroVeiculo;
 import view.EditarCadastro;
+import view.Estacionamentos;
 import view.Index;
 import view.LogadoEstacionado;
 import view.LogadoNaoEstacionado;
@@ -18,7 +19,8 @@ public class Main {
 	private LogadoEstacionado logadoEstacionado;
 	private Opcoes opcoes;
 	private EditarCadastro editarCadastro;
-
+	private Estacionamentos estacionamentos;
+	
 	public static void main(String[] params) {
 		INSTANCIA.executar();
 	}
@@ -90,6 +92,11 @@ public class Main {
 		return editarCadastro;
 	}
 
-
+	public Estacionamentos getEstacionamentos() {
+		if(estacionamentos == null) {
+			estacionamentos = new Estacionamentos();
+		}
+		return estacionamentos;
+	}
 
 }

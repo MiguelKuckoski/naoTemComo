@@ -89,7 +89,12 @@ public class LogadoNaoEstacionado extends JFrame {
 			btnEstacionar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
+					Estacionamentos estacionamentos = main.getEstacionamentos();
+					estacionamentos.setVisible(true);
+					estacionamentos.requestFocus();
 					
+					LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+					logadoNaoEstacionado.setVisible(false);
 				}
 			});
 		}
