@@ -48,7 +48,7 @@ public class Main {
 
 	public CadastroVeiculo getCadastroVeiculo() {
 		if(cadastroVeiculo == null) 
-			cadastroVeiculo = new CadastroVeiculo(controle);
+			cadastroVeiculo = new CadastroVeiculo();
 		return cadastroVeiculo;
 	}
 

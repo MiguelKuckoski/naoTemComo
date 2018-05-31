@@ -67,6 +67,7 @@ public class Cadastro extends JFrame implements Iview {
 	private Controle controle;
 	private Main main = Main.INSTANCIA;
 	private JButton btnBuscar;
+	private CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
 
 	/**
 	 * Launch the application. Create the frame.
@@ -235,7 +236,7 @@ public class Cadastro extends JFrame implements Iview {
 
 	@Override
 	public void save() {
-		String validacao = validateValues();
+		 String validacao = validateValues();
 
 		// verifica se houve algum erro na validação.
 		if (validacao == null) {
@@ -283,7 +284,7 @@ public class Cadastro extends JFrame implements Iview {
 			usuario.setCidade(getTextFieldCidade().getText());
 		}
 
-		// usuario.setVeiculos(CadastroVeiculo.getVeiculos());
+		 usuario.setVeiculos(cadastroVeiculo.getVeiculos());
 
 		controle.addUsuarios(usuario); // passa o obj usuário criado pra classe controle.
 	}
@@ -537,8 +538,11 @@ public class Cadastro extends JFrame implements Iview {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
-//					cadastroVeiculo;
+					cadastroVeiculo.setVisible(true);
+					cadastroVeiculo.requestFocus();
+					
+					Cadastro cadastro = main.getCadastro();
+					cadastro.setVisible(false);
 				}
 			});
 		}

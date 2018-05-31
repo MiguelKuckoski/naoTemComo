@@ -48,7 +48,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 	private JSeparator separator;
 	private JScrollPane scrollPane;
 	private JTable table;
-	private List<Veiculo> veiculosNovos = new ArrayList<Veiculo>();
+	private List<Veiculo> veiculosNovos;
 	private List<Veiculo> veiculos;
 	private Main main = Main.INSTANCIA;
 	private JButton btnCancelar;
@@ -207,7 +207,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		veiculo.setPlaca(getTextFieldPlaca().getText().trim());
 		veiculo.setTipoVeiculo((VeiculoType) getComboBoxVeiculoType().getSelectedItem());
 
-		veiculosNovos.add(veiculo);
+		getVeiculosNovos().add(veiculo);
 
 	}
 
@@ -343,7 +343,21 @@ public class CadastroVeiculo extends JFrame implements Iview {
 
 	private JTable getTable() {
 		if (table == null) {
+
 			table = new JTable();
+
+			DefaultTableModel model = new DefaultTableModel();
+
+			Object[] columnsName = new Object[5];
+
+			columnsName[0] = "Tipo";
+			columnsName[1] = "Placa";
+			columnsName[2] = "Modelo";
+			columnsName[3] = "Ano";
+			columnsName[4] = "Cor";
+
+			model.setColumnIdentifiers(columnsName);
+			table.setModel(model);
 		}
 		return table;
 	}
@@ -359,10 +373,16 @@ public class CadastroVeiculo extends JFrame implements Iview {
 	}
 
 	public List<Veiculo> getVeiculosNovos() {
+		if(veiculosNovos == null) {
+			veiculosNovos = new ArrayList<Veiculo>();
+		}
 		return veiculosNovos;
 	}
 
 	public void setVeiculosNovos(List<Veiculo> veiculos) {
+		if(veiculosNovos == null) {
+			veiculosNovos = new ArrayList<Veiculo>();
+		}
 		this.veiculosNovos = veiculos;
 	}
 
@@ -377,7 +397,8 @@ public class CadastroVeiculo extends JFrame implements Iview {
 					cadastro.setVisible(true);
 					cadastro.requestFocus();
 					
-					contentPane.setVisible(false);
+					CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
+					cadastroVeiculo.setVisible(false);
 					
 				}
 			});
@@ -450,10 +471,12 @@ public class CadastroVeiculo extends JFrame implements Iview {
 				public void mouseClicked(MouseEvent e) {
 					getVeiculos().addAll(getVeiculosNovos());
 					Cadastro cadastro = main.getCadastro();
+					
 					cadastro.setVisible(true);
 					cadastro.requestFocus();
 					
-					contentPane.setVisible(false);
+					CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
+					cadastroVeiculo.setVisible(false);
 				}
 			});
 			btnConfirmar.setBounds(152, 542, 120, 23);

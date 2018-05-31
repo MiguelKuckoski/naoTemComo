@@ -96,8 +96,9 @@ public class Usuario {
 	}
 
 	public void setVeiculos(List<Veiculo> veiculos) {
-		if (veiculos == null)
-			veiculos = new ArrayList<Veiculo>();
+		if (this.veiculos == null) {
+			this.veiculos = new ArrayList<Veiculo>();
+		}
 		this.veiculos.addAll(veiculos);
 	}
 
@@ -108,11 +109,6 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-	//
-	// public void inserirVeiculo(Veiculo veiculo) {
-	// veiculos.add(veiculo);
-	// }
 
 	public void removerVeiculo(Veiculo veiculo) {
 		veiculos.remove(veiculo);
