@@ -87,7 +87,6 @@ public class Opcoes extends JFrame {
 		}
 		return btnDadosPessoais;
 	}
-
 	private JButton getBtnEncerrarConta() {
 		if (btnEncerrarConta == null) {
 			btnEncerrarConta = new JButton("Encerrar conta");
@@ -111,7 +110,6 @@ public class Opcoes extends JFrame {
 		}
 		return btnEncerrarConta;
 	}
-
 	private JButton getBtnVoltar() {
 		if (btnVoltar == null) {
 			btnVoltar = new JButton("VOLTAR");
@@ -146,5 +144,4 @@ public class Opcoes extends JFrame {
 		}
 		return btnVoltar;
 	}
-
 }

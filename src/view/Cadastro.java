@@ -63,7 +63,6 @@ public class Cadastro extends JFrame implements Iview {
 	private JButton btnVeiculos;
 	private JLabel lblN;
 	private JLabel lblSenha;
-	private JPopupMenu popUpCadastroVeiculo;
 	private JPasswordField textFieldSenha;
 	private Controle controle;
 	private Main main = Main.INSTANCIA;
@@ -542,7 +541,8 @@ public class Cadastro extends JFrame implements Iview {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					// CadastroVeiculo.cadastroVeiculo();
+					CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
+//					cadastroVeiculo;
 				}
 			});
 		}
@@ -561,13 +561,6 @@ public class Cadastro extends JFrame implements Iview {
 			lblSenha = new JLabel("Senha");
 		}
 		return lblSenha;
-	}
-
-	private JPopupMenu getCadastroVeiculo() {
-		if (popUpCadastroVeiculo == null) {
-			popUpCadastroVeiculo = new JPopupMenu();
-		}
-		return popUpCadastroVeiculo;
 	}
 
 	private JPasswordField getTextFieldSenha() {
