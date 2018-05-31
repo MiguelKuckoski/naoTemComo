@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import vo.Controle;
 import vo.Main;
+import java.awt.Color;
 
 public class Opcoes extends JFrame {
 
@@ -35,9 +36,9 @@ public class Opcoes extends JFrame {
 		this.controle = controle;
 		setTitle("Op\u00E7\u00F5es");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 334, 373);
+		setBounds(100, 100, 349, 482);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(Color.CYAN);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getBtnRelatorios());
@@ -50,8 +51,8 @@ public class Opcoes extends JFrame {
 	private JButton getBtnRelatorios() {
 		if (btnRelatorios == null) {
 			btnRelatorios = new JButton("Relat\u00F3rios");
-			btnRelatorios.setBounds(100, 38, 125, 32);
-			btnRelatorios.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+			btnRelatorios.setBounds(74, 43, 170, 49);
+			btnRelatorios.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
 			btnRelatorios.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
@@ -63,13 +64,13 @@ public class Opcoes extends JFrame {
 	private JButton getBtnVeiculos() {
 		if (btnVeiculos == null) {
 			btnVeiculos = new JButton("Ve\u00EDculos");
+			btnVeiculos.setBounds(74, 103, 170, 49);
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 				}
 			});
-			btnVeiculos.setBounds(100, 90, 125, 32);
-			btnVeiculos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			btnVeiculos.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		}
 		return btnVeiculos;
 	}
@@ -77,6 +78,7 @@ public class Opcoes extends JFrame {
 	private JButton getBtnDadosPessoais() {
 		if (btnDadosPessoais == null) {
 			btnDadosPessoais = new JButton("Dados pessoais");
+			btnDadosPessoais.setBounds(74, 163, 170, 49);
 			btnDadosPessoais.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
@@ -93,14 +95,14 @@ public class Opcoes extends JFrame {
 				public void mouseClicked(MouseEvent arg0) {
 				}
 			});
-			btnDadosPessoais.setBounds(100, 141, 125, 32);
-			btnDadosPessoais.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			btnDadosPessoais.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		}
 		return btnDadosPessoais;
 	}
 	private JButton getBtnEncerrarConta() {
 		if (btnEncerrarConta == null) {
 			btnEncerrarConta = new JButton("Encerrar conta");
+			btnEncerrarConta.setBounds(74, 223, 170, 51);
 			btnEncerrarConta.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -116,14 +118,14 @@ public class Opcoes extends JFrame {
 
 				}
 			});
-			btnEncerrarConta.setBounds(100, 196, 125, 32);
-			btnEncerrarConta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			btnEncerrarConta.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		}
 		return btnEncerrarConta;
 	}
 	private JButton getBtnVoltar() {
 		if (btnVoltar == null) {
 			btnVoltar = new JButton("VOLTAR");
+			btnVoltar.setBounds(100, 315, 125, 45);
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -150,8 +152,7 @@ public class Opcoes extends JFrame {
 					}
 				}
 			});
-			btnVoltar.setBounds(100, 260, 125, 45);
-			btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		}
 		return btnVoltar;
 	}
