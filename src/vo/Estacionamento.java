@@ -7,17 +7,16 @@ import extras.VeiculoType;
 public abstract class Estacionamento extends JPanel {
 	private int [] vagas;
 	private String nome;
-	private String tipoEstacionamento;
+	private VeiculoType tipoEstacionamento;
 	private Endereco endereco;
 	
-	public Estacionamento() {
-//		String rua, int num, int cep, String bairro, String estado, String placa, String modelo, String ano,
-//		VeiculoType tipoVeiculo
-//		
-//		TODO consertar passagem de parametros do estacionamento
-		
+	public Estacionamento(Endereco endereco,VeiculoType tipoVeiculo,String nome,int numeroVagas) {
 		super();
-
+		this.nome = nome;
+		this.vagas = new int[numeroVagas];
+		this.tipoEstacionamento = tipoVeiculo;
+		this.endereco = endereco;
+		
 	}
 
 	public int [] getVagas() {
@@ -36,11 +35,11 @@ public abstract class Estacionamento extends JPanel {
 		this.nome = nome;
 	}
 
-	public String getTipoEstacionamento() {
+	public VeiculoType getTipoEstacionamento() {
 		return tipoEstacionamento;
 	}
 
-	public void setTipoEstacionamento(String tipoEstacionamento) {
+	public void setTipoEstacionamento(VeiculoType tipoEstacionamento) {
 		this.tipoEstacionamento = tipoEstacionamento;
 	}
 
