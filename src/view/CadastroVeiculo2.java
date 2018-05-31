@@ -32,7 +32,7 @@ import vo.Controle;
 import vo.Veiculo;
 
 public class CadastroVeiculo2 implements Iview {
-
+	//	classe sera excluida.
 	private static JFrame frmVeiculos;
 	private JButton btnCadastrar;
 	private JButton btnExcluir;
