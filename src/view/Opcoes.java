@@ -77,6 +77,17 @@ public class Opcoes extends JFrame {
 	private JButton getBtnDadosPessoais() {
 		if (btnDadosPessoais == null) {
 			btnDadosPessoais = new JButton("Dados pessoais");
+			btnDadosPessoais.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					EditarCadastro editarCadastro = main.getEditarCadastro();
+					editarCadastro.setVisible(true);
+					editarCadastro.requestFocus();
+
+					Opcoes opcoes = main.getOpcoes();
+					opcoes.setVisible(false);
+				}
+			});
 			btnDadosPessoais.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {

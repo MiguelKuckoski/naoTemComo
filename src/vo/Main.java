@@ -2,6 +2,7 @@ package vo;
 
 import view.Cadastro;
 import view.CadastroVeiculo;
+import view.EditarCadastro;
 import view.Index;
 import view.LogadoEstacionado;
 import view.LogadoNaoEstacionado;
@@ -16,6 +17,7 @@ public class Main {
 	private LogadoNaoEstacionado logadoNaoEstacionado;
 	private LogadoEstacionado logadoEstacionado;
 	private Opcoes opcoes;
+	private EditarCadastro editarCadastro;
 
 	public static void main(String[] params) {
 		INSTANCIA.executar();
@@ -80,5 +82,14 @@ public class Main {
 			opcoes = new Opcoes(controle);
 		return opcoes;
 	}
+
+	public EditarCadastro getEditarCadastro() {
+		if(editarCadastro == null) {
+			editarCadastro = new EditarCadastro(controle);
+		}
+		return editarCadastro;
+	}
+
+
 
 }

@@ -53,7 +53,7 @@ public class Cadastro extends JFrame implements Iview {
 	private JLabel lblEstado;
 	private JTextField textFieldRua;
 	private JTextField textFieldComplemento;
-	private JFormattedTextField textFieldNumero;
+	private JTextField textFieldNumero;
 	private JFormattedTextField textFieldCep;
 	private JTextField textFieldBairro;
 	private JTextField textFieldCidade;
@@ -270,10 +270,10 @@ public class Cadastro extends JFrame implements Iview {
 		String senha = new String(senhaChar);
 		usuario.setSenha(senha);
 		usuario.setCpf(getTextFieldCpf().getText());
-		// usuario.setCnh(getTextFieldCnh().getText());
-		// usuario.setRua(getTextFieldRua().getText());
-		// usuario.setNum(Integer.parseInt(getTextFieldNumero().getText()));
-		// usuario.setBairro(getTextFieldBairro().getText());
+		usuario.setCnh(getTextFieldCnh().getText());
+		usuario.setRua(getTextFieldRua().getText());
+		usuario.setNum(Integer.parseInt(getTextFieldNumero().getText()));
+		usuario.setBairro(getTextFieldBairro().getText());
 
 		usuario.setEstado(getComboBoxEstado().getName());
 
@@ -296,29 +296,29 @@ public class Cadastro extends JFrame implements Iview {
 		if (getTextFieldNome().getText().length() == 0) {
 			validacao += "Informe o nome. \n";
 		}
-		// if (getTextFieldCnh().getText().length() == 0) {
-		// validacao += "Informe o numero da CNH. \n";
-		// }
+		if (getTextFieldCnh().getText().length() == 0) {
+			validacao += "Informe o numero da CNH. \n";
+		}
 		if (getTextFieldCpf().getText().length() == 0) {
 			validacao += "Informe o numero do CPF. \n";
 		} else if (getTextFieldCpf().getText().length() < 11) {
 			validacao += "Cpf incorreto.\n";
 		}
-		//
-		// if (getTextFieldRua().getText().length() == 0) {
-		// validacao += "Informe o nome da rua. \n";
-		// }
-		//
-		// if (getTextFieldNumero().getText().length() == 0) {
-		// validacao += "Informe o numero da casa. \n";
-		// }
-		//
-		// if (getTextFieldCep().getText().length() == 0) {
-		// validacao += "Informe o cep. \n";
-		// }
-		// if (getTextFieldBairro().getText().length() == 0) {
-		// validacao += "Informe o bairro \n";
-		// }
+
+		if (getTextFieldRua().getText().length() == 0) {
+			validacao += "Informe o nome da rua. \n";
+		}
+
+		if (getTextFieldNumero().getText().length() == 0) {
+			validacao += "Informe o numero da casa. \n";
+		}
+
+		if (getTextFieldCep().getText().length() == 0) {
+			validacao += "Informe o cep. \n";
+		}
+		if (getTextFieldBairro().getText().length() == 0) {
+			validacao += "Informe o bairro \n";
+		}
 
 		if (validacao.length() > 0) {
 			return validacao;
@@ -462,14 +462,10 @@ public class Cadastro extends JFrame implements Iview {
 		return textFieldComplemento;
 	}
 
-	private JFormattedTextField getTextFieldNumero() {
+	private JTextField getTextFieldNumero() {
 		if (textFieldNumero == null) {
-			try {
-				textFieldNumero = new JFormattedTextField(new MaskFormatter("####"));
-				textFieldNumero.setColumns(10);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			textFieldNumero = new JTextField();
+			textFieldNumero.setColumns(10);
 		}
 		return textFieldNumero;
 	}
@@ -529,7 +525,7 @@ public class Cadastro extends JFrame implements Iview {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-
+					
 				}
 			});
 		}
@@ -578,21 +574,21 @@ public class Cadastro extends JFrame implements Iview {
 
 		return textFieldSenha;
 	}
-	
-	//btn para buscar endereco a partir do CEP
+
+	// btn para buscar endereco a partir do CEP
 	private JButton getBtnBuscar() {
 		if (btnBuscar == null) {
 			btnBuscar = new JButton("Buscar Cep");
 			btnBuscar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//busca automática do CEP preenchendo os campos no cadastro
+					// busca automática do CEP preenchendo os campos no cadastro
 					ViaCEP viaCep = new ViaCEP();
 					try {
 						viaCep.buscar(textFieldCep.getText());
 						textFieldRua.setText(viaCep.getLogradouro());
 						textFieldBairro.setText(viaCep.getBairro());
 						textFieldCidade.setText(viaCep.getLocalidade());
-						//txtUF.setText(viaCep.getUf());
+						// txtUF.setText(viaCep.getUf());
 					} catch (ViaCEPException erro) {
 						System.out.println("error : " + erro);
 						// e.printStackTrace();
