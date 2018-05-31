@@ -1,8 +1,5 @@
 package view;
 
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Window.Type;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
@@ -10,111 +7,145 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.MaskFormatter;
 
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
 import extras.Iview;
 import extras.VeiculoType;
 import vo.Controle;
+import vo.Main;
 import vo.Veiculo;
 
-public class CadastroVeiculo implements Iview {
+public class CadastroVeiculo extends JFrame implements Iview {
 
-	private static JFrame frmVeiculos;
+	private JPanel contentPane;
+	private JLabel lblTipo;
+	private JComboBox<VeiculoType> comboBoxVeiculoType;
+	private JLabel lblCor;
+	private JTextField textFieldCor;
+	private JLabel lblPlaca;
+	private JFormattedTextField textFieldPlaca;
+	private JLabel lblAno;
+	private JFormattedTextField textFieldAno;
+	private JLabel lblModelo;
+	private JTextField textFieldModelo;
+	private JSeparator separator;
+	private JScrollPane scrollPane;
+	private JTable table;
+	private List<Veiculo> veiculosNovos = new ArrayList<Veiculo>();
+	private List<Veiculo> veiculos;
+	private Main main = Main.INSTANCIA;
+	private JButton btnCancelar;
+	private JButton btnConfirmar;
 	private JButton btnCadastrar;
 	private JButton btnExcluir;
-	private JTable table;
-	private JScrollPane scrollPane;
-	protected static List<Veiculo> veiculosNovos = new ArrayList<Veiculo>();
-	private static List<Veiculo> veiculos;
-	private JLabel lblTipo;
-	private JLabel lblPlaca;
-	private JLabel lblModelo;
-	private JLabel lblCor;
-	private JLabel lblAno;
-	private JComboBox<VeiculoType> comboBoxVeiculoType;
-	private JFormattedTextField textFieldPlaca;
-	private JTextField textFieldModelo;
-	private JTextField textFieldCor;
-	private JFormattedTextField textFieldAno;
-	private JSeparator separator;
-	private JSeparator separator_1;
-	private JButton buttonConfirmar;
-	private JButton buttonCancelar;
-	protected static CadastroVeiculo window = new CadastroVeiculo();
-
+	
 	/**
-	 * Launch the application.
-	 * 
-	 * @param frame
+	 * Create the frame.
 	 */
-	public static void cadastroVeiculo() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CadastroVeiculo.frmVeiculos.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public CadastroVeiculo() {
+		setTitle("Veiculos");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(26)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_contentPane.createSequentialGroup().addComponent(getLblPlaca()).addGap(62))
+								.addGroup(
+										gl_contentPane.createSequentialGroup()
+												.addComponent(getLblTipo(), GroupLayout.PREFERRED_SIZE, 69,
+														GroupLayout.PREFERRED_SIZE)
+												.addGap(18)))
+						.addComponent(getLblModelo()))
+				.addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+						.createSequentialGroup()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(getComboBoxVeiculoType(), 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(getTextFieldPlaca(), GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+						.addGap(85)
+						.addGroup(
+								gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(getLblCor(), GroupLayout.PREFERRED_SIZE, 52,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(getLblAno()))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(getTextFieldAno(), GroupLayout.PREFERRED_SIZE, 140,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(getTextFieldCor(), GroupLayout.PREFERRED_SIZE, 140,
+										GroupLayout.PREFERRED_SIZE)))
+						.addComponent(getTextFieldModelo(), GroupLayout.PREFERRED_SIZE, 151,
+								GroupLayout.PREFERRED_SIZE))
+				.addContainerGap(11, Short.MAX_VALUE))
+				.addComponent(getSeparator(), Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(34)
+						.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+						.addGap(35)
+						.addComponent(getBtnExcluir(), GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(265, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(27)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup().addGap(96)
+										.addComponent(getBtnConfirmar(), GroupLayout.PREFERRED_SIZE, 120,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(34).addComponent(getBtnCancelar(), GroupLayout.PREFERRED_SIZE, 120,
+												GroupLayout.PREFERRED_SIZE))
+								.addComponent(getScrollPane(), GroupLayout.PREFERRED_SIZE, 520,
+										GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(27, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(28)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getLblCor(), GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getComboBoxVeiculoType(), GroupLayout.PREFERRED_SIZE, 23,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(getTextFieldCor(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getLblTipo(), GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+				.addGap(35)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblPlaca())
+						.addComponent(getTextFieldPlaca(), GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getLblAno())
+						.addComponent(getTextFieldAno(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+				.addGap(33)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addComponent(getLblModelo())
+						.addComponent(getTextFieldModelo(), GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE))
+				.addGap(44)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getBtnCadastrar())
+						.addComponent(getBtnExcluir()))
+				.addGap(31)
+				.addComponent(getSeparator(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addComponent(getScrollPane(), GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE).addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getBtnCancelar())
+						.addComponent(getBtnConfirmar()))
+				.addContainerGap()));
+		contentPane.setLayout(gl_contentPane);
+
 	}
 
-	/**
-	 * Create the application.
-	 * @param controle 
-	 */
-	public CadastroVeiculo(Controle controle) {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frmVeiculos = new JFrame();
-		frmVeiculos.setType(Type.POPUP);
-		frmVeiculos.setResizable(false);
-		frmVeiculos.setTitle("Veiculos");
-		frmVeiculos.setBounds(100, 100, 600, 600);
-		frmVeiculos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmVeiculos.getContentPane().setLayout(null);
-		frmVeiculos.getContentPane().add(getBtnCadastrar());
-		frmVeiculos.getContentPane().add(getBtnExcluir());
-		frmVeiculos.getContentPane().add(getScrollPane());
-		frmVeiculos.getContentPane().add(getLblTipo());
-		frmVeiculos.getContentPane().add(getLblPlaca());
-		frmVeiculos.getContentPane().add(getLblModelo());
-		frmVeiculos.getContentPane().add(getLblCor());
-		frmVeiculos.getContentPane().add(getLblAno());
-		frmVeiculos.getContentPane().add(getComboBoxVeiculoType());
-		frmVeiculos.getContentPane().add(getTextFieldPlaca());
-		frmVeiculos.getContentPane().add(getTextFieldModelo());
-		frmVeiculos.getContentPane().add(getTextFieldCor());
-		frmVeiculos.getContentPane().add(getTextFieldAno());
-		frmVeiculos.getContentPane().add(getSeparator());
-		frmVeiculos.getContentPane().add(getSeparator_1());
-		frmVeiculos.getContentPane().add(getButtonConfirmar());
-		frmVeiculos.getContentPane().add(getButtonCancelar());
-		frmVeiculos.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { frmVeiculos.getContentPane(),
-				getBtnCadastrar(), getBtnExcluir(), getScrollPane(), getTable() }));
-		displayValues();
-	}
-
-	@Override
 	public void cleanValues() {
 		getComboBoxVeiculoType().setSelectedIndex(0);
 		getTextFieldPlaca().setText("");
@@ -168,7 +199,6 @@ public class CadastroVeiculo implements Iview {
 
 	}
 
-	@Override
 	public void assignValues() {
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCor(getTextFieldCor().getText().trim());
@@ -181,7 +211,6 @@ public class CadastroVeiculo implements Iview {
 
 	}
 
-	@Override
 	public String validateValues() {
 		String validacao = "";
 
@@ -209,6 +238,152 @@ public class CadastroVeiculo implements Iview {
 			return validacao;
 		}
 
+	}
+
+	private JLabel getLblTipo() {
+		if (lblTipo == null) {
+			lblTipo = new JLabel("Tipo ");
+		}
+		return lblTipo;
+	}
+
+	private JComboBox<VeiculoType> getComboBoxVeiculoType() {
+		if (comboBoxVeiculoType == null) {
+			comboBoxVeiculoType = new JComboBox<>();
+			comboBoxVeiculoType.setModel(new DefaultComboBoxModel<>(VeiculoType.values()));
+			comboBoxVeiculoType.setBounds(133, 25, 151, 23);
+		}
+		return comboBoxVeiculoType;
+	}
+
+	private JLabel getLblCor() {
+		if (lblCor == null) {
+			lblCor = new JLabel("Cor");
+		}
+		return lblCor;
+	}
+
+	private JTextField getTextFieldCor() {
+		if (textFieldCor == null) {
+			textFieldCor = new JTextField();
+			textFieldCor.setColumns(10);
+		}
+		return textFieldCor;
+	}
+
+	private JLabel getLblPlaca() {
+		if (lblPlaca == null) {
+			lblPlaca = new JLabel("Placa");
+		}
+		return lblPlaca;
+	}
+
+	private JFormattedTextField getTextFieldPlaca() {
+		if (textFieldPlaca == null) {
+			try {
+				textFieldPlaca = new JFormattedTextField(new MaskFormatter("UUU-####"));
+				textFieldPlaca.setBounds(133, 75, 151, 22);
+				textFieldPlaca.setColumns(10);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		return textFieldPlaca;
+	}
+
+	private JLabel getLblAno() {
+		if (lblAno == null) {
+			lblAno = new JLabel("Ano");
+		}
+		return lblAno;
+	}
+
+	private JFormattedTextField getTextFieldAno() {
+		if (textFieldAno == null) {
+			try {
+				textFieldAno = new JFormattedTextField(new MaskFormatter("####"));
+				textFieldAno.setColumns(10);
+				textFieldAno.setBounds(418, 76, 140, 23);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		return textFieldAno;
+	}
+
+	private JLabel getLblModelo() {
+		if (lblModelo == null) {
+			lblModelo = new JLabel("Modelo");
+		}
+		return lblModelo;
+	}
+
+	private JTextField getTextFieldModelo() {
+		if (textFieldModelo == null) {
+			textFieldModelo = new JTextField();
+			textFieldModelo.setColumns(10);
+		}
+		return textFieldModelo;
+	}
+
+	private JSeparator getSeparator() {
+		if (separator == null) {
+			separator = new JSeparator();
+		}
+		return separator;
+	}
+
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setViewportView(getTable());
+		}
+		return scrollPane;
+	}
+
+	private JTable getTable() {
+		if (table == null) {
+			table = new JTable();
+		}
+		return table;
+	}
+
+	public List<Veiculo> getVeiculos() {
+		if (veiculos == null)
+			veiculos = new ArrayList<Veiculo>();
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+
+	public List<Veiculo> getVeiculosNovos() {
+		return veiculosNovos;
+	}
+
+	public void setVeiculosNovos(List<Veiculo> veiculos) {
+		this.veiculosNovos = veiculos;
+	}
+
+	private JButton getBtnCancelar() {
+		if (btnCancelar == null) {
+			btnCancelar = new JButton("Cancelar");
+			btnCancelar.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					getVeiculosNovos().clear();
+					Cadastro cadastro = main.getCadastro();
+					cadastro.setVisible(true);
+					cadastro.requestFocus();
+					
+					contentPane.setVisible(false);
+					
+				}
+			});
+			btnCancelar.setBounds(304, 542, 120, 23);
+		}
+		return btnCancelar;
 	}
 
 	private JButton getBtnCadastrar() {
@@ -239,16 +414,15 @@ public class CadastroVeiculo implements Iview {
 								.toString();
 
 						Veiculo veiculo = null;
-						
-						
+
 						for (Veiculo veiculo2 : getVeiculosNovos()) {
 							if (veiculo2.getPlaca() == placa) {
 								veiculo = veiculo2;
 								break;
 							}
 						}
-						
-						if(veiculo ==null) {
+
+						if (veiculo == null) {
 							for (Veiculo veiculo2 : getVeiculos()) {
 								if (veiculo2.getPlaca() == placa) {
 									veiculo = veiculo2;
@@ -256,7 +430,7 @@ public class CadastroVeiculo implements Iview {
 								}
 							}
 							getVeiculos().remove(veiculo);
-						}else {
+						} else {
 							getVeiculosNovos().remove(veiculo);
 						}
 						displayValues();
@@ -268,191 +442,22 @@ public class CadastroVeiculo implements Iview {
 		return btnExcluir;
 	}
 
-	private JTable getTable() {
-		if (table == null) {
-
-			table = new JTable();
-
-			DefaultTableModel model = new DefaultTableModel();
-
-			Object[] columnsName = new Object[5];
-
-			columnsName[0] = "Tipo";
-			columnsName[1] = "Placa";
-			columnsName[2] = "Modelo";
-			columnsName[3] = "Ano";
-			columnsName[4] = "Cor";
-
-			model.setColumnIdentifiers(columnsName);
-			table.setModel(model);
-		}
-		return table;
-	}
-
-	private JScrollPane getScrollPane() {
-		if (scrollPane == null) {
-			scrollPane = new JScrollPane();
-			scrollPane.setBounds(52, 240, 476, 250);
-			scrollPane.setViewportView(getTable());
-		}
-		return scrollPane;
-	}
-
-	public static List<Veiculo> getVeiculosNovos() {
-		return veiculosNovos;
-	}
-
-	public void setVeiculosNovos(List<Veiculo> veiculos) {
-		this.veiculosNovos = veiculos;
-	}
-
-	private JLabel getLblTipo() {
-		if (lblTipo == null) {
-			lblTipo = new JLabel("Tipo ");
-			lblTipo.setBounds(42, 29, 46, 14);
-		}
-		return lblTipo;
-	}
-
-	private JLabel getLblPlaca() {
-		if (lblPlaca == null) {
-			lblPlaca = new JLabel("Placa");
-			lblPlaca.setBounds(42, 79, 46, 14);
-		}
-		return lblPlaca;
-	}
-
-	private JLabel getLblModelo() {
-		if (lblModelo == null) {
-			lblModelo = new JLabel("Modelo");
-			lblModelo.setBounds(42, 128, 46, 14);
-		}
-		return lblModelo;
-	}
-
-	private JLabel getLblCor() {
-		if (lblCor == null) {
-			lblCor = new JLabel("Cor");
-			lblCor.setBounds(372, 29, 46, 14);
-		}
-		return lblCor;
-	}
-
-	private JLabel getLblAno() {
-		if (lblAno == null) {
-			lblAno = new JLabel("Ano");
-			lblAno.setBounds(372, 79, 46, 14);
-		}
-		return lblAno;
-	}
-
-	private JComboBox<VeiculoType> getComboBoxVeiculoType() {
-		if (comboBoxVeiculoType == null) {
-			comboBoxVeiculoType = new JComboBox<>();
-			comboBoxVeiculoType.setModel(new DefaultComboBoxModel<>(VeiculoType.values()));
-			comboBoxVeiculoType.setBounds(133, 25, 151, 23);
-		}
-		return comboBoxVeiculoType;
-	}
-
-	private JFormattedTextField getTextFieldPlaca() {
-		if (textFieldPlaca == null) {
-			try {
-				textFieldPlaca = new JFormattedTextField(new MaskFormatter("UUU-####"));
-				textFieldPlaca.setBounds(133, 75, 151, 22);
-				textFieldPlaca.setColumns(10);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		}
-		return textFieldPlaca;
-	}
-
-	private JTextField getTextFieldModelo() {
-		if (textFieldModelo == null) {
-			textFieldModelo = new JTextField();
-			textFieldModelo.setBounds(133, 125, 151, 22);
-			textFieldModelo.setColumns(10);
-		}
-		return textFieldModelo;
-	}
-
-	private JTextField getTextFieldCor() {
-		if (textFieldCor == null) {
-			textFieldCor = new JTextField();
-			textFieldCor.setBounds(418, 26, 140, 22);
-			textFieldCor.setColumns(10);
-		}
-		return textFieldCor;
-	}
-
-	private JFormattedTextField getTextFieldAno() {
-		if (textFieldAno == null) {
-			try {
-				textFieldAno = new JFormattedTextField(new MaskFormatter("####"));
-				textFieldAno.setColumns(10);
-				textFieldAno.setBounds(418, 76, 140, 23);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		}
-		return textFieldAno;
-	}
-
-	private JSeparator getSeparator() {
-		if (separator == null) {
-			separator = new JSeparator();
-			separator.setBounds(6, 226, 584, 2);
-		}
-		return separator;
-	}
-
-	private JSeparator getSeparator_1() {
-		if (separator_1 == null) {
-			separator_1 = new JSeparator();
-			separator_1.setBounds(-4, 525, 594, 2);
-		}
-		return separator_1;
-	}
-
-	private JButton getButtonConfirmar() {
-		if (buttonConfirmar == null) {
-			buttonConfirmar = new JButton("Confirmar");
-			buttonConfirmar.addMouseListener(new MouseAdapter() {
+	private JButton getBtnConfirmar() {
+		if (btnConfirmar == null) {
+			btnConfirmar = new JButton("Confirmar");
+			btnConfirmar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					getVeiculos().addAll(getVeiculosNovos());
-					Controle controle = null;
-					Cadastro.cadastro(controle);
+					Cadastro cadastro = main.getCadastro();
+					cadastro.setVisible(true);
+					cadastro.requestFocus();
+					
+					contentPane.setVisible(false);
 				}
 			});
-			buttonConfirmar.setBounds(152, 542, 120, 23);
+			btnConfirmar.setBounds(152, 542, 120, 23);
 		}
-		return buttonConfirmar;
-	}
-
-	private JButton getButtonCancelar() {
-		if (buttonCancelar == null) {
-			buttonCancelar = new JButton("Cancelar");
-			buttonCancelar.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					getVeiculosNovos().clear();
-					Cadastro.cadastro(controle);
-				}
-			});
-			buttonCancelar.setBounds(304, 542, 120, 23);
-		}
-		return buttonCancelar;
-	}
-
-	public static List<Veiculo> getVeiculos() {
-		if (veiculos == null)
-			veiculos = new ArrayList<Veiculo>();
-		return veiculos;
-	}
-
-	public static void setVeiculos(List<Veiculo> veiculos) {
-		CadastroVeiculo.veiculos = veiculos;
+		return btnConfirmar;
 	}
 }
