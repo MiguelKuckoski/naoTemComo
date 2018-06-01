@@ -24,14 +24,14 @@ public class EstacionamentoFundo extends Estacionamento {
 	/**
 	 * Create the panel. 
 	 */
-	private String nome;
+	private static String estacionamentoNome;
 	private static int numeroVagas;
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
 	
 	public EstacionamentoFundo() {
 		
-		super(getEndereco(),getTipoVeiculo(),getNome(),getNumeroVagas());
+		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas());
 		
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(new Color(255, 255, 153));
@@ -308,11 +308,11 @@ public class EstacionamentoFundo extends Estacionamento {
 		setLayout(groupLayout);
 
 	}
-	public String getNome() {
-		if(nome == null) {
-			nome = "Estacionamento dos Fundos";
+	public static String getEstacionamentoNome() {
+		if(estacionamentoNome == null) {
+			estacionamentoNome = "Estacionamento dos Fundos";
 		}
-		return nome;
+		return estacionamentoNome;
 	}
 	
 	public static int getNumeroVagas() {

@@ -25,14 +25,14 @@ public class EstacionamentoPrincipal extends Estacionamento {
 	 * Create the panel. 
 	 */
 	
-	private String nome;
+	private static String estacionamentoNome;
 	private static int numeroVagas;
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
 	
 	public EstacionamentoPrincipal() {
 		
-		super(getEndereco(),getTipoVeiculo(),getNome(),getNumeroVagas());
+		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas());
 		
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(new Color(204, 255, 204));
@@ -307,11 +307,12 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		setLayout(groupLayout);
 
 	}
-	public String getNome() {
-		if(nome == null) {
-			nome = "Estacionamento Principal";
+	
+	public static String getEstacionamentoNome() {
+		if(estacionamentoNome == null) {
+			estacionamentoNome = "Estacionamento Principal";
 		}
-		return nome;
+		return estacionamentoNome;
 	}
 	
 	public static int getNumeroVagas() {

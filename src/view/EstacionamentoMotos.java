@@ -25,14 +25,14 @@ public class EstacionamentoMotos extends Estacionamento {
 	 * Create the panel. 
 	 */
 	
-	private String nome;
+	private static String estacionamentoNome;
 	private static int numeroVagas;
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
 	
 	public EstacionamentoMotos() {
 		
-		super(getEndereco(),getTipoVeiculo(),getNome(),getNumeroVagas());
+		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas());
 
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(new Color(255, 204, 204));
@@ -309,11 +309,12 @@ public class EstacionamentoMotos extends Estacionamento {
 		setLayout(groupLayout);
 
 	}
-	public String getNome() {
-		if(nome == null) {
-			nome = "Estacionamento de Motos";
+	
+	public static String getEstacionamentoNome() {
+		if(estacionamentoNome == null) {
+			estacionamentoNome = "Estacionamento Motos";
 		}
-		return nome;
+		return estacionamentoNome;
 	}
 	
 	public static int getNumeroVagas() {

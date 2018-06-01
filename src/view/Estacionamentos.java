@@ -7,11 +7,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JInternalFrame;
 import javax.swing.JSeparator;
-import java.awt.Color;
-import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import vo.Estacionamento;
 
 public class Estacionamentos extends JFrame {
 
@@ -57,6 +56,13 @@ public class Estacionamentos extends JFrame {
 	private JButton getBtnEstacionamentoDeMotos() {
 		if (btnEstacionamentoDeMotos == null) {
 			btnEstacionamentoDeMotos = new JButton("Estacionamento de Motos");
+			btnEstacionamentoDeMotos.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					EstacionamentoMotos estacionamento = new EstacionamentoMotos();
+					mostrarEstacionamento(estacionamento);
+				}
+			});
 			btnEstacionamentoDeMotos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			btnEstacionamentoDeMotos.setBounds(53, 150, 219, 65);
 		}
@@ -66,13 +72,20 @@ public class Estacionamentos extends JFrame {
 	private JButton getBtnEstacionamentoDosFundos() {
 		if (btnEstacionamentoDosFundos == null) {
 			btnEstacionamentoDosFundos = new JButton("Estacionamento dos Fundos");
+			btnEstacionamentoDosFundos.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					EstacionamentoFundo estacionamento = new EstacionamentoFundo();
+					mostrarEstacionamento(estacionamento);
+				}
+			});
 			btnEstacionamentoDosFundos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			btnEstacionamentoDosFundos.setBounds(53, 270, 219, 65);
 		}
 		return btnEstacionamentoDosFundos;
 	}
 	
-	private void mostrarEstacionamento (EstacionamentoPrincipal estacionamento) {
+	private void mostrarEstacionamento (Estacionamento estacionamento) {
 		setBounds(100, 100, 1096, 436);
 		contentPane.add(estacionamento).setBounds(374, 11, 700, 369);		
 		estacionamento.setVisible(true);
