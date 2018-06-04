@@ -1,23 +1,23 @@
 package view;
 
+import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import extras.VeiculoType;
+import vo.Controle;
 import vo.Endereco;
 import vo.Estacionamento;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.SystemColor;
-import javax.swing.JTextPane;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class EstacionamentoPrincipal extends Estacionamento {
 
@@ -30,7 +30,7 @@ public class EstacionamentoPrincipal extends Estacionamento {
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
 	
-	public EstacionamentoPrincipal() {
+	public EstacionamentoPrincipal(Controle controle) {
 		
 		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas());
 		

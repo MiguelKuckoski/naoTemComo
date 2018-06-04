@@ -5,6 +5,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import extras.VeiculoType;
+import vo.Controle;
 import vo.Endereco;
 import vo.Estacionamento;
 
@@ -30,7 +31,7 @@ public class EstacionamentoMotos extends Estacionamento {
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
 	
-	public EstacionamentoMotos() {
+	public EstacionamentoMotos(Controle controle) {
 		
 		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas());
 

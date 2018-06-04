@@ -3,6 +3,9 @@ package vo;
 import view.Cadastro;
 import view.CadastroVeiculo;
 import view.EditarCadastro;
+import view.EstacionamentoFundo;
+import view.EstacionamentoMotos;
+import view.EstacionamentoPrincipal;
 import view.Estacionamentos;
 import view.Index;
 import view.LogadoEstacionado;
@@ -20,6 +23,10 @@ public class Main {
 	private Opcoes opcoes;
 	private EditarCadastro editarCadastro;
 	private Estacionamentos estacionamentos;
+	private EstacionamentoPrincipal estacionamentoPrincipal;
+	private EstacionamentoFundo estacionamentoFundo;
+	private EstacionamentoMotos estacionamentoMotos;
+	
 	
 	public static void main(String[] params) {
 		INSTANCIA.executar();
@@ -97,6 +104,26 @@ public class Main {
 			estacionamentos = new Estacionamentos();
 		}
 		return estacionamentos;
+	}
+
+	public EstacionamentoPrincipal getEstacionamentoPrincipal() {
+		if(estacionamentoPrincipal == null) {
+			estacionamentoPrincipal = new EstacionamentoPrincipal(controle);
+		}
+		return estacionamentoPrincipal;
+	}
+
+	public EstacionamentoFundo getEstacionamentoFundo() {
+		if(estacionamentoFundo == null) {
+			estacionamentoFundo = new EstacionamentoFundo(controle);
+		}
+		return estacionamentoFundo;
+	}
+	public EstacionamentoMotos getEstacionamentoMoto() {
+		if(estacionamentoMotos == null) {
+			estacionamentoMotos = new EstacionamentoMotos(controle);
+		}
+		return estacionamentoMotos;
 	}
 
 }

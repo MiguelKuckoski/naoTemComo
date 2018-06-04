@@ -11,6 +11,7 @@ import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 
 import vo.Estacionamento;
+import vo.Main;
 
 public class Estacionamentos extends JFrame {
 
@@ -19,7 +20,9 @@ public class Estacionamentos extends JFrame {
 	private JButton btnEstacionamentoDeMotos;
 	private JButton btnEstacionamentoDosFundos;
 	private JSeparator separator;
-
+	private Main main = Main.INSTANCIA;
+	private Estacionamento estacionamentoAtual;
+	
 	/**
 	 * Launch the application. Create the frame.
 	 */
@@ -42,7 +45,7 @@ public class Estacionamentos extends JFrame {
 			btnEstacionamentoPrincipal.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					EstacionamentoPrincipal estacionamento = new EstacionamentoPrincipal();
+					EstacionamentoPrincipal estacionamento= main.getEstacionamentoPrincipal();
 					mostrarEstacionamento(estacionamento);
 					
 				}
@@ -59,7 +62,7 @@ public class Estacionamentos extends JFrame {
 			btnEstacionamentoDeMotos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					EstacionamentoMotos estacionamento = new EstacionamentoMotos();
+					EstacionamentoMotos estacionamento = main.getEstacionamentoMoto();
 					mostrarEstacionamento(estacionamento);
 				}
 			});
@@ -75,7 +78,7 @@ public class Estacionamentos extends JFrame {
 			btnEstacionamentoDosFundos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					EstacionamentoFundo estacionamento = new EstacionamentoFundo();
+					EstacionamentoFundo estacionamento = main.getEstacionamentoFundo();
 					mostrarEstacionamento(estacionamento);
 				}
 			});
@@ -86,10 +89,18 @@ public class Estacionamentos extends JFrame {
 	}
 	
 	private void mostrarEstacionamento (Estacionamento estacionamento) {
+		if(estacionamentoAtual != null) {
+			estacionamentoAtual.setVisible(false);
+		}
+		
+		estacionamentoAtual = estacionamento;
+		
 		setBounds(100, 100, 1096, 436);
-		contentPane.add(estacionamento).setBounds(374, 11, 700, 369);		
-		estacionamento.setVisible(true);
+		contentPane.add(estacionamentoAtual).setBounds(374, 11, 700, 369);		
+		estacionamentoAtual.setVisible(true);
 		contentPane.add(getSeparator());
+		
+		//Estacionamentos estão se sobrepondo;
 	}
 	private JSeparator getSeparator() {
 		if (separator == null) {

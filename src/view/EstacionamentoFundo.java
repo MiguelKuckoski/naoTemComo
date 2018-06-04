@@ -5,6 +5,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import extras.VeiculoType;
+import vo.Controle;
 import vo.Endereco;
 import vo.Estacionamento;
 
@@ -29,7 +30,7 @@ public class EstacionamentoFundo extends Estacionamento {
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
 	
-	public EstacionamentoFundo() {
+	public EstacionamentoFundo(Controle controle) {
 		
 		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas());
 		
