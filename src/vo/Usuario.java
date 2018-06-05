@@ -12,6 +12,7 @@ public class Usuario {
 	private String senha;
 	private Veiculo selectedVeiculo;
 	private Endereco endereco;
+	
 
 	public Usuario() {
 		super();
@@ -55,7 +56,7 @@ public class Usuario {
 	public Endereco getEndereco() {
 		return this.endereco;
 	}
-
+	
 	public void setComplemento(String complemento) {
 		this.endereco.setComplemento(complemento);
 	}

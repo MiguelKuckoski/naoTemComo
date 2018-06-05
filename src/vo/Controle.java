@@ -35,7 +35,16 @@ public class Controle {
 	}	
 	
 	public void removeUsuario(Usuario usuario) {
-		this.usuarios.remove(usuario);
+		
+		if(loggedUser.getSelectedVeiculo().getEstacionado()==null) {
+			this.usuarios.remove(loggedUser);
+			loggedUser=null;
+		}else {
+			loggedUser.getSelectedVeiculo().setEstacionado(null);
+			this.usuarios.remove(loggedUser);
+			loggedUser=null;
+		}
+		
 	}
 
 	public Date getDate() {

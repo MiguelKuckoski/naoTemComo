@@ -7,8 +7,8 @@ public class Veiculo {
 	private String modelo;
 	private String cor;
 	private int ano;
-	private Estacionamento estacionamento;
 	private VeiculoType tipoVeiculo;
+	private Estacionamento estacionamento;
 
 	public Veiculo() {
 
@@ -61,7 +61,7 @@ public class Veiculo {
 	public void setEstacionado(Estacionamento estacionamento) {
 		this.estacionamento = estacionamento;
 	}
-
+	
 	public VeiculoType getTipoVeiculo() {
 		return tipoVeiculo;
 	}
