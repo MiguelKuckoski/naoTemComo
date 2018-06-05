@@ -14,7 +14,9 @@ public class Controle {
 		return estacionamento;
 	}
 
-	public void setEstacionamento(Estacionamento estacionamento) {
+	public void addEstacionamento(Estacionamento estacionamento) {
+		if(this.estacionamento == null)
+			this.estacionamento = new ArrayList<Estacionamento>();
 		this.estacionamento.add(estacionamento);
 	}
 

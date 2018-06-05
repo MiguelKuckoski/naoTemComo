@@ -106,7 +106,7 @@ public class Opcoes extends JFrame {
 			btnEncerrarConta.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if (controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+					if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {
 //						controle.removeUsuario(controle.getLoggedUser());
 //						String[] args = null;
 //						Index.main(args);
@@ -129,7 +129,7 @@ public class Opcoes extends JFrame {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if (controle.getLoggedUser().getSelectedVeiculo().isEstacionado()) {
+					if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() != null) {
 
 						LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
 						logadoEstacionado.setVisible(true);

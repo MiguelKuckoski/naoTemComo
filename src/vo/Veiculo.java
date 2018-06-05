@@ -7,7 +7,7 @@ public class Veiculo {
 	private String modelo;
 	private String cor;
 	private int ano;
-	private boolean estacionado;
+	private Estacionamento estacionamento;
 	private VeiculoType tipoVeiculo;
 
 	public Veiculo() {
@@ -54,12 +54,12 @@ public class Veiculo {
 		this.ano = ano;
 	}
 
-	public boolean isEstacionado() {
-		return estacionado;
+	public Estacionamento getEstacionado() {
+		return estacionamento;
 	}
 
-	public void setEstacionado(boolean estacionado) {
-		this.estacionado = estacionado;
+	public void setEstacionado(Estacionamento estacionamento) {
+		this.estacionamento = estacionamento;
 	}
 
 	public VeiculoType getTipoVeiculo() {

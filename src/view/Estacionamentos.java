@@ -21,7 +21,7 @@ public class Estacionamentos extends JFrame {
 	private JButton btnEstacionamentoDosFundos;
 	private JSeparator separator;
 	private Main main = Main.INSTANCIA;
-	private Estacionamento estacionamentoAtual;
+	private Estacionamento estacionamentoAtual = null;
 	
 	/**
 	 * Launch the application. Create the frame.
@@ -99,6 +99,7 @@ public class Estacionamentos extends JFrame {
 		contentPane.add(estacionamentoAtual).setBounds(374, 11, 700, 369);		
 		estacionamentoAtual.setVisible(true);
 		contentPane.add(getSeparator());
+		
 		
 		//Estacionamentos estão se sobrepondo;
 	}

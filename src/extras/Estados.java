@@ -47,4 +47,14 @@ public enum Estados {
 		return name;
 	}
 
+	public boolean compare(String comparison) {
+		return this.acronym.equals(comparison) || this.name.equals(comparison);
+	}
+	
+	public static Estados getEstado(String tipo) {
+		for(Estados s : Estados.values())
+			if(s.compare(tipo))
+				return s;
+		return null;
+	}
 }

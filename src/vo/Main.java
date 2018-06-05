@@ -1,5 +1,8 @@
 package vo;
 
+import java.util.ArrayList;
+
+import extras.VeiculoType;
 import view.Cadastro;
 import view.CadastroVeiculo;
 import view.EditarCadastro;
@@ -35,6 +38,10 @@ public class Main {
 	private Main() {
 		// o controle só é instanciado uma vez, ao iniciar o programa
 		controle = new Controle();
+		controle.addEstacionamento(estacionamentoPrincipal);
+		controle.addEstacionamento(estacionamentoFundo);
+		controle.addEstacionamento(estacionamentoMotos);
+		
 		populateCadastro();
 	}
 	
@@ -84,7 +91,25 @@ public class Main {
 		Usuario usuario = new Usuario();
 		usuario.setCpf("000.000.000-00");
 		usuario.setSenha("12345");
+	
+		usuario.setCnh("88888888");
+		usuario.setRua("Teste rua");
+		usuario.setNum(69);
+		usuario.setBairro("Teste bairro");
+		usuario.setCep(88090740);
+		
+		usuario.setEstado("Santa Catarina");
+		
+		VeiculoType type = VeiculoType.getType("MOTO");
+		Veiculo veiculo = new Veiculo("XXX-3222","Factor", 2009, type, "cinza");
+		ArrayList<Veiculo> vArray = new ArrayList<Veiculo>();
+		vArray.add(veiculo);
+		usuario.setVeiculos(vArray);
+		usuario.setSelectedVeiculo(veiculo);
 		controle.addUsuarios(usuario);
+		
+		
+		
 	}
 	public Opcoes getOpcoes() {
 		if(opcoes == null) 

@@ -1,30 +1,27 @@
 package vo;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import extras.VeiculoType;
 
 public abstract class Estacionamento extends JPanel {
-	private int [] vagas;
+	private Veiculo[] vagas;
 	private String nome;
 	private VeiculoType tipoEstacionamento;
 	private Endereco endereco;
-	
-	public Estacionamento(Endereco endereco,VeiculoType tipoVeiculo,String nome,int numeroVagas) {
+
+	public Estacionamento(Endereco endereco, VeiculoType tipoVeiculo, String nome, int numeroVagas) {
 		super();
 		this.nome = nome;
-		this.vagas = new int[numeroVagas];
+		this.vagas = new Veiculo[numeroVagas];
 		this.tipoEstacionamento = tipoVeiculo;
 		this.endereco = endereco;
-		
+
 	}
 
-	public int [] getVagas() {
+	public Veiculo[] getVagas() {
 		return vagas;
-	}
-
-	public void setVagas(int [] vagas) {
-		this.vagas = vagas;
 	}
 
 	public String getNome() {
@@ -43,12 +40,15 @@ public abstract class Estacionamento extends JPanel {
 		this.tipoEstacionamento = tipoEstacionamento;
 	}
 
-	public void alterarEstadoVaga() {
-		//TODO n�o sei como fazer isso... ainda ;)
-		
+	protected boolean estacionar(int posicao, Usuario usuario, Estacionamento estacionamento) {
+		if (vagas[posicao - 1] == null) {
+			vagas[posicao - 1] = usuario.getSelectedVeiculo();
+			usuario.getSelectedVeiculo().setEstacionado(estacionamento);
+			return true;
+		}
+
+		return false;
+
 	}
-	
-	
-	
-	
+
 }
