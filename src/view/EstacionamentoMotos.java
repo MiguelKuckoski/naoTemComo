@@ -381,14 +381,14 @@ public class EstacionamentoMotos extends Estacionamento {
 	}
 
 	public void verificarVaga(int posicao) {
-		EstacionamentoPrincipal estacionamentoPrincipal = main.getEstacionamentoPrincipal();
+		EstacionamentoMotos estacionamentoMotos = main.getEstacionamentoMoto();
 		
-		if(estacionar(posicao,controle.getLoggedUser(), estacionamentoPrincipal)) {
+		if(estacionar(posicao,controle.getLoggedUser(), estacionamentoMotos)) {
 			getBtnVagas().get(posicao-1).setBackground(Color.BLUE);
 			LogadoEstacionado tela = main.getLogadoEstacionado();
 			tela.setVisible(true);
 			tela.requestFocus();			
-			estacionamentoPrincipal.setVisible(false);
+			estacionamentoMotos.setVisible(false);
 			Estacionamentos estacionamentos = main.getEstacionamentos();
 			estacionamentos.setVisible(false);
 		}else {
