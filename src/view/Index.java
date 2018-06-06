@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import vo.Controle;
+import vo.Estacionamento;
 import vo.Main;
 import vo.Usuario;
 import vo.Veiculo;
@@ -196,10 +197,13 @@ public class Index extends JFrame {
 			}	
 						
 			//Verifica qual sera a proxima tela.
+			
 			if (estacionado) {
-				LogadoEstacionado logadoEstacionado= main.getLogadoEstacionado();
-				logadoEstacionado.setVisible(true);
+				Estacionamento estacionamento = controle.getLoggedUser().getSelectedVeiculo().getEstacionado();
+				LogadoEstacionado logadoEstacionado= main.getLogadoEstacionado(estacionamento);
+				logadoEstacionado.setVisible(true);				
 				logadoEstacionado.requestFocus();
+				
 			} else {
 				LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 				logadoNaoEstacionado.setVisible(true);

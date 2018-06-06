@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import vo.Controle;
+import vo.Estacionamento;
 import vo.Main;
 
 public class LogadoEstacionado extends JFrame {
@@ -29,13 +30,13 @@ public class LogadoEstacionado extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param estacionamento 
 	 */
-	public LogadoEstacionado(Controle controle) {
+	public LogadoEstacionado(Controle controle, Estacionamento estacionamento) {
 		this.controle = controle;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1096, 436);
 		contentPane = new JPanel();
-		contentPane.add(controle.getLoggedUser().getSelectedVeiculo().getEstacionado()).setBounds(374, 11, 700, 369);	
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -59,6 +60,12 @@ public class LogadoEstacionado extends JFrame {
 				.addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE).addGap(172)
 				.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)));
 		contentPane.setLayout(gl_contentPane);
+		
+		contentPane.add(estacionamento).setBounds(374, 11, 700, 369);
+		estacionamento.setVisible(true);
+		estacionamento.displayValues();
+		estacionamento.requestFocus();
+		
 	}
 
 	private JButton getBtnSair() {
@@ -69,9 +76,9 @@ public class LogadoEstacionado extends JFrame {
 				public void mouseClicked(MouseEvent e) {
 					Index index = main.getIndex();
 					index.setVisible(true);
-					index.requestFocus();
-
+					index.requestFocus();					
 					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
+					logadoEstacionado.dispose();
 					logadoEstacionado.setVisible(false);
 					controle.setLoggedUser(null);
 				}
@@ -87,10 +94,10 @@ public class LogadoEstacionado extends JFrame {
 			btnDesestacionar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-
-
-					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
-					logadoEstacionado.setVisible(false);
+					
+					
+//					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
+//					logadoEstacionado.setVisible(false);
 				}
 			});
 		}
@@ -112,5 +119,11 @@ public class LogadoEstacionado extends JFrame {
 			});
 		}
 		return btnOpcoes;
+	}
+
+	public void mostrarTela(Estacionamento estacionamento) {
+		contentPane.add(estacionamento).setBounds(374, 11, 700, 369);
+		estacionamento.setVisible(true);
+		estacionamento.requestFocus();
 	}
 }

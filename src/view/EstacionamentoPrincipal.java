@@ -368,13 +368,17 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		EstacionamentoPrincipal estacionamentoPrincipal = main.getEstacionamentoPrincipal();
 		
 		if(estacionar(posicao,controle.getLoggedUser(), estacionamentoPrincipal)) {
+			
 			getBtnVagas().get(posicao-1).setBackground(Color.BLUE);
-			LogadoEstacionado tela = main.getLogadoEstacionado();
+			LogadoEstacionado tela = main.getLogadoEstacionado(controle.getLoggedUser().getSelectedVeiculo().getEstacionado());
 			tela.setVisible(true);
-			tela.requestFocus();			
+			
+			tela.requestFocus();
+			tela.mostrarTela(controle.getLoggedUser().getSelectedVeiculo().getEstacionado());
 			estacionamentoPrincipal.setVisible(false);
 			Estacionamentos estacionamentos = main.getEstacionamentos();
 			estacionamentos.setVisible(false);
+			
 		}else {
 			JOptionPane.showMessageDialog(null, "Vaga ocupada!", "Erro",
 					JOptionPane.WARNING_MESSAGE);

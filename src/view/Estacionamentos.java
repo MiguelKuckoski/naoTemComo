@@ -25,6 +25,7 @@ public class Estacionamentos extends JFrame {
 	/**
 	 * Launch the application. Create the frame.
 	 */
+
 	public Estacionamentos() {
 		setTitle("Estacionamento");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,7 +38,7 @@ public class Estacionamentos extends JFrame {
 		contentPane.add(getBtnEstacionamentoDeMotos());
 		contentPane.add(getBtnEstacionamentoDosFundos());	
 	}
-
+	
 	private JButton getBtnEstacionamentoPrincipal() {
 		if (btnEstacionamentoPrincipal == null) {
 			btnEstacionamentoPrincipal = new JButton("Estacionamento Principal");
@@ -54,7 +55,7 @@ public class Estacionamentos extends JFrame {
 		}
 		return btnEstacionamentoPrincipal;
 	}
-
+	
 	private JButton getBtnEstacionamentoDeMotos() {
 		if (btnEstacionamentoDeMotos == null) {
 			btnEstacionamentoDeMotos = new JButton("Estacionamento de Motos");
@@ -70,7 +71,7 @@ public class Estacionamentos extends JFrame {
 		}
 		return btnEstacionamentoDeMotos;
 	}
-
+	
 	private JButton getBtnEstacionamentoDosFundos() {
 		if (btnEstacionamentoDosFundos == null) {
 			btnEstacionamentoDosFundos = new JButton("Estacionamento dos Fundos");
@@ -99,7 +100,7 @@ public class Estacionamentos extends JFrame {
 		estacionamentoAtual.displayValues();
 		estacionamentoAtual.setVisible(true);		
 		
-		//Estacionamentos estão se sobrepondo;
+	
 	}
 	
 }

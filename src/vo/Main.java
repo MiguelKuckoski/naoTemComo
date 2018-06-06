@@ -80,15 +80,24 @@ public class Main {
 		return logadoNaoEstacionado;
 	}
 
-	public LogadoEstacionado getLogadoEstacionado() {
+	public LogadoEstacionado getLogadoEstacionado(Estacionamento estacionamento) {
 		if(logadoEstacionado == null) {
-			logadoEstacionado = new LogadoEstacionado(controle);
+			logadoEstacionado = new LogadoEstacionado(controle, estacionamento);
 		}
 		return logadoEstacionado;
 	}
+	
+	public LogadoEstacionado getLogadoEstacionado() {
+//		if(logadoEstacionado == null) {
+//			logadoEstacionado = new LogadoEstacionado(controle);
+//		}
+		return logadoEstacionado;
+	}
+	
 
 	public void populateCadastro() {
 		Usuario usuario = new Usuario();
+		usuario.setNome("Teste nome");
 		usuario.setCpf("000.000.000-00");
 		usuario.setSenha("12345");
 	
@@ -108,9 +117,8 @@ public class Main {
 		usuario.setSelectedVeiculo(veiculo);
 		controle.addUsuarios(usuario);
 		
-		
-		
 	}
+	
 	public Opcoes getOpcoes() {
 		if(opcoes == null) 
 			opcoes = new Opcoes(controle);
