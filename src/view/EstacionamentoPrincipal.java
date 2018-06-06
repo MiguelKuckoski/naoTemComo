@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -20,12 +19,13 @@ import extras.VeiculoType;
 import vo.Controle;
 import vo.Endereco;
 import vo.Estacionamento;
-import vo.Main;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class EstacionamentoPrincipal extends Estacionamento {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel. 
 	 */
@@ -34,13 +34,10 @@ public class EstacionamentoPrincipal extends Estacionamento {
 	private static int numeroVagas;
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
-	private ArrayList<JButton> btnVagas;
-	private Controle controle; 
-	private Main main = Main.INSTANCIA;
+
 	
 	public EstacionamentoPrincipal(Controle controle) {
-		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas());
-		this.controle = controle;
+		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas(), controle);
 		
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(new Color(204, 255, 204));
@@ -326,8 +323,6 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		getBtnVagas().add(btnVaga_10);
 		getBtnVagas().add(btnVaga_11);
 		getBtnVagas().add(btnVaga_12);
-		
-
 	}
 
 	public static String getEstacionamentoNome() {
@@ -347,7 +342,7 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		
 	public static VeiculoType getTipoVeiculo() {
 		if(tipoVeiculo == null) {
-			tipoVeiculo = tipoVeiculo.getType("Carro") ;
+			tipoVeiculo = VeiculoType.getType("Carro") ;
 		}
 		return tipoVeiculo;
 	}
@@ -369,17 +364,6 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		return endereco;
 	}
 	
-	public  void displayValues() {
-		
-	}
-
-
-	public ArrayList<JButton> getBtnVagas() {
-		if(btnVagas==null)
-			btnVagas = new ArrayList<JButton>();
-		return btnVagas;
-	}
-
 	public void verificarVaga(int posicao) {
 		EstacionamentoPrincipal estacionamentoPrincipal = main.getEstacionamentoPrincipal();
 		
@@ -396,4 +380,5 @@ public class EstacionamentoPrincipal extends Estacionamento {
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
+
 }

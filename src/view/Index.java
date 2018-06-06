@@ -182,13 +182,19 @@ public class Index extends JFrame {
 		if (controle.getLoggedUser() != null) {
 			boolean estacionado = false;
 			for (Veiculo veiculo : controle.getLoggedUser().getVeiculos()) {
+				
+				if(controle.getLoggedUser().getVeiculos().size() == 1) {
+					controle.getLoggedUser().setSelectedVeiculo(veiculo);
+				}
+				
 				if (veiculo.getEstacionado() != null) {
 					controle.getLoggedUser().setSelectedVeiculo(veiculo);
 					estacionado = true;
 					break;
 				}
+				
 			}	
-			
+						
 			//Verifica qual sera a proxima tela.
 			if (estacionado) {
 				LogadoEstacionado logadoEstacionado= main.getLogadoEstacionado();

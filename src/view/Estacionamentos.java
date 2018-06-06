@@ -19,7 +19,6 @@ public class Estacionamentos extends JFrame {
 	private JButton btnEstacionamentoPrincipal;
 	private JButton btnEstacionamentoDeMotos;
 	private JButton btnEstacionamentoDosFundos;
-	private JSeparator separator;
 	private Main main = Main.INSTANCIA;
 	private Estacionamento estacionamentoAtual = null;
 	
@@ -96,18 +95,11 @@ public class Estacionamentos extends JFrame {
 		estacionamentoAtual = estacionamento;
 		
 		setBounds(100, 100, 1096, 436);
-		contentPane.add(estacionamentoAtual).setBounds(374, 11, 700, 369);		
-		estacionamentoAtual.setVisible(true);
-		contentPane.add(getSeparator());
-		
+		contentPane.add(estacionamentoAtual).setBounds(374, 11, 700, 369);	
+		estacionamentoAtual.displayValues();
+		estacionamentoAtual.setVisible(true);		
 		
 		//Estacionamentos estão se sobrepondo;
 	}
-	private JSeparator getSeparator() {
-		if (separator == null) {
-			separator = new JSeparator();
-			separator.setBounds(350, 0, 1, 377);
-		}
-		return separator;
-	}
+	
 }

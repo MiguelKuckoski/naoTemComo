@@ -568,13 +568,6 @@ public class EditarCadastro extends JFrame implements Iview {
 		return lblSenha;
 	}
 
-	private JPopupMenu getCadastroVeiculo() {
-		if (popUpCadastroVeiculo == null) {
-			popUpCadastroVeiculo = new JPopupMenu();
-		}
-		return popUpCadastroVeiculo;
-	}
-
 	private JPasswordField getTextFieldSenha() {
 		if (textFieldSenha == null) {
 			textFieldSenha = new JPasswordField();

@@ -71,8 +71,8 @@ public class LogadoEstacionado extends JFrame {
 					index.setVisible(true);
 					index.requestFocus();
 
-					LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
-					logadoNaoEstacionado.setVisible(false);
+					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
+					logadoEstacionado.setVisible(false);
 					controle.setLoggedUser(null);
 				}
 			});

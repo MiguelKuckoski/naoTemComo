@@ -1,23 +1,34 @@
 package vo;
 
+import java.awt.Color;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import extras.VeiculoType;
 
 public abstract class Estacionamento extends JPanel {
-	private Veiculo[] vagas;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected Veiculo[] vagas;
 	private String nome;
 	private VeiculoType tipoEstacionamento;
 	private Endereco endereco;
+	protected ArrayList<JButton> btnVagas;
+	protected Controle controle;
+	protected Main main = Main.INSTANCIA;
 
-	public Estacionamento(Endereco endereco, VeiculoType tipoVeiculo, String nome, int numeroVagas) {
+	public Estacionamento(Endereco endereco, VeiculoType tipoVeiculo, String nome, int numeroVagas, Controle controle) {
 		super();
 		this.nome = nome;
 		this.vagas = new Veiculo[numeroVagas];
 		this.tipoEstacionamento = tipoVeiculo;
 		this.endereco = endereco;
-
+		this.controle = controle;
 	}
 
 	public Veiculo[] getVagas() {
@@ -50,5 +61,24 @@ public abstract class Estacionamento extends JPanel {
 		return false;
 
 	}
+	
+	public ArrayList<JButton> getBtnVagas() {
+		if(btnVagas==null)
+			btnVagas = new ArrayList<JButton>();
+		return btnVagas;
+	}
 
+	public  void displayValues() {
+		for(int i =0; i < getBtnVagas().size(); i++) {
+			if(vagas[i] != null) {
+				if(vagas[i].getPlaca() == controle.getLoggedUser().getSelectedVeiculo().getPlaca()) {
+					getBtnVagas().get(i).setBackground(Color.BLUE);
+				}else {
+					getBtnVagas().get(i).setBackground(Color.RED);
+				}
+			}else {
+				getBtnVagas().get(i).setBackground(Color.GREEN);
+			}
+		}
+	}
 }

@@ -1,6 +1,17 @@
 package view;
 
+import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
@@ -9,19 +20,13 @@ import vo.Controle;
 import vo.Endereco;
 import vo.Estacionamento;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.SystemColor;
-import javax.swing.JTextPane;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 public class EstacionamentoMotos extends Estacionamento {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * Create the panel. 
 	 */
@@ -30,10 +35,11 @@ public class EstacionamentoMotos extends Estacionamento {
 	private static int numeroVagas;
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
+
 	
 	public EstacionamentoMotos(Controle controle) {
 		
-		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas());
+		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas(), controle);
 
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(new Color(255, 204, 204));
@@ -42,161 +48,173 @@ public class EstacionamentoMotos extends Estacionamento {
 		
 		Border bordapretaumpixel = new LineBorder(Color.BLACK, 1);
 		
-		JButton button = new JButton("");
-		button.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_1 = new JButton("");
+		btnVaga_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 1;
+				verificarVaga(posicao);	
 			}
 		});
-		button.setContentAreaFilled(false);
-		button.setOpaque(true);
-		button.setBackground(new Color(0, 153, 51));
-		button.setBorderPainted(true);
-		button.setBorder(bordapretaumpixel);
+		btnVaga_1.setContentAreaFilled(false);
+		btnVaga_1.setOpaque(true);
+		btnVaga_1.setBackground(new Color(0, 153, 51));
+		btnVaga_1.setBorderPainted(true);
+		btnVaga_1.setBorder(bordapretaumpixel);
 		
-		JButton button_2 = new JButton("");
-		button_2.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_7 = new JButton("");
+		btnVaga_7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 7;
+				verificarVaga(posicao);	
 			}
 		});
-		button_2.setContentAreaFilled(false);
-		button_2.setOpaque(true);
-		button_2.setBackground(new Color(0, 153, 51));
-		button_2.setBorderPainted(true);
-		button_2.setBorder(bordapretaumpixel);
+		btnVaga_7.setContentAreaFilled(false);
+		btnVaga_7.setOpaque(true);
+		btnVaga_7.setBackground(new Color(0, 153, 51));
+		btnVaga_7.setBorderPainted(true);
+		btnVaga_7.setBorder(bordapretaumpixel);
 		
-		JButton button_3 = new JButton("");
-		button_3.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_8 = new JButton("");
+		btnVaga_8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 8;
+				verificarVaga(posicao);	
 			}
 		});
-		button_3.setContentAreaFilled(false);
-		button_3.setOpaque(true);
-		button_3.setBackground(new Color(0, 153, 51));
-		button_3.setBorderPainted(true);
-		button_3.setBorder(bordapretaumpixel);
+		btnVaga_8.setContentAreaFilled(false);
+		btnVaga_8.setOpaque(true);
+		btnVaga_8.setBackground(new Color(0, 153, 51));
+		btnVaga_8.setBorderPainted(true);
+		btnVaga_8.setBorder(bordapretaumpixel);
 		
-		JButton button_4 = new JButton("");
-		button_4.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_9 = new JButton("");
+		btnVaga_9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 9;
+				verificarVaga(posicao);	
 			}
 		});
-		button_4.setContentAreaFilled(false);
-		button_4.setOpaque(true);
-		button_4.setBackground(new Color(0, 153, 51));
-		button_4.setBorderPainted(true);
-		button_4.setBorder(bordapretaumpixel);
+		btnVaga_9.setContentAreaFilled(false);
+		btnVaga_9.setOpaque(true);
+		btnVaga_9.setBackground(new Color(0, 153, 51));
+		btnVaga_9.setBorderPainted(true);
+		btnVaga_9.setBorder(bordapretaumpixel);
 		
-		JButton button_5 = new JButton("");
-		button_5.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_2 = new JButton("");
+		btnVaga_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 2;
+				verificarVaga(posicao);	
 			}
 		});
-		button_5.setContentAreaFilled(false);
-		button_5.setOpaque(true);
-		button_5.setBackground(new Color(0, 153, 51));
-		button_5.setBorderPainted(true);
-		button_5.setBorder(bordapretaumpixel);
+		btnVaga_2.setContentAreaFilled(false);
+		btnVaga_2.setOpaque(true);
+		btnVaga_2.setBackground(new Color(0, 153, 51));
+		btnVaga_2.setBorderPainted(true);
+		btnVaga_2.setBorder(bordapretaumpixel);
 		
-		JButton button_6 = new JButton("");
-		button_6.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_3 = new JButton("");
+		btnVaga_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 3;
+				verificarVaga(posicao);	
 			}
 		});
-		button_6.setContentAreaFilled(false);
-		button_6.setOpaque(true);
-		button_6.setBackground(new Color(0, 153, 51));
-		button_6.setBorderPainted(true);
-		button_6.setBorder(bordapretaumpixel);
+		btnVaga_3.setContentAreaFilled(false);
+		btnVaga_3.setOpaque(true);
+		btnVaga_3.setBackground(new Color(0, 153, 51));
+		btnVaga_3.setBorderPainted(true);
+		btnVaga_3.setBorder(bordapretaumpixel);
 		
-		JButton button_7 = new JButton("");
-		button_7.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_4 = new JButton("");
+		btnVaga_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 4;
+				verificarVaga(posicao);	
 			}
 		});
-		button_7.setContentAreaFilled(false);
-		button_7.setOpaque(true);
-		button_7.setBackground(new Color(0, 153, 51));
-		button_7.setBorderPainted(true);
-		button_7.setBorder(bordapretaumpixel);
+		btnVaga_4.setContentAreaFilled(false);
+		btnVaga_4.setOpaque(true);
+		btnVaga_4.setBackground(new Color(0, 153, 51));
+		btnVaga_4.setBorderPainted(true);
+		btnVaga_4.setBorder(bordapretaumpixel);
 		
-		JButton button_8 = new JButton("");
-		button_8.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_10 = new JButton("");
+		btnVaga_10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 10;
+				verificarVaga(posicao);	
 			}
 		});
-		button_8.setContentAreaFilled(false);
-		button_8.setOpaque(true);
-		button_8.setBackground(new Color(0, 153, 51));
-		button_8.setBorderPainted(true);
-		button_8.setBorder(bordapretaumpixel);
+		btnVaga_10.setContentAreaFilled(false);
+		btnVaga_10.setOpaque(true);
+		btnVaga_10.setBackground(new Color(0, 153, 51));
+		btnVaga_10.setBorderPainted(true);
+		btnVaga_10.setBorder(bordapretaumpixel);
 		
-		JButton button_9 = new JButton("");
-		button_9.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_11 = new JButton("");
+		btnVaga_11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 11;
+				verificarVaga(posicao);	
 			}
 		});
-		button_9.setContentAreaFilled(false);
-		button_9.setOpaque(true);
-		button_9.setBackground(new Color(0, 153, 51));
-		button_9.setBorderPainted(true);
-		button_9.setBorder(bordapretaumpixel);
+		btnVaga_11.setContentAreaFilled(false);
+		btnVaga_11.setOpaque(true);
+		btnVaga_11.setBackground(new Color(0, 153, 51));
+		btnVaga_11.setBorderPainted(true);
+		btnVaga_11.setBorder(bordapretaumpixel);
 		
-		JButton button_10 = new JButton("");
-		button_10.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_5 = new JButton("");
+		btnVaga_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 5;
+				verificarVaga(posicao);	
 			}
 		});
-		button_10.setContentAreaFilled(false);
-		button_10.setOpaque(true);
-		button_10.setBackground(new Color(0, 153, 51));
-		button_10.setBorderPainted(true);
-		button_10.setBorder(bordapretaumpixel);
+		btnVaga_5.setContentAreaFilled(false);
+		btnVaga_5.setOpaque(true);
+		btnVaga_5.setBackground(new Color(0, 153, 51));
+		btnVaga_5.setBorderPainted(true);
+		btnVaga_5.setBorder(bordapretaumpixel);
 		
-		JButton button_11 = new JButton("");
-		button_11.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_6 = new JButton("");
+		btnVaga_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 6;
+				verificarVaga(posicao);	
 			}
 		});
-		button_11.setContentAreaFilled(false);
-		button_11.setOpaque(true);
-		button_11.setBackground(new Color(0, 153, 51));
-		button_11.setBorderPainted(true);
-		button_11.setBorder(bordapretaumpixel);
+		btnVaga_6.setContentAreaFilled(false);
+		btnVaga_6.setOpaque(true);
+		btnVaga_6.setBackground(new Color(0, 153, 51));
+		btnVaga_6.setBorderPainted(true);
+		btnVaga_6.setBorder(bordapretaumpixel);
 		
-		JButton button_12 = new JButton("");
-		button_12.addMouseListener(new MouseAdapter() {
+		JButton btnVaga_12 = new JButton("");
+		btnVaga_12.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 12;
+				verificarVaga(posicao);	
 			}
 		});
-		button_12.setContentAreaFilled(false);
-		button_12.setOpaque(true);
-		button_12.setBackground(new Color(0, 153, 51));
-		button_12.setBorderPainted(true);
-		button_12.setBorder(bordapretaumpixel);
+		btnVaga_12.setContentAreaFilled(false);
+		btnVaga_12.setOpaque(true);
+		btnVaga_12.setBackground(new Color(0, 153, 51));
+		btnVaga_12.setBorderPainted(true);
+		btnVaga_12.setBorder(bordapretaumpixel);
 		
 		
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -208,29 +226,29 @@ public class EstacionamentoMotos extends Estacionamento {
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_1, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_2, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_3, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_7, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_4, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_10, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_5, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_11, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnVaga_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_7, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_8, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_9, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_8, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_10, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_9, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_11, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button_12, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(btnVaga_12, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(61, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -239,29 +257,29 @@ public class EstacionamentoMotos extends Estacionamento {
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button_11, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_6, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(button_12, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnVaga_12, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button_10, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_5, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(button_9, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnVaga_11, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button_7, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_4, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(button_8, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnVaga_10, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_3, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnVaga_9, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_2, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnVaga_8, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnVaga_1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnVaga_7, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
 					.addContainerGap())
 		);
@@ -308,6 +326,19 @@ public class EstacionamentoMotos extends Estacionamento {
 		);
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
+		
+		getBtnVagas().add(btnVaga_1);
+		getBtnVagas().add(btnVaga_2);
+		getBtnVagas().add(btnVaga_3);
+		getBtnVagas().add(btnVaga_4);
+		getBtnVagas().add(btnVaga_5);
+		getBtnVagas().add(btnVaga_6);
+		getBtnVagas().add(btnVaga_7);
+		getBtnVagas().add(btnVaga_8);
+		getBtnVagas().add(btnVaga_9);
+		getBtnVagas().add(btnVaga_10);
+		getBtnVagas().add(btnVaga_11);
+		getBtnVagas().add(btnVaga_12);
 
 	}
 	
@@ -328,7 +359,7 @@ public class EstacionamentoMotos extends Estacionamento {
 		
 	public static VeiculoType getTipoVeiculo() {
 		if(tipoVeiculo == null) {
-			tipoVeiculo = tipoVeiculo.getType("Moto") ;
+			tipoVeiculo = VeiculoType.getType("Moto") ;
 		}
 		return tipoVeiculo;
 	}
@@ -347,5 +378,22 @@ public class EstacionamentoMotos extends Estacionamento {
 			endereco.setComplemento(complemento);
 		}
 		return endereco;
+	}
+
+	public void verificarVaga(int posicao) {
+		EstacionamentoPrincipal estacionamentoPrincipal = main.getEstacionamentoPrincipal();
+		
+		if(estacionar(posicao,controle.getLoggedUser(), estacionamentoPrincipal)) {
+			getBtnVagas().get(posicao-1).setBackground(Color.BLUE);
+			LogadoEstacionado tela = main.getLogadoEstacionado();
+			tela.setVisible(true);
+			tela.requestFocus();			
+			estacionamentoPrincipal.setVisible(false);
+			Estacionamentos estacionamentos = main.getEstacionamentos();
+			estacionamentos.setVisible(false);
+		}else {
+			JOptionPane.showMessageDialog(null, "Vaga ocupada!", "Erro",
+					JOptionPane.WARNING_MESSAGE);
+		}
 	}
 }
