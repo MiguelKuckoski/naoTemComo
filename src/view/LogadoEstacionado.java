@@ -23,6 +23,8 @@ public class LogadoEstacionado extends JFrame {
 	private JButton btnDesestacionar;
 	private JButton btnOpcoes;
 	private Main main = Main.INSTANCIA;
+	private Estacionamento estacionamentoAtual = null;
+
 
 	/**
 	 * Launch the application.
@@ -122,8 +124,20 @@ public class LogadoEstacionado extends JFrame {
 	}
 
 	public void mostrarTela(Estacionamento estacionamento) {
+		if(estacionamentoAtual != null) {
+			estacionamentoAtual.setVisible(false);
+		}
+		
+		estacionamentoAtual = estacionamento;
+		
+		setBounds(100, 100, 1096, 436);
+		contentPane.add(estacionamentoAtual).setBounds(374, 11, 700, 369);	
+		estacionamentoAtual.displayValues();
+		estacionamentoAtual.setVisible(true);	
+		
+	/*	
 		contentPane.add(estacionamento).setBounds(374, 11, 700, 369);
 		estacionamento.setVisible(true);
-		estacionamento.requestFocus();
+		estacionamento.requestFocus();*/
 	}
 }

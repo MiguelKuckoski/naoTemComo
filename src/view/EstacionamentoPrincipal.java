@@ -374,8 +374,7 @@ public class EstacionamentoPrincipal extends Estacionamento {
 			tela.setVisible(true);
 			
 			tela.requestFocus();
-			tela.mostrarTela(controle.getLoggedUser().getSelectedVeiculo().getEstacionado());
-			estacionamentoPrincipal.setVisible(false);
+		//	estacionamentoPrincipal.setVisible(false);
 			Estacionamentos estacionamentos = main.getEstacionamentos();
 			estacionamentos.setVisible(false);
 			
