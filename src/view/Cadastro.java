@@ -528,7 +528,14 @@ public class Cadastro extends JFrame implements Iview {
 			btnVoltar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
+					cleanValues();
 					
+					Index index = main.getIndex();
+					index.setVisible(true);
+					index.requestFocus();
+					
+					Cadastro cadastro = main.getCadastro();
+					cadastro.setVisible(false);
 				}
 			});
 		}
