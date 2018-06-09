@@ -21,6 +21,7 @@ public class Estacionamentos extends JFrame {
 	private JButton btnEstacionamentoDosFundos;
 	private Main main = Main.INSTANCIA;
 	private Estacionamento estacionamentoAtual = null;
+	private JButton btnVoltar;
 	
 	/**
 	 * Launch the application. Create the frame.
@@ -37,6 +38,7 @@ public class Estacionamentos extends JFrame {
 		contentPane.add(getBtnEstacionamentoPrincipal());
 		contentPane.add(getBtnEstacionamentoDeMotos());
 		contentPane.add(getBtnEstacionamentoDosFundos());	
+		contentPane.add(getBtnVoltar());
 	}
 	
 	private JButton getBtnEstacionamentoPrincipal() {
@@ -67,7 +69,7 @@ public class Estacionamentos extends JFrame {
 				}
 			});
 			btnEstacionamentoDeMotos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			btnEstacionamentoDeMotos.setBounds(53, 150, 219, 65);
+			btnEstacionamentoDeMotos.setBounds(53, 110, 219, 65);
 		}
 		return btnEstacionamentoDeMotos;
 	}
@@ -83,7 +85,7 @@ public class Estacionamentos extends JFrame {
 				}
 			});
 			btnEstacionamentoDosFundos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			btnEstacionamentoDosFundos.setBounds(53, 270, 219, 65);
+			btnEstacionamentoDosFundos.setBounds(53, 195, 219, 65);
 		}
 		return btnEstacionamentoDosFundos;
 	}
@@ -102,5 +104,35 @@ public class Estacionamentos extends JFrame {
 		
 	
 	}
-	
+	private JButton getBtnVoltar() {
+		if (btnVoltar == null) {
+			btnVoltar = new JButton("Voltar");
+			btnVoltar.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if(estacionamentoAtual != null) {
+						LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+						logadoNaoEstacionado.setVisible(true);
+						logadoNaoEstacionado.requestFocus();
+						
+						estacionamentoAtual.setVisible(false);
+											
+						Estacionamentos estacionamentos = main.getEstacionamentos();
+						estacionamentos.setVisible(false);
+					}else {
+						LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
+						logadoNaoEstacionado.setVisible(true);
+						logadoNaoEstacionado.requestFocus();
+											
+						Estacionamentos estacionamentos = main.getEstacionamentos();
+						estacionamentos.setVisible(false);
+					}
+					setBounds(100, 100, 348, 436);
+				}
+			});
+			btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			btnVoltar.setBounds(53, 284, 219, 65);
+		}
+		return btnVoltar;
+	}
 }
