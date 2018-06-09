@@ -32,9 +32,9 @@ public class LogadoEstacionado extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @param estacionamento 
 	 */
-	public LogadoEstacionado(Controle controle, Estacionamento estacionamento) {
+	public LogadoEstacionado(Controle controle) {
+		setTitle("Logado estacionado");
 		this.controle = controle;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1096, 436);
@@ -62,11 +62,6 @@ public class LogadoEstacionado extends JFrame {
 				.addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE).addGap(172)
 				.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)));
 		contentPane.setLayout(gl_contentPane);
-		
-		contentPane.add(estacionamento).setBounds(374, 11, 700, 369);
-		estacionamento.setVisible(true);
-		estacionamento.displayValues();
-		estacionamento.requestFocus();
 		
 	}
 
@@ -123,21 +118,4 @@ public class LogadoEstacionado extends JFrame {
 		return btnOpcoes;
 	}
 
-	public void mostrarTela(Estacionamento estacionamento) {
-		if(estacionamentoAtual != null) {
-			estacionamentoAtual.setVisible(false);
-		}
-		
-		estacionamentoAtual = estacionamento;
-		
-		setBounds(100, 100, 1096, 436);
-		contentPane.add(estacionamentoAtual).setBounds(374, 11, 700, 369);	
-		estacionamentoAtual.displayValues();
-		estacionamentoAtual.setVisible(true);	
-		
-	/*	
-		contentPane.add(estacionamento).setBounds(374, 11, 700, 369);
-		estacionamento.setVisible(true);
-		estacionamento.requestFocus();*/
-	}
 }

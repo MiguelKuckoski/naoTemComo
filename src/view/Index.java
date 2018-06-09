@@ -43,6 +43,7 @@ public class Index extends JFrame {
 	 * @param controle 
 	 */
 	public Index(Controle controle) {
+		setTitle("Index");
 		this.controle = controle;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 418, 353);
@@ -199,8 +200,7 @@ public class Index extends JFrame {
 			//Verifica qual sera a proxima tela.
 			
 			if (estacionado) {
-				Estacionamento estacionamento = controle.getLoggedUser().getSelectedVeiculo().getEstacionado();
-				LogadoEstacionado logadoEstacionado= main.getLogadoEstacionado(estacionamento);
+				LogadoEstacionado logadoEstacionado= main.getLogadoEstacionado();
 				logadoEstacionado.setVisible(true);				
 				logadoEstacionado.requestFocus();
 				
@@ -213,6 +213,7 @@ public class Index extends JFrame {
 			// torna a tela index invisivel.
 			Index index = main.getIndex();
 			index.setVisible(false);
+			cleanValues();
 			
 			
 		} else {
@@ -220,5 +221,8 @@ public class Index extends JFrame {
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
-
+	public void cleanValues() {
+		getTextFieldCpf().setText("");
+		getPasswordField().setText("");
+	}
 }

@@ -80,20 +80,13 @@ public class Main {
 		return logadoNaoEstacionado;
 	}
 
-	public LogadoEstacionado getLogadoEstacionado(Estacionamento estacionamento) {
+	public LogadoEstacionado getLogadoEstacionado() {
 		if(logadoEstacionado == null) {
-			logadoEstacionado = new LogadoEstacionado(controle, estacionamento);
+			logadoEstacionado = new LogadoEstacionado(controle);
 		}
 		return logadoEstacionado;
 	}
-	
-	public LogadoEstacionado getLogadoEstacionado() {
-//		if(logadoEstacionado == null) {
-//			logadoEstacionado = new LogadoEstacionado(controle);
-//		}
-		return logadoEstacionado;
-	}
-	
+
 
 	public void populateCadastro() {
 		Usuario usuario = new Usuario();

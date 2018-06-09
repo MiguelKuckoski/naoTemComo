@@ -30,6 +30,7 @@ public class LogadoNaoEstacionado extends JFrame {
 	 * Create the frame.
 	 */
 	public LogadoNaoEstacionado(Controle controle) {
+		setTitle("Logado não estacionado");
 		this.controle = controle;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 315, 431);

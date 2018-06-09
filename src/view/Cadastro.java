@@ -243,12 +243,6 @@ public class Cadastro extends JFrame implements Iview {
 			assignValues(); // cria o objeto usuario.
 			cleanValues();
 
-			Index index = main.getIndex();
-			index.setVisible(true);
-			index.requestFocus();
-			Cadastro cadastro = main.getCadastro();
-			cadastro.setVisible(false);
-
 			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "WARNING",
 					JOptionPane.WARNING_MESSAGE);
 
@@ -516,6 +510,12 @@ public class Cadastro extends JFrame implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					save();
+					Index index = main.getIndex();
+					index.setVisible(true);
+					index.requestFocus();
+					Cadastro cadastro = main.getCadastro();
+					cadastro.setVisible(false);
+					cadastroVeiculo.getVeiculos().clear();
 				}
 			});
 		}
@@ -536,6 +536,8 @@ public class Cadastro extends JFrame implements Iview {
 					
 					Cadastro cadastro = main.getCadastro();
 					cadastro.setVisible(false);
+					
+					cadastroVeiculo.getVeiculos().clear();
 				}
 			});
 		}

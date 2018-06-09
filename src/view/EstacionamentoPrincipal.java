@@ -370,7 +370,7 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		if(estacionar(posicao,controle.getLoggedUser(), estacionamentoPrincipal)) {
 			
 			getBtnVagas().get(posicao-1).setBackground(Color.BLUE);
-			LogadoEstacionado tela = main.getLogadoEstacionado(controle.getLoggedUser().getSelectedVeiculo().getEstacionado());
+			LogadoEstacionado tela = main.getLogadoEstacionado();
 			tela.setVisible(true);
 			
 			tela.requestFocus();
