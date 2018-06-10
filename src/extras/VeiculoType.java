@@ -24,7 +24,7 @@ public enum VeiculoType {
 		}
 		
 		public boolean compare(String comparison) {
-			return this.code.equals(comparison) || this.name.equals(comparison);
+			return this.code.equals(comparison) || this.name.equalsIgnoreCase(comparison);
 		}
 		
 		public static VeiculoType getType(String tipo) {

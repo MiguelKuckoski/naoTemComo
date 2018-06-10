@@ -383,17 +383,29 @@ public class EstacionamentoMotos extends Estacionamento {
 	public void verificarVaga(int posicao) {
 		EstacionamentoMotos estacionamentoMotos = main.getEstacionamentoMoto();
 		
-		if(estacionar(posicao,controle.getLoggedUser(), estacionamentoMotos)) {
-			getBtnVagas().get(posicao-1).setBackground(Color.BLUE);
-			LogadoEstacionado tela = main.getLogadoEstacionado();
-			tela.setVisible(true);
-			tela.requestFocus();			
-			estacionamentoMotos.setVisible(false);
-			Estacionamentos estacionamentos = main.getEstacionamentos();
-			estacionamentos.setVisible(false);
+		if(getTipoVeiculo() == controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo()) {
+			if(controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {
+				if(estacionar(posicao,controle.getLoggedUser(), estacionamentoMotos)) {
+					getBtnVagas().get(posicao-1).setBackground(Color.BLUE);
+					LogadoEstacionado tela = main.getLogadoEstacionado();
+					tela.setVisible(true);
+					tela.requestFocus();			
+					estacionamentoMotos.setVisible(false);
+					Estacionamentos estacionamentos = main.getEstacionamentos();
+					estacionamentos.setVisible(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "Vaga ocupada!", "Erro",
+							JOptionPane.WARNING_MESSAGE);
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Seu veiculo já está ocupando uma vaga.", 
+						"Erro", JOptionPane.WARNING_MESSAGE);
+			}
 		}else {
-			JOptionPane.showMessageDialog(null, "Vaga ocupada!", "Erro",
-					JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Tipo de estacionamento incompativel com seu veiculo.", 
+					"Erro", JOptionPane.WARNING_MESSAGE);
 		}
+		
+
 	}
 }

@@ -35,6 +35,10 @@ import vo.Main;
 import vo.Usuario;
 
 public class Cadastro extends JFrame implements Iview {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblDadosPessoais;
 	private JLabel lblNome;
@@ -243,12 +247,19 @@ public class Cadastro extends JFrame implements Iview {
 			assignValues(); // cria o objeto usuario.
 			cleanValues();
 
+			Index index = main.getIndex();
+			index.setVisible(true);
+			index.requestFocus();
+			Cadastro cadastro = main.getCadastro();
+			cadastro.setVisible(false);
+			cadastroVeiculo.listClear();
+			
 			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "WARNING",
-					JOptionPane.WARNING_MESSAGE);
+					JOptionPane.INFORMATION_MESSAGE);
 
 		} else {
 			JOptionPane.showMessageDialog(null, "Preencha todos os campos: \n " + validacao, "WARNING",
-					JOptionPane.WARNING_MESSAGE);
+					JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -513,13 +524,7 @@ public class Cadastro extends JFrame implements Iview {
 			btnCadastrar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					save();
-					Index index = main.getIndex();
-					index.setVisible(true);
-					index.requestFocus();
-					Cadastro cadastro = main.getCadastro();
-					cadastro.setVisible(false);
-					cadastroVeiculo.getVeiculos().clear();
+					save();					
 				}
 			});
 		}
@@ -541,7 +546,7 @@ public class Cadastro extends JFrame implements Iview {
 					Cadastro cadastro = main.getCadastro();
 					cadastro.setVisible(false);
 					
-					cadastroVeiculo.getVeiculos().clear();
+					cadastroVeiculo.listClear();
 				}
 			});
 		}
@@ -603,8 +608,7 @@ public class Cadastro extends JFrame implements Iview {
 						textFieldCidade.setText(viaCep.getLocalidade());
 						// txtUF.setText(viaCep.getUf());
 					} catch (ViaCEPException erro) {
-						System.out.println("error : " + erro);
-						// e.printStackTrace();
+						JOptionPane.showMessageDialog(null, "Cep não encontrado.", "erro", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			});

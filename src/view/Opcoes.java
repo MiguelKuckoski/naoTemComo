@@ -114,6 +114,12 @@ public class Opcoes extends JFrame {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					controle.removeUsuario();
+					Index index = main.getIndex();
+					index.setVisible(true);
+					index.requestFocus();
+					
+					Opcoes opcoes = main.getOpcoes();
+					opcoes.setVisible(false);
 				}	
 			});
 			btnEncerrarConta.setFont(new Font("Tahoma", Font.PLAIN, 16));

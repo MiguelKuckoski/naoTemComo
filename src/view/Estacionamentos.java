@@ -49,7 +49,6 @@ public class Estacionamentos extends JFrame {
 				public void mouseClicked(MouseEvent e) {
 					EstacionamentoPrincipal estacionamento= main.getEstacionamentoPrincipal();
 					mostrarEstacionamento(estacionamento);
-					
 				}
 			});
 			btnEstacionamentoPrincipal.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -90,7 +89,7 @@ public class Estacionamentos extends JFrame {
 		return btnEstacionamentoDosFundos;
 	}
 	
-	private void mostrarEstacionamento (Estacionamento estacionamento) {
+	public void mostrarEstacionamento (Estacionamento estacionamento) {
 		if(estacionamentoAtual != null) {
 			estacionamentoAtual.setVisible(false);
 		}
@@ -104,6 +103,7 @@ public class Estacionamentos extends JFrame {
 		
 	
 	}
+	
 	private JButton getBtnVoltar() {
 		if (btnVoltar == null) {
 			btnVoltar = new JButton("Voltar");

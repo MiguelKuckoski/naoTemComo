@@ -70,7 +70,7 @@ public abstract class Estacionamento extends JPanel {
 
 	public  void displayValues() {
 		for(int i =0; i < getBtnVagas().size(); i++) {
-			if(vagas[i] != null) {
+			if(vagas[i] != null) { 
 				if(vagas[i].getPlaca() == controle.getLoggedUser().getSelectedVeiculo().getPlaca()) {
 					getBtnVagas().get(i).setBackground(Color.BLUE);
 				}else {
@@ -79,6 +79,19 @@ public abstract class Estacionamento extends JPanel {
 			}else {
 				getBtnVagas().get(i).setBackground(Color.GREEN);
 			}
+		}
+	}
+
+
+	public void desestacionar(Veiculo selectedveiculo) {
+		for(int i = 0; i < vagas.length; i++) {
+			if(vagas[i] != null) {
+				if(vagas[i].getPlaca() == selectedveiculo.getPlaca()) {
+					vagas[i] = null;
+					break;
+				}
+			}
+			
 		}
 	}
 }

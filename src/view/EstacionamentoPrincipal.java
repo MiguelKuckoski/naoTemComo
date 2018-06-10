@@ -27,18 +27,17 @@ public class EstacionamentoPrincipal extends Estacionamento {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * Create the panel. 
+	 * Create the panel.
 	 */
-	
+
 	private static String estacionamentoNome;
 	private static int numeroVagas;
 	private static VeiculoType tipoVeiculo;
 	private static Endereco endereco;
 
-	
 	public EstacionamentoPrincipal(Controle controle) {
-		super(getEndereco(),getTipoVeiculo(),getEstacionamentoNome(),getNumeroVagas(), controle);
-		
+		super(getEndereco(), getTipoVeiculo(), getEstacionamentoNome(), getNumeroVagas(), controle);
+
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(new Color(204, 255, 204));
 		JPanel panel = new JPanel();
@@ -49,7 +48,7 @@ public class EstacionamentoPrincipal extends Estacionamento {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				int posicao = 1;
-				verificarVaga(posicao);				
+				verificarVaga(posicao);
 			}
 		});
 		btnVaga_1.setContentAreaFilled(false);
@@ -76,7 +75,7 @@ public class EstacionamentoPrincipal extends Estacionamento {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int posicao = 8;
-				verificarVaga(posicao);				
+				verificarVaga(posicao);
 			}
 		});
 		btnVaga_8.setContentAreaFilled(false);
@@ -202,115 +201,100 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		btnVaga_12.setBorderPainted(true);
 		btnVaga_12.setBorder(bordapretaumpixel);
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE).addGap(18)
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVaga_1, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_2, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_3, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_4, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_5, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnVaga_1, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_2, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_3, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_4, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_5, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(
+										ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVaga_7, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_8, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_9, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_10, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_11, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnVaga_12, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(61, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnVaga_7, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_8, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_9, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_10, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_11, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(btnVaga_12, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
+				.addContainerGap(61, Short.MAX_VALUE)));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap().addGroup(groupLayout
+						.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVaga_6, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(btnVaga_12, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnVaga_6, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+								.addComponent(btnVaga_12, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVaga_5, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(btnVaga_11, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnVaga_5, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+								.addComponent(btnVaga_11, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVaga_4, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(btnVaga_10, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnVaga_4, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+								.addComponent(btnVaga_10, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVaga_3, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(btnVaga_9, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnVaga_3, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+								.addComponent(btnVaga_9, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVaga_2, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(btnVaga_8, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnVaga_2, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+								.addComponent(btnVaga_8, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVaga_1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-							.addComponent(btnVaga_7, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
-					.addContainerGap())
-		);
-		
+								.addComponent(btnVaga_1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+								.addComponent(btnVaga_7, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)).addContainerGap()));
+
 		JTextPane txtpnInformativo = new JTextPane();
 		txtpnInformativo.setBackground(SystemColor.control);
 		txtpnInformativo.setText("Informativo:");
-		
+
 		JButton button_1 = new JButton("Ocupado");
 		button_1.setEnabled(false);
 		button_1.setBackground(Color.RED);
-		
+
 		JButton btnDisponvel = new JButton("Disponível");
 		btnDisponvel.setEnabled(false);
 		btnDisponvel.setBackground(Color.GREEN);
-		
+
 		JButton btnVoc = new JButton("Você");
 		btnVoc.setEnabled(false);
 		btnVoc.setBackground(Color.BLUE);
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(button_1, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-						.addComponent(txtpnInformativo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnDisponvel, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnVoc, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(txtpnInformativo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(140)
-					.addComponent(button_1)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnDisponvel)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnVoc)
-					.addContainerGap(66, Short.MAX_VALUE))
-		);
+		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(button_1, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+								.addComponent(txtpnInformativo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnDisponvel, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnVoc, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap()));
+		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+						.addComponent(txtpnInformativo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addGap(140).addComponent(button_1).addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(btnDisponvel).addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnVoc)
+						.addContainerGap(66, Short.MAX_VALUE)));
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
-		
+
 		getBtnVagas().add(btnVaga_1);
 		getBtnVagas().add(btnVaga_2);
 		getBtnVagas().add(btnVaga_3);
@@ -326,62 +310,72 @@ public class EstacionamentoPrincipal extends Estacionamento {
 	}
 
 	public static String getEstacionamentoNome() {
-		if(estacionamentoNome == null) {
+		if (estacionamentoNome == null) {
 			estacionamentoNome = "Estacionamento Principal";
 		}
 		return estacionamentoNome;
 	}
-	
+
 	public static int getNumeroVagas() {
-		if(numeroVagas == 0) {
+		if (numeroVagas == 0) {
 			numeroVagas = 12;
 		}
 		return numeroVagas;
-			
+
 	}
-		
+
 	public static VeiculoType getTipoVeiculo() {
-		if(tipoVeiculo == null) {
-			tipoVeiculo = VeiculoType.getType("Carro") ;
+		if (tipoVeiculo == null) {
+			tipoVeiculo = VeiculoType.getType("Carro");
 		}
 		return tipoVeiculo;
 	}
-	
+
 	public static Endereco getEndereco() {
 
-		if(endereco == null) {
+		if (endereco == null) {
 			String rua = "Avenida Pedra Branca";
-			int cep = 88137-270;
+			int cep = 88137 - 270;
 			String bairro = "Pedra Branca";
 			String cidade = "Palhoça";
 			int numero = 25;
 			String complemento = "Estacionamento Principal";
 			String estado = "Santa Catarina";
-			Endereco endereco = new Endereco(rua,cep, numero, bairro, estado);
+			Endereco endereco = new Endereco(rua, cep, numero, bairro, estado);
 			endereco.setCidade(cidade);
 			endereco.setComplemento(complemento);
 		}
 		return endereco;
 	}
-	
+
 	public void verificarVaga(int posicao) {
 		EstacionamentoPrincipal estacionamentoPrincipal = main.getEstacionamentoPrincipal();
-		
-		if(estacionar(posicao,controle.getLoggedUser(), estacionamentoPrincipal)) {
-			
-			getBtnVagas().get(posicao-1).setBackground(Color.BLUE);
-			LogadoEstacionado tela = main.getLogadoEstacionado();
-			tela.setVisible(true);
-			
-			tela.requestFocus();
-		//	estacionamentoPrincipal.setVisible(false);
-			Estacionamentos estacionamentos = main.getEstacionamentos();
-			estacionamentos.setVisible(false);
-			
-		}else {
-			JOptionPane.showMessageDialog(null, "Vaga ocupada!", "Erro",
+
+		if (getTipoVeiculo() == controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo()) {
+			if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {
+				if (estacionar(posicao, controle.getLoggedUser(), estacionamentoPrincipal)) {
+
+					getBtnVagas().get(posicao - 1).setBackground(Color.BLUE);
+					LogadoEstacionado tela = main.getLogadoEstacionado();
+					tela.setVisible(true);
+
+					tela.requestFocus();
+					estacionamentoPrincipal.setVisible(false);
+					Estacionamentos estacionamentos = main.getEstacionamentos();
+					estacionamentos.setVisible(false);
+
+				} else {
+					JOptionPane.showMessageDialog(null, "Vaga ocupada!", "Erro", JOptionPane.WARNING_MESSAGE);
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "Seu veiculo já está ocupando uma vaga.", "Erro",
+						JOptionPane.WARNING_MESSAGE);
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Tipo de estacionamento incompativel com seu veiculo.", "Erro",
 					JOptionPane.WARNING_MESSAGE);
 		}
+
 	}
 
 }

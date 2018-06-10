@@ -26,7 +26,6 @@ public class EditarVeiculos extends CadastroVeiculo{
 			
 	}
 	
-	
 	private void cancelar() {
 		Opcoes opcoes = main.getOpcoes();
 		opcoes.setVisible(true);

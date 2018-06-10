@@ -17,14 +17,16 @@ import vo.Main;
 
 public class LogadoEstacionado extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Controle controle;
 	private JButton btnSair;
 	private JButton btnDesestacionar;
 	private JButton btnOpcoes;
 	private Main main = Main.INSTANCIA;
-	private Estacionamento estacionamentoAtual = null;
-
 
 	/**
 	 * Launch the application.
@@ -91,10 +93,15 @@ public class LogadoEstacionado extends JFrame {
 			btnDesestacionar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
+					Estacionamento estacionamento = controle.getLoggedUser().getSelectedVeiculo().getEstacionado();
+					estacionamento.desestacionar(controle.getLoggedUser().getSelectedVeiculo());
 					
+					LogadoNaoEstacionado tela = main.getLogadoNaoEstacionado();
+					tela.setVisible(true);
+					tela.requestFocus();
 					
-//					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
-//					logadoEstacionado.setVisible(false);
+					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
+					logadoEstacionado.setVisible(false);
 				}
 			});
 		}

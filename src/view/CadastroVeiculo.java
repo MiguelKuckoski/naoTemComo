@@ -143,7 +143,6 @@ public class CadastroVeiculo extends JFrame implements Iview {
 						.addComponent(getBtnConfirmar()))
 				.addContainerGap()));
 		contentPane.setLayout(gl_contentPane);
-
 	}
 
 	public void cleanValues() {
@@ -424,7 +423,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					if (getTable().getSelectedRowCount() == 1) {
-
+						getTable().removeAll();
 						TableModel model = getTable().getModel();
 						String placa = ((DefaultTableModel) model).getValueAt(getTable().getSelectedRow(), 1)
 								.toString();
@@ -484,9 +483,15 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		Cadastro cadastro = main.getCadastro();
 		cadastro.setVisible(true);
 		cadastro.requestFocus();
-		
 		CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
 		cadastroVeiculo.setVisible(false);
 		
+	}
+
+	public void listClear() {
+		DefaultTableModel model = (DefaultTableModel) getTable().getModel();
+		model.setRowCount(0);
+		this.veiculos.clear();
+		this.veiculosNovos.clear();
 	}
 }
