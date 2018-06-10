@@ -69,6 +69,12 @@ public class Opcoes extends JFrame {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					EditarVeiculos editarVeiculos= main.getEditarVeiculos();
+					editarVeiculos.setVisible(true);
+					editarVeiculos.requestFocus();
+					
+					Opcoes opcoes = main.getOpcoes();
+					opcoes.setVisible(false);
 				}
 			});
 			btnVeiculos.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -107,17 +113,8 @@ public class Opcoes extends JFrame {
 			btnEncerrarConta.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {
-//						controle.removeUsuario(controle.getLoggedUser());
-//						String[] args = null;
-//						Index.main(args);
-//						frame.setVisible(false);
-					} else {
-						JOptionPane.showMessageDialog(null, "Remove seu carro da vaga.", "Erro!",
-								JOptionPane.WARNING_MESSAGE);
-					}
-
-				}
+					controle.removeUsuario();
+				}	
 			});
 			btnEncerrarConta.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		}
@@ -139,8 +136,6 @@ public class Opcoes extends JFrame {
 						Opcoes opcoes = main.getOpcoes();
 						opcoes.setVisible(false);
 
-				//		LogadoEstacionado.logadoEstacionado(controle);
-
 					} else {
 						LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 						logadoNaoEstacionado.setVisible(true);
@@ -148,8 +143,6 @@ public class Opcoes extends JFrame {
 						
 						Opcoes opcoes = main.getOpcoes();
 						opcoes.setVisible(false);
-
-						// LogadoNaoEstacionado.logadoNaoEstacionado(controle);
 					}
 				}
 			});

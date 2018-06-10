@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 public class Controle {
 	private List<Estacionamento> estacionamento;
 	private List<Usuario> usuarios;
@@ -34,15 +36,15 @@ public class Controle {
 		this.usuarios.add(usuario);
 	}	
 	
-	public void removeUsuario(Usuario usuario) {
+	public void removeUsuario() {
 		
 		if(loggedUser.getSelectedVeiculo().getEstacionado()==null) {
 			this.usuarios.remove(loggedUser);
 			loggedUser=null;
+			
 		}else {
-			loggedUser.getSelectedVeiculo().setEstacionado(null);
-			this.usuarios.remove(loggedUser);
-			loggedUser=null;
+			JOptionPane.showMessageDialog(null, "Remova seu carro da vaga.", "WARNING",
+					JOptionPane.WARNING_MESSAGE);
 		}
 		
 	}

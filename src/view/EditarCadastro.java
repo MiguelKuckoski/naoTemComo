@@ -89,7 +89,6 @@ public class EditarCadastro extends JFrame implements Iview {
 		textFieldNome.setText(controle.getLoggedUser().getNome());
 		String cep = "" + controle.getLoggedUser().getEndereco().getCep();
 		String cep2 = cep.replaceAll("[^0-9]", "");
-		System.out.println(cep);
 		textFieldCpf.setText(controle.getLoggedUser().getCpf());
 		textFieldCnh.setText(controle.getLoggedUser().getCnh());
 		textFieldSenha.setText(controle.getLoggedUser().getSenha());

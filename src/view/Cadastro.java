@@ -316,7 +316,11 @@ public class Cadastro extends JFrame implements Iview {
 		if (getTextFieldBairro().getText().length() == 0) {
 			validacao += "Informe o bairro \n";
 		}
-
+		
+		if(cadastroVeiculo.getVeiculos().size() == 0) {
+			validacao += "Adicione um veiculo. \n";
+		}
+		
 		if (validacao.length() > 0) {
 			return validacao;
 		} else {

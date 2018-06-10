@@ -6,6 +6,7 @@ import extras.VeiculoType;
 import view.Cadastro;
 import view.CadastroVeiculo;
 import view.EditarCadastro;
+import view.EditarVeiculos;
 import view.EstacionamentoFundo;
 import view.EstacionamentoMotos;
 import view.EstacionamentoPrincipal;
@@ -29,6 +30,7 @@ public class Main {
 	private EstacionamentoPrincipal estacionamentoPrincipal;
 	private EstacionamentoFundo estacionamentoFundo;
 	private EstacionamentoMotos estacionamentoMotos;
+	private EditarVeiculos editarVeiculos;
 	
 	
 	public static void main(String[] params) {
@@ -150,6 +152,12 @@ public class Main {
 			estacionamentoMotos = new EstacionamentoMotos(controle);
 		}
 		return estacionamentoMotos;
+	}
+
+	public EditarVeiculos getEditarVeiculos() {
+		if(editarVeiculos == null)
+			editarVeiculos = new EditarVeiculos(controle);
+		return editarVeiculos;
 	}
 
 }

@@ -386,19 +386,14 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		this.veiculosNovos = veiculos;
 	}
 
-	private JButton getBtnCancelar() {
+	public JButton getBtnCancelar() {
 		if (btnCancelar == null) {
 			btnCancelar = new JButton("Cancelar");
 			btnCancelar.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					getVeiculosNovos().clear();
-					Cadastro cadastro = main.getCadastro();
-					cadastro.setVisible(true);
-					cadastro.requestFocus();
-					
-					CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
-					cadastroVeiculo.setVisible(false);
+					cancelar();
 					
 				}
 			});
@@ -407,7 +402,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		return btnCancelar;
 	}
 
-	private JButton getBtnCadastrar() {
+	public JButton getBtnCadastrar() {
 		if (btnCadastrar == null) {
 			btnCadastrar = new JButton("Cadastrar");
 			btnCadastrar.addMouseListener(new MouseAdapter() {
@@ -422,7 +417,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		return btnCadastrar;
 	}
 
-	private JButton getBtnExcluir() {
+	public JButton getBtnExcluir() {
 		if (btnExcluir == null) {
 			btnExcluir = new JButton("Excluir");
 			btnExcluir.addMouseListener(new MouseAdapter() {
@@ -463,7 +458,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		return btnExcluir;
 	}
 
-	private JButton getBtnConfirmar() {
+	public JButton getBtnConfirmar() {
 		if (btnConfirmar == null) {
 			btnConfirmar = new JButton("Confirmar");
 			btnConfirmar.addMouseListener(new MouseAdapter() {
@@ -482,5 +477,16 @@ public class CadastroVeiculo extends JFrame implements Iview {
 			btnConfirmar.setBounds(152, 542, 120, 23);
 		}
 		return btnConfirmar;
+	}
+
+	private void cancelar() {
+		
+		Cadastro cadastro = main.getCadastro();
+		cadastro.setVisible(true);
+		cadastro.requestFocus();
+		
+		CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
+		cadastroVeiculo.setVisible(false);
+		
 	}
 }
