@@ -33,6 +33,7 @@ import extras.Iview;
 import vo.Controle;
 import vo.Main;
 import vo.Usuario;
+import java.awt.Color;
 
 public class Cadastro extends JFrame implements Iview {
 	/**
@@ -72,6 +73,7 @@ public class Cadastro extends JFrame implements Iview {
 	private Main main = Main.INSTANCIA;
 	private JButton btnBuscar;
 	private CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application. Create the frame.
@@ -91,135 +93,136 @@ public class Cadastro extends JFrame implements Iview {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane
-				.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(getLblDadosPessoais(), GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(getLblCpf()).addComponent(getLblNome(),
-												GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(getTextFieldCpf(), GroupLayout.PREFERRED_SIZE, 194,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(getTextFieldNome(), GroupLayout.PREFERRED_SIZE, 193,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(32)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(getLblCnh(), GroupLayout.PREFERRED_SIZE, 47,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(getLblSenha()))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(getTextFieldCnh(), GroupLayout.PREFERRED_SIZE, 157,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(getTextFieldSenha(), GroupLayout.PREFERRED_SIZE, 157,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(126))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(39)
-								.addComponent(getTable(), GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(641, Short.MAX_VALUE))
-						.addGroup(gl_contentPane
-								.createSequentialGroup().addContainerGap()
-								.addComponent(
-										getLblEndereo(), GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(308, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(getLblBairro()).addComponent(getLblCidade())
-										.addComponent(getLblEstado()).addComponent(getLblCep())
-										.addComponent(getLblComplemento()).addComponent(getLblRua()))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(getTextFieldBairro(), GroupLayout.PREFERRED_SIZE, 215,
-												GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-												.addComponent(getComboBoxEstado(), Alignment.LEADING, 0,
-														GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(
-														getTextFieldCidade(), Alignment.LEADING,
-														GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
-										.addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane
-												.createParallelGroup(Alignment.LEADING)
-												.addComponent(getTextFieldCep(), GroupLayout.PREFERRED_SIZE, 216,
-														GroupLayout.PREFERRED_SIZE)
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-														.addComponent(
-																getTextFieldComplemento(), GroupLayout.PREFERRED_SIZE,
-																214, GroupLayout.PREFERRED_SIZE)
-														.addComponent(getTextFieldRua(), GroupLayout.PREFERRED_SIZE,
-																215, GroupLayout.PREFERRED_SIZE)))
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-														.addGroup(gl_contentPane.createSequentialGroup().addGap(63)
-																.addComponent(getLblN(), GroupLayout.PREFERRED_SIZE, 43,
-																		GroupLayout.PREFERRED_SIZE)
-																.addGap(4).addComponent(getTextFieldNumero(),
-																		GroupLayout.PREFERRED_SIZE,
-																		GroupLayout.DEFAULT_SIZE,
-																		GroupLayout.PREFERRED_SIZE))
-														.addGroup(gl_contentPane.createSequentialGroup().addGap(18)
-																.addComponent(getBtnBuscar())))))
-								.addContainerGap(154, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-								.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 110,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(41)
-								.addComponent(getBtnVoltar(), GroupLayout.PREFERRED_SIZE, 101,
-										GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(419, Short.MAX_VALUE))
-						.addGroup(gl_contentPane
-								.createSequentialGroup().addGap(14).addComponent(getBtnVeiculos(),
-										GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(536, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup()
-				.addComponent(getLblDadosPessoais(), GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(getLblDadosPessoais(), GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(getLblCpf())
+						.addComponent(getLblNome(), GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(getTextFieldCpf(), GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getTextFieldNome(), GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE))
+					.addGap(32)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(getLblCnh(), GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getLblSenha()))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(getTextFieldCnh(), GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getTextFieldSenha(), GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE))
+					.addGap(126))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(39)
+					.addComponent(getTable(), GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(641, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(getLblEndereo(), GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(308, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(getLblBairro())
+						.addComponent(getLblCidade())
+						.addComponent(getLblEstado())
+						.addComponent(getLblCep())
+						.addComponent(getLblComplemento())
+						.addComponent(getLblRua()))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(getTextFieldBairro(), GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(getComboBoxEstado(), Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(getTextFieldCidade(), Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(getTextFieldCep(), GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+									.addComponent(getTextFieldComplemento(), GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)
+									.addComponent(getTextFieldRua(), GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(63)
+									.addComponent(getLblN(), GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+									.addGap(4)
+									.addComponent(getTextFieldNumero(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(18)
+									.addComponent(getBtnBuscar())))))
+					.addContainerGap(190, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+					.addGap(41)
+					.addComponent(getBtnVoltar(), GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(419, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(14)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(getLblNewLabel())
+						.addComponent(getBtnVeiculos(), GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(536, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(getLblDadosPessoais(), GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(getLblNome(), GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getTextFieldNome(), GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getLblSenha())
 						.addComponent(getTextFieldSenha(), GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
-				.addGap(7)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGap(7)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(getLblCpf(), GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getTextFieldCpf(), GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-						.addComponent(getTextFieldCnh(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
+						.addComponent(getTextFieldCnh(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getLblCnh(), GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-				.addGap(44).addComponent(getLblEndereo(), GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-				.addGap(11)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGap(44)
+					.addComponent(getLblEndereo(), GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(getTextFieldCep(), GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addComponent(getLblCep()).addComponent(getBtnBuscar()))
-				.addGap(18)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getLblCep())
+						.addComponent(getBtnBuscar()))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(getLblN(), GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getTextFieldNumero(), GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getTextFieldRua(), GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getLblRua()))
-				.addGap(18)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(getTextFieldComplemento(), GroupLayout.PREFERRED_SIZE, 26,
-								GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getTextFieldComplemento(), GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getLblComplemento()))
-				.addGap(18)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblBairro())
-						.addComponent(getTextFieldBairro(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addComponent(getTable(), GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblCidade())
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getLblBairro())
+						.addComponent(getTextFieldBairro(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(getTable(), GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getLblCidade())
 						.addComponent(getTextFieldCidade(), GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-				.addGap(18)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblEstado())
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getLblEstado())
 						.addComponent(getComboBoxEstado(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-				.addGap(18).addComponent(getBtnVeiculos(), GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getBtnCadastrar())
+					.addGap(18)
+					.addComponent(getBtnVeiculos(), GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(getLblNewLabel())
+					.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(getBtnCadastrar())
 						.addComponent(getBtnVoltar()))
-				.addContainerGap()));
+					.addContainerGap())
+		);
 		contentPane.setLayout(gl_contentPane);
 	}
 
@@ -258,7 +261,7 @@ public class Cadastro extends JFrame implements Iview {
 					JOptionPane.INFORMATION_MESSAGE);
 
 		} else {
-			JOptionPane.showMessageDialog(null, "Preencha todos os campos: \n " + validacao, "WARNING",
+			JOptionPane.showMessageDialog(null, "Preencha todos os campos: \n" + validacao, "WARNING",
 					JOptionPane.ERROR_MESSAGE);
 		}
 
@@ -300,6 +303,10 @@ public class Cadastro extends JFrame implements Iview {
 	@Override
 	public String validateValues() {
 		String validacao = "";
+		
+		if(getTextFieldSenha().getPassword().length==0) {
+			validacao += "Informe a senha. \n";
+		}
 
 		if (getTextFieldNome().getText().length() == 0) {
 			validacao += "Informe o nome. \n";
@@ -350,7 +357,7 @@ public class Cadastro extends JFrame implements Iview {
 
 	private JLabel getLblNome() {
 		if (lblNome == null) {
-			lblNome = new JLabel("Nome Completo");
+			lblNome = new JLabel("Nome Completo  *");
 		}
 		return lblNome;
 	}
@@ -365,7 +372,7 @@ public class Cadastro extends JFrame implements Iview {
 
 	private JLabel getLblCpf() {
 		if (lblCpf == null) {
-			lblCpf = new JLabel("CPF");
+			lblCpf = new JLabel("CPF  *");
 		}
 		return lblCpf;
 	}
@@ -384,7 +391,7 @@ public class Cadastro extends JFrame implements Iview {
 
 	private JLabel getLblCnh() {
 		if (lblCnh == null) {
-			lblCnh = new JLabel("CNH");
+			lblCnh = new JLabel("CNH  *");
 		}
 		return lblCnh;
 	}
@@ -411,7 +418,7 @@ public class Cadastro extends JFrame implements Iview {
 
 	private JLabel getLblRua() {
 		if (lblRua == null) {
-			lblRua = new JLabel("Rua");
+			lblRua = new JLabel("Rua  *");
 		}
 		return lblRua;
 	}
@@ -425,14 +432,14 @@ public class Cadastro extends JFrame implements Iview {
 
 	private JLabel getLblCep() {
 		if (lblCep == null) {
-			lblCep = new JLabel("Cep");
+			lblCep = new JLabel("Cep  *");
 		}
 		return lblCep;
 	}
 
 	private JLabel getLblBairro() {
 		if (lblBairro == null) {
-			lblBairro = new JLabel("Bairro");
+			lblBairro = new JLabel("Bairro  *");
 		}
 		return lblBairro;
 	}
@@ -453,7 +460,7 @@ public class Cadastro extends JFrame implements Iview {
 
 	private JLabel getLblEstado() {
 		if (lblEstado == null) {
-			lblEstado = new JLabel("Estado");
+			lblEstado = new JLabel("Estado  *");
 		}
 		return lblEstado;
 	}
@@ -572,14 +579,14 @@ public class Cadastro extends JFrame implements Iview {
 
 	private JLabel getLblN() {
 		if (lblN == null) {
-			lblN = new JLabel("N\u00BA");
+			lblN = new JLabel("Nº  *");
 		}
 		return lblN;
 	}
 
 	private JLabel getLblSenha() {
 		if (lblSenha == null) {
-			lblSenha = new JLabel("Senha");
+			lblSenha = new JLabel("Senha  *");
 		}
 		return lblSenha;
 	}
@@ -615,5 +622,12 @@ public class Cadastro extends JFrame implements Iview {
 			btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		}
 		return btnBuscar;
+	}
+	private JLabel getLblNewLabel() {
+		if (lblNewLabel == null) {
+			lblNewLabel = new JLabel("* Campos Obrigatórios");
+			lblNewLabel.setForeground(Color.RED);
+		}
+		return lblNewLabel;
 	}
 }
