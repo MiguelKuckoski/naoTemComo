@@ -392,8 +392,9 @@ public class CadastroVeiculo extends JFrame implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					getVeiculosNovos().clear();
-					cancelar();
-					
+					setVisible(false);
+					main.getCadastro().setVisible(true);
+					main.getCadastro().requestFocus();
 				}
 			});
 			btnCancelar.setBounds(304, 542, 120, 23);
@@ -476,16 +477,6 @@ public class CadastroVeiculo extends JFrame implements Iview {
 			btnConfirmar.setBounds(152, 542, 120, 23);
 		}
 		return btnConfirmar;
-	}
-
-	private void cancelar() {
-		
-		Cadastro cadastro = main.getCadastro();
-		cadastro.setVisible(true);
-		cadastro.requestFocus();
-		CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
-		cadastroVeiculo.setVisible(false);
-		
 	}
 
 	public void listClear() {

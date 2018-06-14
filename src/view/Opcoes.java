@@ -1,6 +1,7 @@
 
 package view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,16 +10,17 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import vo.Controle;
 import vo.Main;
-import java.awt.Color;
 
 public class Opcoes extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JButton btnRelatorios;
 	private JButton btnVeiculos;
@@ -69,12 +71,12 @@ public class Opcoes extends JFrame {
 			btnVeiculos.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					EditarVeiculos editarVeiculos= main.getEditarVeiculos();
-					editarVeiculos.setVisible(true);
-					editarVeiculos.requestFocus();
+					setVisible(false);
 					
-					Opcoes opcoes = main.getOpcoes();
-					opcoes.setVisible(false);
+					EditarVeiculos editarVeiculos = main.getEditarVeiculos();
+					editarVeiculos.setVisible(true);
+					editarVeiculos.displayValues();
+					editarVeiculos.requestFocus();
 				}
 			});
 			btnVeiculos.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -88,7 +90,7 @@ public class Opcoes extends JFrame {
 			btnDadosPessoais.setBounds(74, 163, 170, 49);
 			btnDadosPessoais.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+
 					EditarCadastro editarCadastro = main.getEditarCadastro();
 					editarCadastro.setVisible(true);
 					editarCadastro.requestFocus();
@@ -106,6 +108,7 @@ public class Opcoes extends JFrame {
 		}
 		return btnDadosPessoais;
 	}
+
 	private JButton getBtnEncerrarConta() {
 		if (btnEncerrarConta == null) {
 			btnEncerrarConta = new JButton("Encerrar conta");
@@ -117,15 +120,16 @@ public class Opcoes extends JFrame {
 					Index index = main.getIndex();
 					index.setVisible(true);
 					index.requestFocus();
-					
+
 					Opcoes opcoes = main.getOpcoes();
 					opcoes.setVisible(false);
-				}	
+				}
 			});
 			btnEncerrarConta.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		}
 		return btnEncerrarConta;
 	}
+
 	private JButton getBtnVoltar() {
 		if (btnVoltar == null) {
 			btnVoltar = new JButton("VOLTAR");
@@ -146,7 +150,7 @@ public class Opcoes extends JFrame {
 						LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 						logadoNaoEstacionado.setVisible(true);
 						logadoNaoEstacionado.requestFocus();
-						
+
 						Opcoes opcoes = main.getOpcoes();
 						opcoes.setVisible(false);
 					}
