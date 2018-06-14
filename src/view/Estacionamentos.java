@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 
 import vo.Estacionamento;
@@ -15,6 +14,10 @@ import vo.Main;
 
 public class Estacionamentos extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JButton btnEstacionamentoPrincipal;
 	private JButton btnEstacionamentoDeMotos;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import extras.VeiculoType;
 import view.Cadastro;
 import view.CadastroVeiculo;
+import view.ChooserVeiculo;
 import view.EditarCadastro;
 import view.EditarVeiculos;
 import view.EstacionamentoFundo;
@@ -31,6 +32,7 @@ public class Main {
 	private EstacionamentoFundo estacionamentoFundo;
 	private EstacionamentoMotos estacionamentoMotos;
 	private EditarVeiculos editarVeiculos;
+	private ChooserVeiculo chooserVeiculo;
 	
 	
 	public static void main(String[] params) {
@@ -158,6 +160,12 @@ public class Main {
 		if(editarVeiculos == null)
 			editarVeiculos = new EditarVeiculos(controle);
 		return editarVeiculos;
+	}
+	
+	public ChooserVeiculo getChooserVeiculo() {
+		if(chooserVeiculo == null)
+			chooserVeiculo = new ChooserVeiculo(controle);
+		return chooserVeiculo;
 	}
 
 }

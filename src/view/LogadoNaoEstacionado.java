@@ -16,6 +16,10 @@ import vo.Main;
 
 public class LogadoNaoEstacionado extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Controle controle;
 	private JButton btnSair;
@@ -76,7 +80,8 @@ public class LogadoNaoEstacionado extends JFrame {
 					index.requestFocus();
 
 					LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
-					logadoNaoEstacionado.setVisible(false);			
+					logadoNaoEstacionado.setVisible(false);	
+					controle.getLoggedUser().setSelectedVeiculo(null);
 					controle.setLoggedUser(null);		
 				}
 			});

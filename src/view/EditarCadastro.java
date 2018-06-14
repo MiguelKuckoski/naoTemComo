@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -35,6 +34,10 @@ import vo.Main;
 import vo.Usuario;
 
 public class EditarCadastro extends JFrame implements Iview {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblDadosPessoais;
 	private JLabel lblNome;
@@ -62,7 +65,6 @@ public class EditarCadastro extends JFrame implements Iview {
 	private JButton btnVoltar;
 	private JLabel lblN;
 	private JLabel lblSenha;
-	private JPopupMenu popUpCadastroVeiculo;
 	private JPasswordField textFieldSenha;
 	private Controle controle;
 	private Main main = Main.INSTANCIA;

@@ -13,19 +13,21 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import vo.Controle;
-import vo.Estacionamento;
 import vo.Main;
 import vo.Usuario;
 import vo.Veiculo;
 
 public class Index extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Controle controle;
 	private JLabel lblCpf;
@@ -181,13 +183,10 @@ public class Index extends JFrame {
 			}
 		}
 
+		// Verifica se o usuário já está estacionado.
 		if (controle.getLoggedUser() != null) {
 			boolean estacionado = false;
 			for (Veiculo veiculo : controle.getLoggedUser().getVeiculos()) {
-				
-				if(controle.getLoggedUser().getVeiculos().size() == 1) {
-					controle.getLoggedUser().setSelectedVeiculo(veiculo);
-				}
 				
 				if (veiculo.getEstacionado() != null) {
 					controle.getLoggedUser().setSelectedVeiculo(veiculo);
@@ -208,11 +207,20 @@ public class Index extends JFrame {
 				LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 				logadoNaoEstacionado.setVisible(true);
 				logadoNaoEstacionado.requestFocus();
+				
+				// selecionar veiculo.
+				if(controle.getLoggedUser().getVeiculos().size() == 1) {
+					controle.getLoggedUser().setSelectedVeiculo(controle.getLoggedUser().getVeiculos().get(0));
+
+				}else {
+					main.getChooserVeiculo().setVisible(true);
+					main.getChooserVeiculo().requestFocus();
+					main.getChooserVeiculo().displayValues();
+				}
 			}
 			
 			// torna a tela index invisivel.
-			Index index = main.getIndex();
-			index.setVisible(false);
+			setVisible(false);
 			cleanValues();
 			
 			

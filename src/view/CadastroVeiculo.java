@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
@@ -28,13 +29,15 @@ import javax.swing.text.MaskFormatter;
 
 import extras.Iview;
 import extras.VeiculoType;
-import vo.Controle;
 import vo.Main;
 import vo.Veiculo;
-import java.awt.Color;
 
 public class CadastroVeiculo extends JFrame implements Iview {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblTipo;
 	private JComboBox<VeiculoType> comboBoxVeiculoType;
