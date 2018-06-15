@@ -390,7 +390,7 @@ public class EstacionamentoMotos extends Estacionamento {
 					LogadoEstacionado tela = main.getLogadoEstacionado();
 					tela.setVisible(true);
 					tela.requestFocus();			
-					estacionamentoMotos.setVisible(false);
+					//estacionamentoMotos.setVisible(false);
 					Estacionamentos estacionamentos = main.getEstacionamentos();
 					estacionamentos.setVisible(false);
 				}else {

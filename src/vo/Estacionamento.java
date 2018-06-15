@@ -93,5 +93,6 @@ public abstract class Estacionamento extends JPanel {
 			}
 			
 		}
+		selectedveiculo.setEstacionado(null);
 	}
 }

@@ -60,11 +60,11 @@ public class LogadoEstacionado extends JFrame {
 								.addContainerGap(48, Short.MAX_VALUE)));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
 				.createSequentialGroup().addGap(31)
-				.addComponent(getBtnDesestacionar(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE).addGap(31)
-				.addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE).addGap(172)
-				.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)));
+				.addComponent(getBtnDesestacionar(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+				.addGap(31).addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+				.addGap(172).addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)));
 		contentPane.setLayout(gl_contentPane);
-		
+
 	}
 
 	private JButton getBtnSair() {
@@ -75,7 +75,7 @@ public class LogadoEstacionado extends JFrame {
 				public void mouseClicked(MouseEvent e) {
 					Index index = main.getIndex();
 					index.setVisible(true);
-					index.requestFocus();					
+					index.requestFocus();
 					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
 					logadoEstacionado.dispose();
 					logadoEstacionado.setVisible(false);
@@ -95,13 +95,12 @@ public class LogadoEstacionado extends JFrame {
 				public void mouseClicked(MouseEvent arg0) {
 					Estacionamento estacionamento = controle.getLoggedUser().getSelectedVeiculo().getEstacionado();
 					estacionamento.desestacionar(controle.getLoggedUser().getSelectedVeiculo());
-					
+
 					LogadoNaoEstacionado tela = main.getLogadoNaoEstacionado();
 					tela.setVisible(true);
 					tela.requestFocus();
-					
-					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
-					logadoEstacionado.setVisible(false);
+
+					setVisible(false);
 				}
 			});
 		}
