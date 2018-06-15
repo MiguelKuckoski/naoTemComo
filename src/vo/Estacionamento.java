@@ -1,6 +1,10 @@
 package vo;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -55,6 +59,9 @@ public abstract class Estacionamento extends JPanel {
 		if (vagas[posicao - 1] == null) {
 			vagas[posicao - 1] = usuario.getSelectedVeiculo();
 			usuario.getSelectedVeiculo().setEstacionado(estacionamento);
+					
+			controle.escreverLog(true); //escreve a entrada de um carro;
+			
 			return true;
 		}
 
@@ -84,6 +91,7 @@ public abstract class Estacionamento extends JPanel {
 
 
 	public void desestacionar(Veiculo selectedveiculo) {
+		
 		for(int i = 0; i < vagas.length; i++) {
 			if(vagas[i] != null) {
 				if(vagas[i].getPlaca() == selectedveiculo.getPlaca()) {
@@ -93,6 +101,8 @@ public abstract class Estacionamento extends JPanel {
 			}
 			
 		}
+		selectedveiculo.atualizarUltimoEstacionamento();
 		selectedveiculo.setEstacionado(null);
+		controle.escreverLog(false);
 	}
 }

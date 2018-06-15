@@ -9,6 +9,7 @@ public class Veiculo {
 	private int ano;
 	private VeiculoType tipoVeiculo;
 	private Estacionamento estacionamento;
+	private Estacionamento ultimoEstacionamento;
 
 	public Veiculo() {
 
@@ -69,4 +70,15 @@ public class Veiculo {
 	public void setTipoVeiculo(VeiculoType tipoVeiculo) {
 		this.tipoVeiculo = tipoVeiculo;
 	}
+	
+	public Estacionamento getUltimoEstacionamento() {
+		return ultimoEstacionamento;
+	}
+
+	public void atualizarUltimoEstacionamento() {
+		this.ultimoEstacionamento = estacionamento;
+	}
+	
+	
+	
 }

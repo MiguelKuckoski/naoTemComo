@@ -83,6 +83,7 @@ public class LogadoEstacionado extends JFrame {
 				}
 			});
 			btnSair.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			
 		}
 		return btnSair;
 	}
@@ -104,7 +105,7 @@ public class LogadoEstacionado extends JFrame {
 				}
 			});
 		}
-		return btnDesestacionar;
+		return btnDesestacionar;	
 	}
 
 	private JButton getBtnOpcoes() {
