@@ -29,8 +29,12 @@ import javax.swing.text.MaskFormatter;
 
 import extras.Iview;
 import extras.VeiculoType;
+import vo.Controle;
 import vo.Main;
+import vo.Usuario;
 import vo.Veiculo;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class CadastroVeiculo extends JFrame implements Iview {
 
@@ -60,11 +64,15 @@ public class CadastroVeiculo extends JFrame implements Iview {
 	private JButton btnCadastrar;
 	private JButton btnExcluir;
 	private JLabel lblCamposObrigatrios;
-	
+	private boolean validacaoPlaca;
+	private Controle controle;
+	private Usuario usuario;
+
 	/**
 	 * Create the frame.
 	 */
-	public CadastroVeiculo() {
+	public CadastroVeiculo(Controle controle) {
+		this.controle = controle;
 		setTitle("Veiculos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
@@ -72,90 +80,84 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(26)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(26)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(getLblPlaca())
-								.addGap(62))
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(getLblTipo(), GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)))
+								.addGroup(gl_contentPane.createSequentialGroup().addComponent(getLblPlaca()).addGap(62))
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(getLblTipo(), GroupLayout.PREFERRED_SIZE, 69,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(18)))
 						.addComponent(getLblModelo()))
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(getComboBoxVeiculoType(), 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(getTextFieldPlaca(), GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
-						.addComponent(getTextFieldModelo(), GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE))
-					.addGap(85)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(getComboBoxVeiculoType(), 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(getTextFieldPlaca(), GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+						.addComponent(getTextFieldModelo(), GroupLayout.PREFERRED_SIZE, 151,
+								GroupLayout.PREFERRED_SIZE))
+				.addGap(85)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(getLblCor(), GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-								.addComponent(getLblAno()))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(getTextFieldAno(), GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
-								.addComponent(getTextFieldCor(), GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)))
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(getLblCor(), GroupLayout.PREFERRED_SIZE, 52,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(getLblAno()))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(getTextFieldAno(), GroupLayout.PREFERRED_SIZE, 140,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(getTextFieldCor(), GroupLayout.PREFERRED_SIZE, 140,
+												GroupLayout.PREFERRED_SIZE)))
 						.addComponent(getLblCamposObrigatrios()))
-					.addContainerGap(11, Short.MAX_VALUE))
+				.addContainerGap(11, Short.MAX_VALUE))
 				.addComponent(getSeparator(), Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(34)
-					.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-					.addGap(35)
-					.addComponent(getBtnExcluir(), GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(265, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(27)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(96)
-							.addComponent(getBtnConfirmar(), GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-							.addGap(34)
-							.addComponent(getBtnCancelar(), GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
-						.addComponent(getScrollPane(), GroupLayout.PREFERRED_SIZE, 520, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(27, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(28)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(34)
+						.addComponent(getBtnCadastrar(), GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+						.addGap(35)
+						.addComponent(getBtnExcluir(), GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(265, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(27)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup().addGap(96)
+										.addComponent(getBtnConfirmar(), GroupLayout.PREFERRED_SIZE, 120,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(34).addComponent(getBtnCancelar(), GroupLayout.PREFERRED_SIZE, 120,
+												GroupLayout.PREFERRED_SIZE))
+								.addComponent(getScrollPane(), GroupLayout.PREFERRED_SIZE, 520,
+										GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(27, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(28)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(getLblCor(), GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-						.addComponent(getComboBoxVeiculoType(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getComboBoxVeiculoType(), GroupLayout.PREFERRED_SIZE, 23,
+								GroupLayout.PREFERRED_SIZE)
 						.addComponent(getTextFieldCor(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getLblTipo(), GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
-					.addGap(35)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(getLblPlaca())
+				.addGap(35)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getLblPlaca())
 						.addComponent(getTextFieldPlaca(), GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(getLblAno())
 						.addComponent(getTextFieldAno(), GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addGap(33)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(getLblModelo())
+				.addGap(33)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addComponent(getLblModelo())
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-							.addComponent(getTextFieldModelo(), GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-							.addComponent(getLblCamposObrigatrios())))
-					.addGap(44)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(getBtnCadastrar())
+								.addComponent(getTextFieldModelo(), GroupLayout.PREFERRED_SIZE, 22,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(getLblCamposObrigatrios())))
+				.addGap(44)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getBtnCadastrar())
 						.addComponent(getBtnExcluir()))
-					.addGap(31)
-					.addComponent(getSeparator(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(getScrollPane(), GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(getBtnCancelar())
+				.addGap(31)
+				.addComponent(getSeparator(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addComponent(getScrollPane(), GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE).addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(getBtnCancelar())
 						.addComponent(getBtnConfirmar()))
-					.addContainerGap())
-		);
+				.addContainerGap()));
 		contentPane.setLayout(gl_contentPane);
 	}
 
@@ -229,7 +231,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 
 		if (getTextFieldPlaca().getText().trim().length() == 0) {
 			validacao += "Informe a placa do veiculo.\n";
-		} else if (getTextFieldPlaca().getText().trim().length() < 7) {
+		} else if (!validacaoPlaca) {
 			validacao += "Placa incorreta.\n";
 		}
 
@@ -295,6 +297,16 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		if (textFieldPlaca == null) {
 			try {
 				textFieldPlaca = new JFormattedTextField(new MaskFormatter("UUU-####"));
+				textFieldPlaca.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusLost(FocusEvent arg0) {
+						if (getTextFieldPlaca().getText().length() == 8) {
+							validacaoPlaca = validarPlaca();
+						} else {
+							JOptionPane.showMessageDialog(null, "Placa inválida", "error", JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				});
 				textFieldPlaca.setBounds(133, 75, 151, 22);
 				textFieldPlaca.setColumns(10);
 			} catch (ParseException e) {
@@ -302,6 +314,18 @@ public class CadastroVeiculo extends JFrame implements Iview {
 			}
 		}
 		return textFieldPlaca;
+	}
+
+	private boolean validarPlaca() {
+		for (Usuario usuario : controle.getUsuarios()) {
+			for (Veiculo veiculo : usuario.getVeiculos()) {
+				if (getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
+					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	private JLabel getLblAno() {
@@ -386,14 +410,14 @@ public class CadastroVeiculo extends JFrame implements Iview {
 	}
 
 	public List<Veiculo> getVeiculosNovos() {
-		if(veiculosNovos == null) {
+		if (veiculosNovos == null) {
 			veiculosNovos = new ArrayList<Veiculo>();
 		}
 		return veiculosNovos;
 	}
 
 	public void setVeiculosNovos(List<Veiculo> veiculos) {
-		if(veiculosNovos == null) {
+		if (veiculosNovos == null) {
 			veiculosNovos = new ArrayList<Veiculo>();
 		}
 		this.veiculosNovos = veiculos;
@@ -480,10 +504,10 @@ public class CadastroVeiculo extends JFrame implements Iview {
 				public void mouseClicked(MouseEvent e) {
 					getVeiculos().addAll(getVeiculosNovos());
 					Cadastro cadastro = main.getCadastro();
-					
+
 					cadastro.setVisible(true);
 					cadastro.requestFocus();
-					
+
 					CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
 					cadastroVeiculo.setVisible(false);
 				}
@@ -499,6 +523,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 		this.veiculos.clear();
 		this.veiculosNovos.clear();
 	}
+
 	private JLabel getLblCamposObrigatrios() {
 		if (lblCamposObrigatrios == null) {
 			lblCamposObrigatrios = new JLabel("* Campos Obrigatórios");
