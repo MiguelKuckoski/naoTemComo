@@ -362,6 +362,7 @@ public class EstacionamentoPrincipal extends Estacionamento {
 					tela.requestFocus();
 					estacionamentoPrincipal.setVisible(false);
 					Estacionamentos estacionamentos = main.getEstacionamentos();
+					estacionamentos.setBounds(100, 100, 348, 436);
 					estacionamentos.setVisible(false);
 
 				} else {

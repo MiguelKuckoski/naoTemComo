@@ -33,8 +33,7 @@ public class Main {
 	private EstacionamentoMotos estacionamentoMotos;
 	private EditarVeiculos editarVeiculos;
 	private ChooserVeiculo chooserVeiculo;
-	
-	
+
 	public static void main(String[] params) {
 		INSTANCIA.executar();
 	}
@@ -45,125 +44,127 @@ public class Main {
 		controle.addEstacionamento(estacionamentoPrincipal);
 		controle.addEstacionamento(estacionamentoFundo);
 		controle.addEstacionamento(estacionamentoMotos);
-		
+
 		populateCadastro();
 	}
-	
+
 	/**
 	 * Create the application.
 	 * 
 	 * @wbp.parser.entryPoint
 	 */
-    private void executar() {
-        // esse programa aqui simplesmente apresenta a Tela1
-    	Index tela = getIndex();
-        tela.setVisible(true);
-    }
+	private void executar() {
+		Index tela = getIndex();
+		tela.setVisible(true);
+	}
 
 	public Cadastro getCadastro() {
-		if(cadastro == null)
+		if (cadastro == null)
 			cadastro = new Cadastro(controle);
 		return cadastro;
 	}
 
 	public CadastroVeiculo getCadastroVeiculo() {
+<<<<<<< Upstream, based on origin/master
 		if(cadastroVeiculo == null) 
 			cadastroVeiculo = new CadastroVeiculo(controle);
+=======
+		if (cadastroVeiculo == null)
+			cadastroVeiculo = new CadastroVeiculo();
+>>>>>>> 37c7bff Alterações logado/estacionado.
 		return cadastroVeiculo;
 	}
 
 	public Index getIndex() {
-		if(index == null)
+		if (index == null)
 			index = new Index(controle);
 		return index;
 	}
-	
+
 	public LogadoNaoEstacionado getLogadoNaoEstacionado() {
-		if(logadoNaoEstacionado == null) 
+		if (logadoNaoEstacionado == null)
 			logadoNaoEstacionado = new LogadoNaoEstacionado(controle);
 		return logadoNaoEstacionado;
 	}
 
 	public LogadoEstacionado getLogadoEstacionado() {
-		if(logadoEstacionado == null) {
-			logadoEstacionado = new LogadoEstacionado(controle);
-		}
+		logadoEstacionado = new LogadoEstacionado(controle);
 		return logadoEstacionado;
 	}
-
 
 	public void populateCadastro() {
 		Usuario usuario = new Usuario();
 		usuario.setNome("Teste nome");
 		usuario.setCpf("000.000.000-00");
 		usuario.setSenha("12345");
-	
+
 		usuario.setCnh("88888888");
 		usuario.setRua("Teste rua");
 		usuario.setNum(69);
 		usuario.setBairro("Teste bairro");
 		usuario.setCep(88090740);
-		
+
 		usuario.setEstado("Santa Catarina");
-		
+
 		VeiculoType type = VeiculoType.getType("MOTO");
-		Veiculo veiculo = new Veiculo("XXX-3222","Factor", 2009, type, "cinza");
+		Veiculo veiculo = new Veiculo("XXX-3222", "Factor", 2009, type, "cinza");
 		ArrayList<Veiculo> vArray = new ArrayList<Veiculo>();
 		vArray.add(veiculo);
 		usuario.setVeiculos(vArray);
 		usuario.setSelectedVeiculo(veiculo);
 		controle.addUsuarios(usuario);
-		
+
 	}
-	
+
 	public Opcoes getOpcoes() {
-		if(opcoes == null) 
+		if (opcoes == null)
 			opcoes = new Opcoes(controle);
 		return opcoes;
 	}
 
 	public EditarCadastro getEditarCadastro() {
-		if(editarCadastro == null) {
+		if (editarCadastro == null) {
 			editarCadastro = new EditarCadastro(controle);
 		}
 		return editarCadastro;
 	}
 
 	public Estacionamentos getEstacionamentos() {
-		if(estacionamentos == null) {
+		if (estacionamentos == null) {
 			estacionamentos = new Estacionamentos();
 		}
 		return estacionamentos;
 	}
 
 	public EstacionamentoPrincipal getEstacionamentoPrincipal() {
-		if(estacionamentoPrincipal == null) {
+		if (estacionamentoPrincipal == null) {
 			estacionamentoPrincipal = new EstacionamentoPrincipal(controle);
 		}
 		return estacionamentoPrincipal;
 	}
 
 	public EstacionamentoFundo getEstacionamentoFundo() {
-		if(estacionamentoFundo == null) {
+		if (estacionamentoFundo == null) {
 			estacionamentoFundo = new EstacionamentoFundo(controle);
 		}
 		return estacionamentoFundo;
 	}
+
 	public EstacionamentoMotos getEstacionamentoMoto() {
-		if(estacionamentoMotos == null) {
+		if (estacionamentoMotos == null) {
 			estacionamentoMotos = new EstacionamentoMotos(controle);
 		}
 		return estacionamentoMotos;
 	}
 
 	public EditarVeiculos getEditarVeiculos() {
-		if(editarVeiculos == null)
+		if (editarVeiculos == null)
 			editarVeiculos = new EditarVeiculos(controle);
 		return editarVeiculos;
 	}
-	
+
 	public ChooserVeiculo getChooserVeiculo() {
-		if(chooserVeiculo == null)
+		if (chooserVeiculo == null)
 			chooserVeiculo = new ChooserVeiculo(controle);
 		return chooserVeiculo;
 	}

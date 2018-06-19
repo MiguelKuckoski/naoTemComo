@@ -229,7 +229,9 @@ public class Index extends JFrame {
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
+	
 	public void cleanValues() {
+		//limpa os campos de texto da tela.
 		getTextFieldCpf().setText("");
 		getPasswordField().setText("");
 	}

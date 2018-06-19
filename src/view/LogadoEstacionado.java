@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import vo.Controle;
 import vo.Estacionamento;
 import vo.Main;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class LogadoEstacionado extends JFrame {
 
@@ -27,15 +28,18 @@ public class LogadoEstacionado extends JFrame {
 	private JButton btnDesestacionar;
 	private JButton btnOpcoes;
 	private Main main = Main.INSTANCIA;
+	private JPanel panelEstacionamento;
 
 	/**
 	 * Launch the application.
 	 */
 
-	/**
+	/*
 	 * Create the frame.
 	 */
+
 	public LogadoEstacionado(Controle controle) {
+		this.controle = controle;
 		setTitle("Logado estacionado");
 		this.controle = controle;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -57,12 +61,22 @@ public class LogadoEstacionado extends JFrame {
 																GroupLayout.PREFERRED_SIZE)
 														.addComponent(getBtnDesestacionar(), GroupLayout.PREFERRED_SIZE,
 																129, GroupLayout.PREFERRED_SIZE))))
-								.addContainerGap(48, Short.MAX_VALUE)));
+								.addPreferredGap(ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+								.addComponent(getPanelEstacionamento(), GroupLayout.PREFERRED_SIZE, 700,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(42)));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(31)
-				.addComponent(getBtnDesestacionar(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-				.addGap(31).addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-				.addGap(172).addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)));
+				.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+						.createSequentialGroup().addGap(31)
+						.addComponent(getBtnDesestacionar(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addGap(31)
+						.addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addGap(172)
+						.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(
+								getPanelEstacionamento(), GroupLayout.PREFERRED_SIZE, 369, GroupLayout.PREFERRED_SIZE)))
+				.addContainerGap(12, Short.MAX_VALUE)));
 		contentPane.setLayout(gl_contentPane);
 
 	}
@@ -76,14 +90,14 @@ public class LogadoEstacionado extends JFrame {
 					Index index = main.getIndex();
 					index.setVisible(true);
 					index.requestFocus();
-					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
-					logadoEstacionado.dispose();
-					logadoEstacionado.setVisible(false);
+
+					setVisible(false);
 					controle.setLoggedUser(null);
+					panelEstacionamento = null;
 				}
 			});
 			btnSair.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			
+
 		}
 		return btnSair;
 	}
@@ -102,10 +116,11 @@ public class LogadoEstacionado extends JFrame {
 					tela.requestFocus();
 
 					setVisible(false);
+					panelEstacionamento = null;
 				}
 			});
 		}
-		return btnDesestacionar;	
+		return btnDesestacionar;
 	}
 
 	private JButton getBtnOpcoes() {
@@ -117,12 +132,18 @@ public class LogadoEstacionado extends JFrame {
 					Opcoes opcoes = main.getOpcoes();
 					opcoes.setVisible(true);
 					opcoes.requestFocus();
-					LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
-					logadoEstacionado.setVisible(false);
+
+					setVisible(false);
 				}
 			});
 		}
 		return btnOpcoes;
+	}
+
+	private JPanel getPanelEstacionamento() {
+		if (panelEstacionamento == null)
+			panelEstacionamento = controle.getLoggedUser().getSelectedVeiculo().getEstacionado();
+		return panelEstacionamento;
 	}
 
 }

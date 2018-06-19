@@ -371,6 +371,7 @@ public class EstacionamentoFundo extends Estacionamento {
 					tela.requestFocus();
 					estacionamentoFundo.setVisible(false);
 					Estacionamentos estacionamentos = main.getEstacionamentos();
+					estacionamentos.setBounds(100, 100, 348, 436);
 					estacionamentos.setVisible(false);
 				} else {
 					JOptionPane.showMessageDialog(null, "Vaga ocupada!", "Erro", JOptionPane.WARNING_MESSAGE);
