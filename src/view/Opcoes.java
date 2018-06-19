@@ -139,7 +139,7 @@ public class Opcoes extends JFrame {
 				public void mouseClicked(MouseEvent e) {
 					if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() != null) {
 
-						LogadoEstacionado logadoEstacionado = main.getLogadoEstacionado();
+						LogadoEstacionado logadoEstacionado = new LogadoEstacionado(controle);
 						logadoEstacionado.setVisible(true);
 						logadoEstacionado.requestFocus();
 

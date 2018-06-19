@@ -362,14 +362,18 @@ public class EstacionamentoFundo extends Estacionamento {
 	public void verificarVaga(int posicao) {
 		EstacionamentoFundo estacionamentoFundo = main.getEstacionamentoFundo();
 
+		VeiculoType tipo1 = getTipoVeiculo();
+		VeiculoType tipo2 = controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo();
+		
 		if (getTipoVeiculo() == controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo()) {
 			if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {
 				if (estacionar(posicao, controle.getLoggedUser(), estacionamentoFundo)) {
 					getBtnVagas().get(posicao - 1).setBackground(Color.BLUE);
-					LogadoEstacionado tela = main.getLogadoEstacionado();
+					
+					LogadoEstacionado tela = new LogadoEstacionado(controle);
 					tela.setVisible(true);
 					tela.requestFocus();
-					estacionamentoFundo.setVisible(false);
+					
 					Estacionamentos estacionamentos = main.getEstacionamentos();
 					estacionamentos.setBounds(100, 100, 348, 436);
 					estacionamentos.setVisible(false);

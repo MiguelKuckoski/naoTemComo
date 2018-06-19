@@ -199,7 +199,7 @@ public class Index extends JFrame {
 			//Verifica qual sera a proxima tela.
 			
 			if (estacionado) {
-				LogadoEstacionado logadoEstacionado= main.getLogadoEstacionado();
+				LogadoEstacionado logadoEstacionado= new LogadoEstacionado(controle);
 				logadoEstacionado.setVisible(true);				
 				logadoEstacionado.requestFocus();
 				

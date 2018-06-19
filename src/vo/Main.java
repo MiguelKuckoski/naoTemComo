@@ -65,13 +65,8 @@ public class Main {
 	}
 
 	public CadastroVeiculo getCadastroVeiculo() {
-<<<<<<< Upstream, based on origin/master
 		if(cadastroVeiculo == null) 
 			cadastroVeiculo = new CadastroVeiculo(controle);
-=======
-		if (cadastroVeiculo == null)
-			cadastroVeiculo = new CadastroVeiculo();
->>>>>>> 37c7bff Alterações logado/estacionado.
 		return cadastroVeiculo;
 	}
 
@@ -85,11 +80,6 @@ public class Main {
 		if (logadoNaoEstacionado == null)
 			logadoNaoEstacionado = new LogadoNaoEstacionado(controle);
 		return logadoNaoEstacionado;
-	}
-
-	public LogadoEstacionado getLogadoEstacionado() {
-		logadoEstacionado = new LogadoEstacionado(controle);
-		return logadoEstacionado;
 	}
 
 	public void populateCadastro() {

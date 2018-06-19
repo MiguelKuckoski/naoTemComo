@@ -386,13 +386,11 @@ public class EstacionamentoMotos extends Estacionamento {
 		if(getTipoVeiculo() == controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo()) {
 			if(controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {
 				if(estacionar(posicao,controle.getLoggedUser(), estacionamentoMotos)) {
-					getBtnVagas().get(posicao-1).setBackground(Color.BLUE);
+					getBtnVagas().get(posicao-1).setBackground(Color.BLUE);					
 					LogadoEstacionado tela = new LogadoEstacionado(controle);
 					tela.setVisible(true);
 					tela.requestFocus();			
-					
-					estacionamentoMotos.setVisible(false);
-					
+						
 					Estacionamentos estacionamentos = main.getEstacionamentos();
 					estacionamentos.setBounds(100, 100, 348, 436);
 					estacionamentos.setVisible(false);
