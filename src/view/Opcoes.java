@@ -59,10 +59,10 @@ public class Opcoes extends JFrame implements Iview {
 			btnRelatorios.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
 			btnRelatorios.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
 					setVisible(false);
-
-					LogsShow.setVisible(true);
+					SelecionarPerspectiva tela = new SelecionarPerspectiva(controle);
+					tela.setVisible(true);
+					tela.requestFocus();
 				}
 			});
 		}

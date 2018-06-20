@@ -13,7 +13,6 @@ import view.EstacionamentoMotos;
 import view.EstacionamentoPrincipal;
 import view.Estacionamentos;
 import view.Index;
-import view.LogadoEstacionado;
 import view.LogadoNaoEstacionado;
 import view.Opcoes;
 
@@ -24,7 +23,6 @@ public class Main {
 	private Cadastro cadastro;
 	private CadastroVeiculo cadastroVeiculo;
 	private LogadoNaoEstacionado logadoNaoEstacionado;
-	private LogadoEstacionado logadoEstacionado;
 	private Opcoes opcoes;
 	private EditarCadastro editarCadastro;
 	private Estacionamentos estacionamentos;
