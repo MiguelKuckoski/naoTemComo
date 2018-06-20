@@ -6,11 +6,9 @@ chegou;nathan;Estacionamento dos Fundos;ASD-1231;Fri Jun 15 04:24:27 BRT 2018;
 saiu;nathan;Estacionamento dos Fundos;ASD-1231;Fri Jun 15 04:24:27 BRT 2018;
 chegou;nathan;Estacionamento dos Fundos;ASD-1231;Fri Jun 15 04:24:27 BRT 2018;
 saiu;nathan;Estacionamento dos Fundos;ASD-1231;Fri Jun 15 04:24:27 BRT 2018;
-<<<<<<< Upstream, based on origin/master
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Sun Jun 17 22:32:47 BRT 2018;
 saiu;Teste nome;Estacionamento Motos;XXX-3222;Sun Jun 17 22:32:47 BRT 2018;
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Mon Jun 18 20:45:29 BRT 2018;
-=======
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Fri Jun 15 12:39:14 BRT 2018;
 saiu;Teste nome;Estacionamento Motos;XXX-3222;Fri Jun 15 12:39:14 BRT 2018;
 chegou;Teste nome;Estacionamento Principal;OAO-1818;Fri Jun 15 12:39:14 BRT 2018;
@@ -38,7 +36,6 @@ saiu;Teste nome;Estacionamento Motos;XXX-3222;Mon Jun 18 20:50:45 BRT 2018;
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Mon Jun 18 20:50:45 BRT 2018;
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Mon Jun 18 20:52:11 BRT 2018;
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Mon Jun 18 20:53:10 BRT 2018;
->>>>>>> 37c7bff Alterações logado/estacionado.
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Mon Jun 18 23:35:29 BRT 2018;
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Mon Jun 18 23:39:37 BRT 2018;
 chegou;Teste nome;Estacionamento Motos;XXX-3222;Mon Jun 18 23:42:53 BRT 2018;
