@@ -109,38 +109,6 @@ public class Controle {
 
 	}
 
-	public void escreverLog2(Usuario usuario, Estacionamento estacionamento) {
-
-		confPasta();
-		confArquivo();
-
-		String status;
-		String statuscheck = usuario.getSelectedVeiculo().getEstacionado().getNome();
-		String nome = usuario.getNome();
-		String placa = usuario.getSelectedVeiculo().getPlaca();
-		String nomeEstacionamento = estacionamento.getNome();
-
-		try {
-
-			BufferedWriter arquivo = null;
-			File file = new File("src/pastaLogs/logsUsuario.txt");
-			FileWriter fileWriter = new FileWriter(file, true);
-			arquivo = new BufferedWriter(fileWriter);
-
-			if (statuscheck != null) {
-				status = "chegou";
-			} else {
-				status = "saiu";
-			}
-			arquivo.write(status + ";" + nome + ";" + nomeEstacionamento + ";" + placa + ";" + date + ";");
-			arquivo.newLine();
-			arquivo.close();
-		} catch (IOException e) {
-			System.out.println(e);
-		}
-
-	}
-
 	public void lerLog() {
 
 	}
