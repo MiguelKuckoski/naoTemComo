@@ -129,15 +129,14 @@ public class Controle {
 		return false;
 	}
 
-	public void lerLog(String funcao) {
-
+	public ArrayList<String[]> lerLog(String funcao) {
+		
+		ArrayList<String[]> arrayList = new ArrayList<String[]>();
+		
 		boolean checkPasta = lerPasta();
 		boolean checkArquivo = lerArquivo();
 
 		if ((checkPasta == true) && (checkArquivo == true)) {
-
-			ArrayList<String[]> arrayList = new ArrayList<String[]>();
-
 			switch (funcao) {
 
 			case "todos":
@@ -158,18 +157,6 @@ public class Controle {
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(null, e);
 				}
-
-				// Syso teste
-				for (String aux[] : arrayList) {
-
-					for (int i = 0; i < aux.length; i++) {
-						System.out.print(aux[i] + " ");
-					}
-
-					System.out.print("\n");
-
-				}
-
 				break;
 			case "principal":
 				try {
@@ -184,18 +171,6 @@ public class Controle {
 							arrayList.add(aux);
 						}
 					}
-
-					// Syso teste
-					for (String aux[] : arrayList) {
-
-						for (int i = 0; i < aux.length; i++) {
-							System.out.print(aux[i] + " ");
-						}
-
-						System.out.print("\n");
-
-					}
-
 					arquivo.close();
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(null, e);
@@ -215,16 +190,6 @@ public class Controle {
 						}
 					}
 
-					// Syso teste
-					for (String aux[] : arrayList) {
-
-						for (int i = 0; i < aux.length; i++) {
-							System.out.print(aux[i] + " ");
-						}
-
-						System.out.print("\n");
-
-					}
 					arquivo.close();
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(null, e);
@@ -243,16 +208,6 @@ public class Controle {
 							arrayList.add(aux);
 						}
 					}
-					// Syso teste
-					for (String aux[] : arrayList) {
-
-						for (int i = 0; i < aux.length; i++) {
-							System.out.print(aux[i] + " ");
-						}
-
-						System.out.print("\n");
-
-					}
 					arquivo.close();
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(null, e);
@@ -265,7 +220,7 @@ public class Controle {
 			JOptionPane.showMessageDialog(null, "Você ainda não possui registro de estacionamentos anteriores", "Erro",
 					0);
 		}
-
+		return arrayList;
 	}
 
 	public Usuario getLoggedUser() {
