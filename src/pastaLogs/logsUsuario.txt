@@ -64,3 +64,4 @@ chegou;nathan;Estacionamento Principal;ASD-1233;Wed Jun 20 00:01:37 BRT 2018;
 saiu;nathan;Estacionamento Principal;ASD-1233;Wed Jun 20 00:01:37 BRT 2018;
 chegou;Nathan;Estacionamento Principal;ASD-1233;Wed Jun 20 00:05:54 BRT 2018;
 saiu;Nathan;Estacionamento Principal;ASD-1233;Wed Jun 20 00:05:54 BRT 2018;
+chegou;nathan;Estacionamento Principal;ASD-1233;Wed Jun 20 00:30:43 BRT 2018;

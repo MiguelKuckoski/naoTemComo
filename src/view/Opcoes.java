@@ -12,10 +12,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import extras.Iview;
 import vo.Controle;
 import vo.Main;
 
-public class Opcoes extends JFrame {
+public class Opcoes extends JFrame implements Iview {
 
 	/**
 	 * 
@@ -58,6 +59,10 @@ public class Opcoes extends JFrame {
 			btnRelatorios.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
 			btnRelatorios.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+
+					setVisible(false);
+
+					LogsShow.setVisible(true);
 				}
 			});
 		}
@@ -72,7 +77,7 @@ public class Opcoes extends JFrame {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					setVisible(false);
-					
+
 					EditarVeiculos editarVeiculos = main.getEditarVeiculos();
 					editarVeiculos.setVisible(true);
 					editarVeiculos.displayValues();
@@ -159,5 +164,29 @@ public class Opcoes extends JFrame {
 			btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		}
 		return btnVoltar;
+	}
+
+	@Override
+	public void cleanValues() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void save() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignValues() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String validateValues() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

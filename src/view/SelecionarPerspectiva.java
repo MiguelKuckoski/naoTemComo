@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import extras.Iview;
+
 import java.awt.SystemColor;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -16,27 +19,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class SelecionarPerspectiva extends JFrame {
+public class SelecionarPerspectiva extends JFrame implements Iview{
 
 	private JPanel contentPane;
-	private JTextField txtLogs;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SelecionarPerspectiva frame = new SelecionarPerspectiva();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private JTextField txtLogs;	
 	/**
 	 * Create the frame.
 	 */
@@ -97,5 +83,25 @@ public class SelecionarPerspectiva extends JFrame {
 					.addContainerGap(76, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
+	}
+	@Override
+	public void cleanValues() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void save() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void assignValues() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String validateValues() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
