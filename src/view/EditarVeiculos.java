@@ -29,7 +29,10 @@ import javax.swing.text.MaskFormatter;
 import extras.VeiculoType;
 import vo.Controle;
 import vo.Main;
+import vo.Usuario;
 import vo.Veiculo;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class EditarVeiculos extends JFrame{
 
@@ -58,6 +61,7 @@ public class EditarVeiculos extends JFrame{
 	private JButton btnCadastrar;
 	private JButton btnExcluir;
 	private Controle controle;
+	private boolean validacaoPlaca;
 	
 	/**
 	 * Create the frame.
@@ -215,7 +219,7 @@ public class EditarVeiculos extends JFrame{
 
 		if (getTextFieldPlaca().getText().trim().length() == 0) {
 			validacao += "Informe a placa do veiculo.\n";
-		} else if (getTextFieldPlaca().getText().trim().length() < 7) {
+		} else if (!validacaoPlaca) {
 			validacao += "Placa incorreta.\n";
 		}
 
@@ -281,6 +285,16 @@ public class EditarVeiculos extends JFrame{
 		if (textFieldPlaca == null) {
 			try {
 				textFieldPlaca = new JFormattedTextField(new MaskFormatter("UUU-####"));
+				textFieldPlaca.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (getTextFieldPlaca().getText().length() == 8) {
+							validacaoPlaca = validarPlaca();
+						} else {
+							JOptionPane.showMessageDialog(null, "Placa inválida", "error", JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				});
 				textFieldPlaca.setBounds(133, 75, 151, 22);
 				textFieldPlaca.setColumns(10);
 			} catch (ParseException e) {
@@ -289,7 +303,19 @@ public class EditarVeiculos extends JFrame{
 		}
 		return textFieldPlaca;
 	}
-
+	
+	private boolean validarPlaca() {
+		for (Usuario usuario : controle.getUsuarios()) {
+			for (Veiculo veiculo : usuario.getVeiculos()) {
+				if (getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
+					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
 	private JLabel getLblAno() {
 		if (lblAno == null) {
 			lblAno = new JLabel("Ano");

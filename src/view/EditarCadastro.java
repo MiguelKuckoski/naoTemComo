@@ -32,6 +32,8 @@ import extras.Iview;
 import vo.Controle;
 import vo.Main;
 import vo.Usuario;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class EditarCadastro extends JFrame implements Iview {
 	/**
@@ -69,6 +71,7 @@ public class EditarCadastro extends JFrame implements Iview {
 	private Controle controle;
 	private Main main = Main.INSTANCIA;
 	private JButton btnBuscar;
+	private boolean validacaoCpf;
 
 	/**
 	 * Launch the application. Create the frame.
@@ -316,7 +319,7 @@ public class EditarCadastro extends JFrame implements Iview {
 		}
 		if (getTextFieldCpf().getText().length() == 0) {
 			validacao += "Informe o numero do CPF. \n";
-		} else if (getTextFieldCpf().getText().length() < 11) {
+		} else if (!validacaoCpf) {
 			validacao += "Cpf incorreto.\n";
 		}
 
@@ -377,12 +380,32 @@ public class EditarCadastro extends JFrame implements Iview {
 		if (textFieldCpf == null) {
 			try {
 				textFieldCpf = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
+				textFieldCpf.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusLost(FocusEvent arg0) {
+						if(getTextFieldCpf().getText().length() == 14) {
+							validacaoCpf = validarCpf();
+						}else {
+							JOptionPane.showMessageDialog(null, "Cpf Inválido","Erro",JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				});
 				textFieldCpf.setColumns(10);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 		}
 		return textFieldCpf;
+	}
+	
+	private boolean validarCpf() {
+		for (Usuario usuario : controle.getUsuarios()) {
+			if(getTextFieldCpf().getText().equals(usuario.getCpf())) {
+				JOptionPane.showMessageDialog(null,"Cpf já cadastrado","Erro",JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private JLabel getLblCnh() {
