@@ -76,6 +76,7 @@ public class Cadastro extends JFrame implements Iview {
 	private CadastroVeiculo cadastroVeiculo = main.getCadastroVeiculo();
 	private JLabel lblNewLabel;
 	private boolean validacaoCpf;
+	private boolean validacaoCnh;
 	
 	/**
 	 * Launch the application. Create the frame.
@@ -316,6 +317,8 @@ public class Cadastro extends JFrame implements Iview {
 		}
 		if (getTextFieldCnh().getText().length() == 0) {
 			validacao += "Informe o numero da CNH. \n";
+		}else if(!validacaoCnh) {
+			validacao += "Cnh incorreto.\n";
 		}
 		if (getTextFieldCpf().getText().length() == 0) {
 			validacao += "Informe o numero do CPF. \n";
@@ -392,7 +395,7 @@ public class Cadastro extends JFrame implements Iview {
 						if(getTextFieldCpf().getText().length() == 14) {
 							validacaoCpf = validarCpf();
 						}else {
-							JOptionPane.showMessageDialog(null, "Cpf Inválido","Erro",JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Cpf Inválido","Error",JOptionPane.ERROR_MESSAGE);
 						}
 					}
 				});
@@ -407,7 +410,7 @@ public class Cadastro extends JFrame implements Iview {
 	private boolean validarCpf() {
 		for (Usuario usuario : controle.getUsuarios()) {
 			if(getTextFieldCpf().getText().equals(usuario.getCpf())) {
-				JOptionPane.showMessageDialog(null,"Cpf já cadastrado","Erro",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,"Cpf já cadastrado","Error",JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
 		}
@@ -424,13 +427,33 @@ public class Cadastro extends JFrame implements Iview {
 	private JFormattedTextField getTextFieldCnh() {
 		if (textFieldCnh == null) {
 			try {
-				textFieldCnh = new JFormattedTextField(new MaskFormatter("########"));
+				textFieldCnh = new JFormattedTextField(new MaskFormatter("###########"));
+				textFieldCnh.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusLost(FocusEvent arg0) {
+						if(getTextFieldCnh().getText().length() == 11) {
+							validacaoCnh = validarCnh();
+						}else {
+							JOptionPane.showMessageDialog(null, "Cnh inválida", "Error", JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				});
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			textFieldCnh.setColumns(10);
 		}
 		return textFieldCnh;
+	}
+	
+	private boolean validarCnh() {
+		for(Usuario usuario : controle.getUsuarios()) {
+			if(getTextFieldCnh().getText().equals(usuario.getCnh())) {
+				JOptionPane.showMessageDialog(null, "Cnh já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private JLabel getLblEndereo() {

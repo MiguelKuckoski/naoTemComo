@@ -86,7 +86,7 @@ public class Main {
 		usuario.setCpf("000.000.000-00");
 		usuario.setSenha("12345");
 
-		usuario.setCnh("88888888");
+		usuario.setCnh("88888888888");
 		usuario.setRua("Teste rua");
 		usuario.setNum(69);
 		usuario.setBairro("Teste bairro");
