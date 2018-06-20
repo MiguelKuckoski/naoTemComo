@@ -312,6 +312,13 @@ public class EditarVeiculos extends JFrame{
 					return false;
 				}
 			}
+			
+			for(Veiculo veiculo : getVeiculosNovos()) {
+				if(getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
+					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
+					return false;
+				}
+			}
 		}
 		return true;
 	}

@@ -324,6 +324,21 @@ public class CadastroVeiculo extends JFrame implements Iview {
 					return false;
 				}
 			}
+			
+			for(Veiculo veiculo : getVeiculosNovos()) {
+				if(getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
+					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
+					return false;
+				}
+			}
+			
+			for(Veiculo veiculo : getVeiculos()) {
+				if(getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
+					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
+					return false;
+				}
+			}
+			
 		}
 		return true;
 	}
@@ -503,6 +518,7 @@ public class CadastroVeiculo extends JFrame implements Iview {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					getVeiculos().addAll(getVeiculosNovos());
+					getVeiculosNovos().clear();
 					Cadastro cadastro = main.getCadastro();
 
 					cadastro.setVisible(true);
