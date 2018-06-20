@@ -1,7 +1,9 @@
 package vo;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -97,9 +99,11 @@ public class Controle {
 
 			if (control == true) {
 
-				arquivo.write("chegou" + ";" + nome + ";" + veiculo.getEstacionado().getNome() + ";" + placa + ";" + date + ";");
+				arquivo.write("chegou" + ";" + nome + ";" + veiculo.getEstacionado().getNome() + ";" + placa + ";"
+						+ date + ";");
 			} else {
-				arquivo.write("saiu" + ";" + nome + ";" + veiculo.getUltimoEstacionamento().getNome() + ";" + placa + ";" + date + ";");
+				arquivo.write("saiu" + ";" + nome + ";" + veiculo.getUltimoEstacionamento().getNome() + ";" + placa
+						+ ";" + date + ";");
 			}
 			arquivo.newLine();
 			arquivo.close();
@@ -109,7 +113,158 @@ public class Controle {
 
 	}
 
-	public void lerLog() {
+	private boolean lerPasta() {
+		File pastaRaiz = new File("src/");
+		if (pastaRaiz.exists() != false) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean lerArquivo() {
+		File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
+		if (logsUsuario.exists() != false) {
+			return true;
+		}
+		return false;
+	}
+
+	public void lerLog(String funcao) {
+
+		boolean checkPasta = lerPasta();
+		boolean checkArquivo = lerArquivo();
+
+		if ((checkPasta == true) && (checkArquivo == true)) {
+
+			ArrayList<String[]> arrayList = new ArrayList<String[]>();
+
+			switch (funcao) {
+
+			case "todos":
+				// ler
+				try {
+					File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
+					FileReader fileReader = new FileReader(logsUsuario);
+					BufferedReader arquivo = new BufferedReader(fileReader);
+					String linha = "";
+
+					while ((linha = arquivo.readLine()) != null) {
+						String aux[] = linha.split(";");
+						if (loggedUser.getNome().equalsIgnoreCase(aux[1])) {
+							arrayList.add(aux);
+						}
+					}
+					arquivo.close();
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, e);
+				}
+
+				// Syso teste
+				for (String aux[] : arrayList) {
+
+					for (int i = 0; i < aux.length; i++) {
+						System.out.print(aux[i] + " ");
+					}
+
+					System.out.print("\n");
+
+				}
+
+				break;
+			case "principal":
+				try {
+					File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
+					FileReader fileReader = new FileReader(logsUsuario);
+					BufferedReader arquivo = new BufferedReader(fileReader);
+					String linha = "";
+					while ((linha = arquivo.readLine()) != null) {
+						String aux[] = linha.split(";");
+						if ((aux[2].equalsIgnoreCase("Estacionamento Principal"))
+								&& (loggedUser.getNome().equalsIgnoreCase(aux[1]))) {
+							arrayList.add(aux);
+						}
+					}
+
+					// Syso teste
+					for (String aux[] : arrayList) {
+
+						for (int i = 0; i < aux.length; i++) {
+							System.out.print(aux[i] + " ");
+						}
+
+						System.out.print("\n");
+
+					}
+
+					arquivo.close();
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, e);
+				}
+				break;
+			case "motos":
+				try {
+					File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
+					FileReader fileReader = new FileReader(logsUsuario);
+					BufferedReader arquivo = new BufferedReader(fileReader);
+					String linha = "";
+					while ((linha = arquivo.readLine()) != null) {
+						String aux[] = linha.split(";");
+						if ((aux[2].equalsIgnoreCase("Estacionamento Motos"))
+								&& (loggedUser.getNome().equalsIgnoreCase(aux[1]))) {
+							arrayList.add(aux);
+						}
+					}
+
+					// Syso teste
+					for (String aux[] : arrayList) {
+
+						for (int i = 0; i < aux.length; i++) {
+							System.out.print(aux[i] + " ");
+						}
+
+						System.out.print("\n");
+
+					}
+					arquivo.close();
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, e);
+				}
+				break;
+			case "fundos":
+				try {
+					File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
+					FileReader fileReader = new FileReader(logsUsuario);
+					BufferedReader arquivo = new BufferedReader(fileReader);
+					String linha = "";
+					while ((linha = arquivo.readLine()) != null) {
+						String aux[] = linha.split(";");
+						if ((aux[2].equalsIgnoreCase("Estacionamento dos Fundos"))
+								&& (loggedUser.getNome().equalsIgnoreCase(aux[1]))) {
+							arrayList.add(aux);
+						}
+					}
+					// Syso teste
+					for (String aux[] : arrayList) {
+
+						for (int i = 0; i < aux.length; i++) {
+							System.out.print(aux[i] + " ");
+						}
+
+						System.out.print("\n");
+
+					}
+					arquivo.close();
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, e);
+				}
+				break;
+
+			}
+
+		} else {
+			JOptionPane.showMessageDialog(null, "Você ainda não possui registro de estacionamentos anteriores", "Erro",
+					0);
+		}
 
 	}
 

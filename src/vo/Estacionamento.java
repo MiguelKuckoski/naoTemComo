@@ -54,47 +54,46 @@ public abstract class Estacionamento extends JPanel {
 		if (vagas[posicao - 1] == null) {
 			vagas[posicao - 1] = usuario.getSelectedVeiculo();
 			usuario.getSelectedVeiculo().setEstacionado(estacionamento);
-					
-			controle.escreverLog(true); //escreve a entrada de um carro;
-			
+
+			controle.escreverLog(true); // escreve a entrada de um carro;
+
 			return true;
 		}
 
 		return false;
 
 	}
-	
+
 	public ArrayList<JButton> getBtnVagas() {
-		if(btnVagas==null)
+		if (btnVagas == null)
 			btnVagas = new ArrayList<JButton>();
 		return btnVagas;
 	}
 
-	public  void displayValues() {
-		for(int i =0; i < getBtnVagas().size(); i++) {
-			if(vagas[i] != null) { 
-				if(vagas[i].getPlaca() == controle.getLoggedUser().getSelectedVeiculo().getPlaca()) {
+	public void displayValues() {
+		for (int i = 0; i < getBtnVagas().size(); i++) {
+			if (vagas[i] != null) {
+				if (vagas[i].getPlaca() == controle.getLoggedUser().getSelectedVeiculo().getPlaca()) {
 					getBtnVagas().get(i).setBackground(Color.BLUE);
-				}else {
+				} else {
 					getBtnVagas().get(i).setBackground(Color.RED);
 				}
-			}else {
+			} else {
 				getBtnVagas().get(i).setBackground(Color.GREEN);
 			}
 		}
 	}
 
-
 	public void desestacionar(Veiculo selectedveiculo) {
-		
-		for(int i = 0; i < vagas.length; i++) {
-			if(vagas[i] != null) {
-				if(vagas[i].getPlaca() == selectedveiculo.getPlaca()) {
+
+		for (int i = 0; i < vagas.length; i++) {
+			if (vagas[i] != null) {
+				if (vagas[i].getPlaca() == selectedveiculo.getPlaca()) {
 					vagas[i] = null;
 					break;
 				}
 			}
-			
+
 		}
 		selectedveiculo.atualizarUltimoEstacionamento();
 		selectedveiculo.setEstacionado(null);
