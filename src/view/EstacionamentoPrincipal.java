@@ -350,8 +350,6 @@ public class EstacionamentoPrincipal extends Estacionamento {
 
 	public void verificarVaga(int posicao) {
 		EstacionamentoPrincipal estacionamentoPrincipal = main.getEstacionamentoPrincipal();
-		VeiculoType tipo1 = getTipoVeiculo();
-		VeiculoType tipo2 = controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo();
 		
 		if (getTipoVeiculo() == controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo()) {
 			if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {

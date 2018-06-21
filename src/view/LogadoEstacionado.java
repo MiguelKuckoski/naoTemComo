@@ -132,7 +132,6 @@ public class LogadoEstacionado extends JFrame {
 					Opcoes opcoes = main.getOpcoes();
 					opcoes.setVisible(true);
 					opcoes.requestFocus();
-
 					setVisible(false);
 				}
 			});
@@ -141,8 +140,13 @@ public class LogadoEstacionado extends JFrame {
 	}
 
 	private JPanel getPanel() {
-		if (panel == null) 
-			panel = controle.getLoggedUser().getSelectedVeiculo().getEstacionado();
+		if (panel == null) {
+			Estacionamento estacionamentoAtual = controle.getLoggedUser().getSelectedVeiculo().getEstacionado();
+			estacionamentoAtual.displayValues();
+			panel = estacionamentoAtual;
+			panel.setVisible(true);
+		}
+			
 		return panel;
 	}
 }

@@ -98,6 +98,8 @@ public class Index extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+	
+	/*** Gets e Sets ***/
 	private JLabel getLblCpf() {
 		if (lblCpf == null) {
 			lblCpf = new JLabel("CPF");
@@ -127,6 +129,8 @@ public class Index extends JFrame {
 		}
 		return passwordField;
 	}
+	/******************/
+
 	private JButton getBtnSair() {
 		if (btnSair == null) {
 			btnSair = new JButton("Sair");
@@ -230,8 +234,8 @@ public class Index extends JFrame {
 		}
 	}
 	
+	//limpa os campos de texto da tela.
 	public void cleanValues() {
-		//limpa os campos de texto da tela.
 		getTextFieldCpf().setText("");
 		getPasswordField().setText("");
 	}
