@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,6 +111,9 @@ public class Controle {
 			}
 		}
 
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		String dataFormatada = formato.format(date);
+		
 		try {
 
 			BufferedWriter arquivo = null;
@@ -118,9 +123,9 @@ public class Controle {
 
 			if (control == true) {
 
-				arquivo.write("chegou" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";" + date + ";");
+				arquivo.write("chegou" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";" + dataFormatada + ";");
 			} else {
-				arquivo.write("saiu" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";" + date + ";");
+				arquivo.write("saiu" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";" + dataFormatada + ";");
 			}
 			arquivo.newLine();
 			arquivo.close();
