@@ -64,7 +64,7 @@ public class Controle {
 		this.date = date;
 	}
 
-	private void confPasta() {
+	private void confPasta() { //função cria a pasta de logs se possível
 		File pastaRaiz = new File("src/");
 		if (pastaRaiz.exists() != false) {
 			File pastaLogs = new File("src/pastaLogs/");
@@ -74,7 +74,7 @@ public class Controle {
 		}
 	}
 
-	private void confArquivo() {
+	private void confArquivo() { //função cria o txt de logs se possível
 		File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
 		try {
 			logsUsuario.createNewFile();
@@ -83,7 +83,7 @@ public class Controle {
 		}
 	}
 
-	public void escreverLog(boolean control) {
+	public void escreverLog(boolean control) { //função que escreve em LogsUsuario.txt
 
 		confPasta();
 		confArquivo();
@@ -93,6 +93,7 @@ public class Controle {
 		Veiculo veiculo = loggedUser.getSelectedVeiculo();
 		String estacionamentoCorrigido = "";
 
+		//laço corrige o excesso de caracteres na leitura de logs
 		if (control == true) {
 			if ((veiculo.getEstacionado().getNome().equalsIgnoreCase("Estacionamento Principal"))) {
 				estacionamentoCorrigido = "Principal";
@@ -114,19 +115,19 @@ public class Controle {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		String dataFormatada = formato.format(date);
 		
-		try {
+		try { 
 
 			BufferedWriter arquivo = null;
 			File file = new File("src/pastaLogs/logsUsuario.txt");
 			FileWriter fileWriter = new FileWriter(file, true);
 			arquivo = new BufferedWriter(fileWriter);
 
-			if (control == true) {
-
+			if (control == true) { //controle administra chegada e saida
 				arquivo.write("chegou" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";" + dataFormatada + ";");
 			} else {
 				arquivo.write("saiu" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";" + dataFormatada + ";");
 			}
+			
 			arquivo.newLine();
 			arquivo.close();
 		} catch (IOException e) {
@@ -135,7 +136,7 @@ public class Controle {
 
 	}
 
-	private boolean lerPasta() {
+	private boolean lerPasta() { //função checa se a pasta existe
 		File pastaRaiz = new File("src/");
 		if (pastaRaiz.exists() != false) {
 			return true;
@@ -143,13 +144,22 @@ public class Controle {
 		return false;
 	}
 
-	private boolean lerArquivo() {
+	private boolean lerArquivo() {//função verifica se o txt existe
 		File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
 		if (logsUsuario.exists() != false) {
 			return true;
 		}
 		return false;
 	}
+	
+	/*
+	 * Função a baixo lê o log de acordo com o que foi passado como parâmetro,
+	 * e adiciona ao ArrayList a ser retornado:
+	 * "todos" = Retorna todos os dados do usuário;
+	 * "principal" = Retorna todos os dados do estacionamento principal;
+	 * "motos" = Retorna todos os dados do estacionamento de motos;
+	 * "fundos" =Retorna todos os dados do estacionamento fundos;
+	 */
 
 	public ArrayList<String[]> lerLog(String funcao) {
 
@@ -158,7 +168,7 @@ public class Controle {
 		boolean checkPasta = lerPasta();
 		boolean checkArquivo = lerArquivo();
 
-		if ((checkPasta == true) && (checkArquivo == true)) {
+		if ((checkPasta == true) && (checkArquivo == true)) { //laço verifica se arquivo e pasta existem
 			try {
 				File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
 				FileReader fileReader = new FileReader(logsUsuario);
