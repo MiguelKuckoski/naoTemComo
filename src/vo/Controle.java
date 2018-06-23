@@ -118,11 +118,9 @@ public class Controle {
 
 			if (control == true) {
 
-				arquivo.write("chegou" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";"
-						+ date + ";");
+				arquivo.write("chegou" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";" + date + ";");
 			} else {
-				arquivo.write("saiu" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa
-						+ ";" + date + ";");
+				arquivo.write("saiu" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";" + date + ";");
 			}
 			arquivo.newLine();
 			arquivo.close();
@@ -156,92 +154,55 @@ public class Controle {
 		boolean checkArquivo = lerArquivo();
 
 		if ((checkPasta == true) && (checkArquivo == true)) {
-			switch (funcao) {
+			try {
+				File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
+				FileReader fileReader = new FileReader(logsUsuario);
+				BufferedReader arquivo = new BufferedReader(fileReader);
+				String linha = "";
 
-			case "todos":
-				// ler
-				try {
-					File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
-					FileReader fileReader = new FileReader(logsUsuario);
-					BufferedReader arquivo = new BufferedReader(fileReader);
-					String linha = "";
+				while ((linha = arquivo.readLine()) != null) {
+					String aux[] = linha.split(";");
 
-					while ((linha = arquivo.readLine()) != null) {
-						String aux[] = linha.split(";");
+					switch (funcao) {
+					case "todos":
 						if (loggedUser.getNome().equalsIgnoreCase(aux[1])) {
 							arrayList.add(aux);
 						}
-					}
-					arquivo.close();
-				} catch (IOException e) {
-					JOptionPane.showMessageDialog(null, e);
-				}
-				break;
-			case "principal":
-				try {
-					File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
-					FileReader fileReader = new FileReader(logsUsuario);
-					BufferedReader arquivo = new BufferedReader(fileReader);
-					String linha = "";
-					while ((linha = arquivo.readLine()) != null) {
-						String aux[] = linha.split(";");
-						if ((aux[2].equalsIgnoreCase("Estacionamento Principal"))
+						break;
+					case "principal":
+						if ((aux[2].equalsIgnoreCase("Principal"))
 								&& (loggedUser.getNome().equalsIgnoreCase(aux[1]))) {
 							arrayList.add(aux);
 						}
-					}
-					arquivo.close();
-				} catch (IOException e) {
-					JOptionPane.showMessageDialog(null, e);
-				}
-				break;
-			case "motos":
-				try {
-					File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
-					FileReader fileReader = new FileReader(logsUsuario);
-					BufferedReader arquivo = new BufferedReader(fileReader);
-					String linha = "";
-					while ((linha = arquivo.readLine()) != null) {
-						String aux[] = linha.split(";");
-						if ((aux[2].equalsIgnoreCase("Estacionamento Motos"))
+						break;
+
+					case "motos":
+						if ((aux[2].equalsIgnoreCase("Motos"))
 								&& (loggedUser.getNome().equalsIgnoreCase(aux[1]))) {
 							arrayList.add(aux);
 						}
+						break;
+
+					case "fundos":
+						if ((aux[2].equalsIgnoreCase("Fundos"))
+								&& (loggedUser.getNome().equalsIgnoreCase(aux[1]))) {
+							arrayList.add(aux);
+						}
+						break;
 					}
 
-					arquivo.close();
-				} catch (IOException e) {
-					JOptionPane.showMessageDialog(null, e);
 				}
-				break;
-			case "fundos":
-				try {
-					File logsUsuario = new File("src/pastaLogs/logsUsuario.txt");
-					FileReader fileReader = new FileReader(logsUsuario);
-					BufferedReader arquivo = new BufferedReader(fileReader);
-					String linha = "";
-					while ((linha = arquivo.readLine()) != null) {
-						String aux[] = linha.split(";");
-						if ((aux[2].equalsIgnoreCase("Estacionamento dos Fundos"))
-								&& (loggedUser.getNome().equalsIgnoreCase(aux[1]))) {
-							arrayList.add(aux);
-						}
-					}
-					arquivo.close();
-				} catch (IOException e) {
-					JOptionPane.showMessageDialog(null, e);
-				}
-				break;
-
+				arquivo.close();
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, e);
 			}
-
 		} else {
 			JOptionPane.showMessageDialog(null, "Você ainda não possui registro de estacionamentos anteriores", "Erro",
 					0);
 		}
 		return arrayList;
 	}
-
+	
 	public Usuario getLoggedUser() {
 		return loggedUser;
 	}
