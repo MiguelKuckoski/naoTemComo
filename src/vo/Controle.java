@@ -89,6 +89,25 @@ public class Controle {
 		String nome = loggedUser.getNome();
 		String placa = loggedUser.getSelectedVeiculo().getPlaca();
 		Veiculo veiculo = loggedUser.getSelectedVeiculo();
+		String estacionamentoCorrigido = "";
+
+		if (control == true) {
+			if ((veiculo.getEstacionado().getNome().equalsIgnoreCase("Estacionamento Principal"))) {
+				estacionamentoCorrigido = "Principal";
+			} else if ((veiculo.getEstacionado().getNome().equalsIgnoreCase("Estacionamento Motos"))) {
+				estacionamentoCorrigido = "Motos";
+			} else if ((veiculo.getEstacionado().getNome().equalsIgnoreCase("Estacionamento dos Fundos"))) {
+				estacionamentoCorrigido = "Fundos";
+			}
+		} else {
+			if ((veiculo.getUltimoEstacionamento().getNome().equalsIgnoreCase("Estacionamento Principal"))) {
+				estacionamentoCorrigido = "Principal";
+			} else if ((veiculo.getUltimoEstacionamento().getNome().equalsIgnoreCase("Estacionamento Motos"))) {
+				estacionamentoCorrigido = "Motos";
+			} else if ((veiculo.getUltimoEstacionamento().getNome().equalsIgnoreCase("Estacionamento dos Fundos"))) {
+				estacionamentoCorrigido = "Fundos";
+			}
+		}
 
 		try {
 
@@ -99,10 +118,10 @@ public class Controle {
 
 			if (control == true) {
 
-				arquivo.write("chegou" + ";" + nome + ";" + veiculo.getEstacionado().getNome() + ";" + placa + ";"
+				arquivo.write("chegou" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa + ";"
 						+ date + ";");
 			} else {
-				arquivo.write("saiu" + ";" + nome + ";" + veiculo.getUltimoEstacionamento().getNome() + ";" + placa
+				arquivo.write("saiu" + ";" + nome + ";" + estacionamentoCorrigido + ";" + placa
 						+ ";" + date + ";");
 			}
 			arquivo.newLine();
@@ -130,9 +149,9 @@ public class Controle {
 	}
 
 	public ArrayList<String[]> lerLog(String funcao) {
-		
+
 		ArrayList<String[]> arrayList = new ArrayList<String[]>();
-		
+
 		boolean checkPasta = lerPasta();
 		boolean checkArquivo = lerArquivo();
 

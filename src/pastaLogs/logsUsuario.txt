@@ -1,9 +1,2 @@
-chegou;Teste nome;Estacionamento Motos;XXX-3222;Wed Jun 20 19:30:55 BRT 2018;
-saiu;Teste nome;Estacionamento Motos;XXX-3222;Wed Jun 20 19:30:55 BRT 2018;
-chegou;Teste nome;Estacionamento dos Fundos;OAK-1819;Wed Jun 20 19:33:35 BRT 2018;
-saiu;Teste nome;Estacionamento dos Fundos;OAK-1819;Wed Jun 20 19:33:35 BRT 2018;
-chegou;Teste nome;Estacionamento dos Fundos;OAK-1819;Wed Jun 20 19:33:35 BRT 2018;
-saiu;Teste nome;Estacionamento dos Fundos;OAK-1819;Wed Jun 20 19:33:35 BRT 2018;
-chegou;Miguel kuckoski;Estacionamento Principal;MGH-8188;Wed Jun 20 19:42:35 BRT 2018;
-chegou;Teste nome;Estacionamento Motos;XXX-3222;Wed Jun 20 19:42:35 BRT 2018;
-saiu;Miguel kuckoski;Estacionamento Principal;MGH-8188;Wed Jun 20 19:42:35 BRT 2018;
+chegou;Teste nome;Motos;XXX-3222;Sat Jun 23 17:27:13 BRT 2018;
+saiu;Teste nome;Motos;XXX-3222;Sat Jun 23 17:27:13 BRT 2018;
