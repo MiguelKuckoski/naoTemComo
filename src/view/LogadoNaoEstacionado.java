@@ -25,7 +25,8 @@ public class LogadoNaoEstacionado extends JFrame {
 	private JButton btnSair;
 	private JButton btnEstacionar;
 	private JButton btnOpcoes;
-	private Main main = Main.INSTANCIA;	
+	private Main main = Main.INSTANCIA;
+
 	/**
 	 * Launch the application.
 	 */
@@ -42,33 +43,29 @@ public class LogadoNaoEstacionado extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(52)
-							.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(79)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
-								.addComponent(getBtnEstacionar(), GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(48, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
-					.addComponent(getBtnEstacionar(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-					.addGap(31)
-					.addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-					.addGap(172)
-					.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-		);
+		gl_contentPane
+				.setHorizontalGroup(
+						gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+								.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup().addGap(52).addComponent(
+												getBtnSair(), GroupLayout.PREFERRED_SIZE, 189,
+												GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_contentPane.createSequentialGroup().addGap(79)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 129,
+																GroupLayout.PREFERRED_SIZE)
+														.addComponent(getBtnEstacionar(), GroupLayout.PREFERRED_SIZE,
+																129, GroupLayout.PREFERRED_SIZE))))
+								.addContainerGap(48, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(31)
+				.addComponent(getBtnEstacionar(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE).addGap(31)
+				.addComponent(getBtnOpcoes(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE).addGap(172)
+				.addComponent(getBtnSair(), GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)));
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/*** Gets e Sets ***/
 	private JButton getBtnSair() {
 		if (btnSair == null) {
 			btnSair = new JButton("SAIR");
@@ -80,15 +77,16 @@ public class LogadoNaoEstacionado extends JFrame {
 					index.requestFocus();
 
 					LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
-					logadoNaoEstacionado.setVisible(false);	
+					logadoNaoEstacionado.setVisible(false);
 					controle.getLoggedUser().setSelectedVeiculo(null);
-					controle.setLoggedUser(null);		
+					controle.setLoggedUser(null);
 				}
 			});
 			btnSair.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		}
 		return btnSair;
 	}
+
 	private JButton getBtnEstacionar() {
 		if (btnEstacionar == null) {
 			btnEstacionar = new JButton("Estacionar");
@@ -98,7 +96,7 @@ public class LogadoNaoEstacionado extends JFrame {
 					Estacionamentos estacionamentos = main.getEstacionamentos();
 					estacionamentos.setVisible(true);
 					estacionamentos.requestFocus();
-					
+
 					LogadoNaoEstacionado logadoNaoEstacionado = main.getLogadoNaoEstacionado();
 					logadoNaoEstacionado.setVisible(false);
 				}
@@ -106,6 +104,7 @@ public class LogadoNaoEstacionado extends JFrame {
 		}
 		return btnEstacionar;
 	}
+
 	private JButton getBtnOpcoes() {
 		if (btnOpcoes == null) {
 			btnOpcoes = new JButton("Opções");
@@ -122,4 +121,6 @@ public class LogadoNaoEstacionado extends JFrame {
 		}
 		return btnOpcoes;
 	}
+
+	/*******************/
 }

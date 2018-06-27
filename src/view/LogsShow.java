@@ -61,6 +61,39 @@ public class LogsShow extends JFrame {
 		displayValues();
 	}
 
+	/*** Gets e Sets ***/
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setViewportView(getTable());
+		}
+		return scrollPane;
+	}
+
+	private JTable getTable() {
+		if (table == null) {
+
+			table = new JTable();
+
+			DefaultTableModel model = new DefaultTableModel();
+
+			Object[] columnsName = new Object[5];
+
+			columnsName[0] = "Ação";
+			columnsName[1] = "Nome";
+			columnsName[2] = "Estacionamento";
+			columnsName[3] = "Placa";
+			columnsName[4] = "Data";
+
+			model.setColumnIdentifiers(columnsName);
+			table.setModel(model);
+		}
+		return table;
+	}
+	
+	/*******************/
+	
+	// Mostra as inforações na tela.
 	public void displayValues() {
 		Object[] rowData = new Object[5];
 		TableModel model = getTable().getModel();
@@ -95,32 +128,5 @@ public class LogsShow extends JFrame {
 
 	}
 
-	private JScrollPane getScrollPane() {
-		if (scrollPane == null) {
-			scrollPane = new JScrollPane();
-			scrollPane.setViewportView(getTable());
-		}
-		return scrollPane;
-	}
-
-	private JTable getTable() {
-		if (table == null) {
-
-			table = new JTable();
-
-			DefaultTableModel model = new DefaultTableModel();
-
-			Object[] columnsName = new Object[5];
-
-			columnsName[0] = "Ação";
-			columnsName[1] = "Nome";
-			columnsName[2] = "Estacionamento";
-			columnsName[3] = "Placa";
-			columnsName[4] = "Data";
-
-			model.setColumnIdentifiers(columnsName);
-			table.setModel(model);
-		}
-		return table;
-	}
+	
 }

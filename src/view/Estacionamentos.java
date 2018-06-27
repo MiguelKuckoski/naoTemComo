@@ -44,6 +44,7 @@ public class Estacionamentos extends JFrame {
 		contentPane.add(getBtnVoltar());
 	}
 	
+	/*** Gets e Sets ***/
 	private JButton getBtnEstacionamentoPrincipal() {
 		if (btnEstacionamentoPrincipal == null) {
 			btnEstacionamentoPrincipal = new JButton("Estacionamento Principal");
@@ -91,21 +92,7 @@ public class Estacionamentos extends JFrame {
 		}
 		return btnEstacionamentoDosFundos;
 	}
-	
-	public void mostrarEstacionamento (Estacionamento estacionamento) {
-		if(estacionamentoAtual != null) {
-			estacionamentoAtual.setVisible(false);
-		}
-		
-		estacionamentoAtual = estacionamento;
-		
-		setBounds(100, 100, 1096, 436);
-		contentPane.add(estacionamentoAtual).setBounds(374, 11, 700, 369);	
-		estacionamentoAtual.displayValues();
-		estacionamentoAtual.setVisible(true);		
-		
-	
-	}
+
 	
 	private JButton getBtnVoltar() {
 		if (btnVoltar == null) {
@@ -137,5 +124,23 @@ public class Estacionamentos extends JFrame {
 			btnVoltar.setBounds(53, 284, 219, 65);
 		}
 		return btnVoltar;
+	}
+
+	/*******************/
+	
+	// expande a tela mostrando o estacionamento selecionado.
+	public void mostrarEstacionamento (Estacionamento estacionamento) {
+		if(estacionamentoAtual != null) {
+			estacionamentoAtual.setVisible(false);
+		}
+		
+		estacionamentoAtual = estacionamento;
+		
+		setBounds(100, 100, 1096, 436);
+		contentPane.add(estacionamentoAtual).setBounds(374, 11, 700, 369);	
+		estacionamentoAtual.displayValues();
+		estacionamentoAtual.setVisible(true);		
+		
+	
 	}
 }

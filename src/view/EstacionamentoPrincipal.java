@@ -309,6 +309,7 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		getBtnVagas().add(btnVaga_12);
 	}
 
+	/*** Gets e Sets ***/
 	public static String getEstacionamentoNome() {
 		if (estacionamentoNome == null) {
 			estacionamentoNome = "Estacionamento Principal";
@@ -348,9 +349,12 @@ public class EstacionamentoPrincipal extends Estacionamento {
 		return endereco;
 	}
 
+	/*******************/
+	
+	// verifica o status da vaga.
 	public void verificarVaga(int posicao) {
 		EstacionamentoPrincipal estacionamentoPrincipal = main.getEstacionamentoPrincipal();
-		
+
 		if (getTipoVeiculo() == controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo()) {
 			if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {
 				if (estacionar(posicao, controle.getLoggedUser(), estacionamentoPrincipal)) {

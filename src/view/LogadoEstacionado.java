@@ -83,6 +83,8 @@ public class LogadoEstacionado extends JFrame {
 
 	}
 
+	
+	/*** Gets e Sets ***/
 	private JButton getBtnSair() {
 		if (btnSair == null) {
 			btnSair = new JButton("SAIR");
@@ -149,4 +151,6 @@ public class LogadoEstacionado extends JFrame {
 			
 		return panel;
 	}
+	
+	/*******************/
 }

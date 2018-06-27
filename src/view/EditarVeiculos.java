@@ -153,96 +153,7 @@ public class EditarVeiculos extends JFrame{
 		contentPane.setLayout(gl_contentPane);
 	}
 
-	public void cleanValues() {
-		getComboBoxVeiculoType().setSelectedIndex(0);
-		getTextFieldPlaca().setText("");
-		getTextFieldModelo().setText("");
-		getTextFieldCor().setText("");
-		getTextFieldAno().setText("");
-
-	}
-
-	public void displayValues() {
-		Object[] rowData = new Object[5];
-		TableModel model = getTable().getModel();
-		((DefaultTableModel) model).setRowCount(0);
-
-		for (int i = 0; i < getVeiculosNovos().size(); i++) {
-			rowData[0] = getVeiculosNovos().get(i).getTipoVeiculo().toString();
-			rowData[1] = getVeiculosNovos().get(i).getPlaca();
-			rowData[2] = getVeiculosNovos().get(i).getModelo();
-			rowData[3] = getVeiculosNovos().get(i).getAno();
-			rowData[4] = getVeiculosNovos().get(i).getCor();
-
-			((DefaultTableModel) model).addRow(rowData);
-		}
-
-			for (int i = 0; i < controle.getLoggedUser().getVeiculos().size(); i++) {
-				rowData[0] = controle.getLoggedUser().getVeiculos().get(i).getTipoVeiculo().toString();
-				rowData[1] = controle.getLoggedUser().getVeiculos().get(i).getPlaca();
-				rowData[2] = controle.getLoggedUser().getVeiculos().get(i).getModelo();
-				rowData[3] = controle.getLoggedUser().getVeiculos().get(i).getAno();
-				rowData[4] = controle.getLoggedUser().getVeiculos().get(i).getCor();
-
-				((DefaultTableModel) model).addRow(rowData);
-			}
-
-	}
-
-	public void save() {
-		String validacao = validateValues();
-
-		if (validacao == null) {
-			assignValues();
-			displayValues();
-		} else {
-			JOptionPane.showMessageDialog(null, "Preencha todos os campos: \n " + validacao, "WARNING",
-					JOptionPane.WARNING_MESSAGE);
-		}
-
-	}
-
-	public void assignValues() {
-		Veiculo veiculo = new Veiculo();
-		veiculo.setCor(getTextFieldCor().getText().trim());
-		veiculo.setAno(Integer.parseInt(getTextFieldAno().getText()));
-		veiculo.setModelo(getTextFieldModelo().getText().trim());
-		veiculo.setPlaca(getTextFieldPlaca().getText().trim());
-		veiculo.setTipoVeiculo((VeiculoType) getComboBoxVeiculoType().getSelectedItem());
-
-		getVeiculosNovos().add(veiculo);
-
-	}
-
-	public String validateValues() {
-		String validacao = "";
-
-		if (getTextFieldPlaca().getText().trim().length() == 0) {
-			validacao += "Informe a placa do veiculo.\n";
-		} else if (!validacaoPlaca) {
-			validacao += "Placa incorreta.\n";
-		}
-
-		if (getTextFieldModelo().getText().trim().length() == 0) {
-			validacao += "Informe o modelo do veiculo.\n";
-		}
-
-		if (getTextFieldAno().getText().trim().length() == 0) {
-			validacao += "Informe o ano do veiculo.\n";
-		}
-
-		if (getTextFieldCor().getText().trim().length() == 0) {
-			validacao += "Informe a cor do veiculo.\n";
-		}
-
-		if (validacao.trim().length() == 0) {
-			return null;
-		} else {
-			return validacao;
-		}
-
-	}
-
+	/*** Gets e Sets ***/
 	private JLabel getLblTipo() {
 		if (lblTipo == null) {
 			lblTipo = new JLabel("Tipo ");
@@ -303,33 +214,6 @@ public class EditarVeiculos extends JFrame{
 		}
 		return textFieldPlaca;
 	}
-	
-	private boolean validarPlaca() {
-		for (Usuario usuario : controle.getUsuarios()) {
-			for (Veiculo veiculo : usuario.getVeiculos()) {
-				if (getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
-					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
-					return false;
-				}
-			}
-			
-			for(Veiculo veiculo : getVeiculosNovos()) {
-				if(getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
-					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	
-	private JLabel getLblAno() {
-		if (lblAno == null) {
-			lblAno = new JLabel("Ano");
-		}
-		return lblAno;
-	}
-
 	private JFormattedTextField getTextFieldAno() {
 		if (textFieldAno == null) {
 			try {
@@ -504,5 +388,130 @@ public class EditarVeiculos extends JFrame{
 		}
 		return btnConfirmar;
 	}
+	
+	private JLabel getLblAno() {
+		if (lblAno == null) {
+			lblAno = new JLabel("Ano");
+		}
+		return lblAno;
+	}
 
+	/*******************/
+
+	//Limpa os campos de texto da tela.
+	public void cleanValues() {
+		getComboBoxVeiculoType().setSelectedIndex(0);
+		getTextFieldPlaca().setText("");
+		getTextFieldModelo().setText("");
+		getTextFieldCor().setText("");
+		getTextFieldAno().setText("");
+
+	}
+
+	// Mostra as inforações na tela.
+	public void displayValues() {
+		Object[] rowData = new Object[5];
+		TableModel model = getTable().getModel();
+		((DefaultTableModel) model).setRowCount(0);
+
+		for (int i = 0; i < getVeiculosNovos().size(); i++) {
+			rowData[0] = getVeiculosNovos().get(i).getTipoVeiculo().toString();
+			rowData[1] = getVeiculosNovos().get(i).getPlaca();
+			rowData[2] = getVeiculosNovos().get(i).getModelo();
+			rowData[3] = getVeiculosNovos().get(i).getAno();
+			rowData[4] = getVeiculosNovos().get(i).getCor();
+
+			((DefaultTableModel) model).addRow(rowData);
+		}
+
+			for (int i = 0; i < controle.getLoggedUser().getVeiculos().size(); i++) {
+				rowData[0] = controle.getLoggedUser().getVeiculos().get(i).getTipoVeiculo().toString();
+				rowData[1] = controle.getLoggedUser().getVeiculos().get(i).getPlaca();
+				rowData[2] = controle.getLoggedUser().getVeiculos().get(i).getModelo();
+				rowData[3] = controle.getLoggedUser().getVeiculos().get(i).getAno();
+				rowData[4] = controle.getLoggedUser().getVeiculos().get(i).getCor();
+
+				((DefaultTableModel) model).addRow(rowData);
+			}
+
+	}
+
+	// Faz a chamada de metodos para salvar os dados.
+	public void save() {
+		String validacao = validateValues();
+
+		if (validacao == null) {
+			assignValues();
+			displayValues();
+		} else {
+			JOptionPane.showMessageDialog(null, "Preencha todos os campos: \n " + validacao, "WARNING",
+					JOptionPane.WARNING_MESSAGE);
+		}
+
+	}
+
+	//Cria o objeto com seus respectivos dados.
+	public void assignValues() {
+		Veiculo veiculo = new Veiculo();
+		veiculo.setCor(getTextFieldCor().getText().trim());
+		veiculo.setAno(Integer.parseInt(getTextFieldAno().getText()));
+		veiculo.setModelo(getTextFieldModelo().getText().trim());
+		veiculo.setPlaca(getTextFieldPlaca().getText().trim());
+		veiculo.setTipoVeiculo((VeiculoType) getComboBoxVeiculoType().getSelectedItem());
+
+		getVeiculosNovos().add(veiculo);
+
+	}
+
+	//Valida os campos obrigatórios.
+	public String validateValues() {
+		String validacao = "";
+
+		if (getTextFieldPlaca().getText().trim().length() == 0) {
+			validacao += "Informe a placa do veiculo.\n";
+		} else if (!validacaoPlaca) {
+			validacao += "Placa incorreta.\n";
+		}
+
+		if (getTextFieldModelo().getText().trim().length() == 0) {
+			validacao += "Informe o modelo do veiculo.\n";
+		}
+
+		if (getTextFieldAno().getText().trim().length() == 0) {
+			validacao += "Informe o ano do veiculo.\n";
+		}
+
+		if (getTextFieldCor().getText().trim().length() == 0) {
+			validacao += "Informe a cor do veiculo.\n";
+		}
+
+		if (validacao.trim().length() == 0) {
+			return null;
+		} else {
+			return validacao;
+		}
+
+	}
+
+	//Valida se a placa já está cadastrada.
+	private boolean validarPlaca() {
+		for (Usuario usuario : controle.getUsuarios()) {
+			for (Veiculo veiculo : usuario.getVeiculos()) {
+				if (getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
+					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
+					return false;
+				}
+			}
+			
+			for(Veiculo veiculo : getVeiculosNovos()) {
+				if(getTextFieldPlaca().getText().equals(veiculo.getPlaca())) {
+					JOptionPane.showMessageDialog(null, "Placa já cadastrada", "Error", JOptionPane.ERROR_MESSAGE);
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	
 }

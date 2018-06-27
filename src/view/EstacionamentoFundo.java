@@ -321,6 +321,7 @@ public class EstacionamentoFundo extends Estacionamento {
 		getBtnVagas().add(btnVaga_12);
 	}
 
+	/*** Gets e Sets ***/
 	public static String getEstacionamentoNome() {
 		if (estacionamentoNome == null) {
 			estacionamentoNome = "Estacionamento dos Fundos";
@@ -358,13 +359,11 @@ public class EstacionamentoFundo extends Estacionamento {
 		}
 		return endereco;
 	}
+	/*******************/
 
+	// verifica o status da vaga.
 	public void verificarVaga(int posicao) {
-		EstacionamentoFundo estacionamentoFundo = main.getEstacionamentoFundo();
-
-		VeiculoType tipo1 = getTipoVeiculo();
-		VeiculoType tipo2 = controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo();
-		
+		EstacionamentoFundo estacionamentoFundo = main.getEstacionamentoFundo();		
 		if (getTipoVeiculo() == controle.getLoggedUser().getSelectedVeiculo().getTipoVeiculo()) {
 			if (controle.getLoggedUser().getSelectedVeiculo().getEstacionado() == null) {
 				if (estacionar(posicao, controle.getLoggedUser(), estacionamentoFundo)) {

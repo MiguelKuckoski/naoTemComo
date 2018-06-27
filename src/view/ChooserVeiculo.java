@@ -67,6 +67,7 @@ public class ChooserVeiculo extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/*** Gets e Sets ***/
 	private JTable getTable() {
 		if (table == null) {
 
@@ -122,7 +123,10 @@ public class ChooserVeiculo extends JFrame {
 		}
 		return btnConfirmar;
 	}
+	
+	/*******************/
 
+	// Mostra as inforações na tela.
 	public void displayValues() {
 		Object[] rowData = new Object[3];
 		TableModel model = getTable().getModel();

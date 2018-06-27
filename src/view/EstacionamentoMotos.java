@@ -341,7 +341,8 @@ public class EstacionamentoMotos extends Estacionamento {
 		getBtnVagas().add(btnVaga_12);
 
 	}
-	
+
+	/*** Gets e Sets ***/
 	public static String getEstacionamentoNome() {
 		if(estacionamentoNome == null) {
 			estacionamentoNome = "Estacionamento Motos";
@@ -379,7 +380,9 @@ public class EstacionamentoMotos extends Estacionamento {
 		}
 		return endereco;
 	}
-
+	/*******************/	
+	
+	// verifica o status da vaga.
 	public void verificarVaga(int posicao) {
 		EstacionamentoMotos estacionamentoMotos = main.getEstacionamentoMoto();
 		

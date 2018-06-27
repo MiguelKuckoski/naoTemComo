@@ -127,6 +127,7 @@ public class SelecionarPerspectiva extends JFrame{
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	// Mostra os relatorios correspondentes ao estacionamento selecionado.
 	public void mostrarLog(String tipo) {
 		LogsShow logs = new LogsShow(controle, tipo);
 		logs.setVisible(true);

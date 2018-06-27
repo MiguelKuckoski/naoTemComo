@@ -12,11 +12,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import extras.Iview;
 import vo.Controle;
 import vo.Main;
 
-public class Opcoes extends JFrame implements Iview {
+public class Opcoes extends JFrame{
 
 	/**
 	 * 
@@ -52,6 +51,7 @@ public class Opcoes extends JFrame implements Iview {
 		contentPane.add(getBtnVoltar());
 	}
 
+	/*** Gets e Sets ***/
 	private JButton getBtnRelatorios() {
 		if (btnRelatorios == null) {
 			btnRelatorios = new JButton("Relat\u00F3rios");
@@ -165,28 +165,6 @@ public class Opcoes extends JFrame implements Iview {
 		}
 		return btnVoltar;
 	}
-
-	@Override
-	public void cleanValues() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void save() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void assignValues() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String validateValues() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	/*******************/
 }

@@ -56,6 +56,7 @@ public class Main {
 		tela.setVisible(true);
 	}
 
+	/*** Inicializa as telas ***/
 	public Cadastro getCadastro() {
 		if (cadastro == null)
 			cadastro = new Cadastro(controle);
@@ -78,30 +79,6 @@ public class Main {
 		if (logadoNaoEstacionado == null)
 			logadoNaoEstacionado = new LogadoNaoEstacionado(controle);
 		return logadoNaoEstacionado;
-	}
-
-	public void populateCadastro() {
-		Usuario usuario = new Usuario();
-		usuario.setNome("Teste nome");
-		usuario.setCpf("000.000.000-00");
-		usuario.setSenha("12345");
-
-		usuario.setCnh("88888888888");
-		usuario.setRua("Teste rua");
-		usuario.setNum(69);
-		usuario.setBairro("Teste bairro");
-		usuario.setCep(88090740);
-
-		usuario.setEstado("Santa Catarina");
-
-		VeiculoType type = VeiculoType.getType("MOTO");
-		Veiculo veiculo = new Veiculo("XXX-3222", "Factor", 2009, type, "cinza");
-		ArrayList<Veiculo> vArray = new ArrayList<Veiculo>();
-		vArray.add(veiculo);
-		usuario.setVeiculos(vArray);
-		usuario.setSelectedVeiculo(veiculo);
-		controle.addUsuarios(usuario);
-
 	}
 
 	public Opcoes getOpcoes() {
@@ -157,4 +134,32 @@ public class Main {
 		return chooserVeiculo;
 	}
 
+	/***************************/
+
+	//Cria um usuário para testes.
+	public void populateCadastro() {
+		Usuario usuario = new Usuario();
+		usuario.setNome("Teste nome");
+		usuario.setCpf("000.000.000-00");
+		usuario.setSenha("12345");
+
+		usuario.setCnh("88888888888");
+		usuario.setRua("Teste rua");
+		usuario.setNum(69);
+		usuario.setBairro("Teste bairro");
+		usuario.setCep(88090740);
+
+		usuario.setEstado("Santa Catarina");
+
+		VeiculoType type = VeiculoType.getType("MOTO");
+		Veiculo veiculo = new Veiculo("XXX-3222", "Factor", 2009, type, "cinza");
+		ArrayList<Veiculo> vArray = new ArrayList<Veiculo>();
+		vArray.add(veiculo);
+		usuario.setVeiculos(vArray);
+		usuario.setSelectedVeiculo(veiculo);
+		controle.addUsuarios(usuario);
+
+	}
+
+	
 }

@@ -129,8 +129,6 @@ public class Index extends JFrame {
 		}
 		return passwordField;
 	}
-	/******************/
-
 	private JButton getBtnSair() {
 		if (btnSair == null) {
 			btnSair = new JButton("Sair");
@@ -173,6 +171,10 @@ public class Index extends JFrame {
 		}
 		return btnCadastrar;
 	}
+	/******************/
+
+	
+	//validação de login.
 	public void login() {
 		// Verifica os dados de login com a lista de usuarios cadastrados.
 		String cpf = getTextFieldCpf().getText();
